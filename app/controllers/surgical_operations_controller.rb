@@ -1,4 +1,5 @@
 class SurgicalOperationsController < ApplicationController
+  before_action :set_surgical_operation, only: [:show, :edit, :update]
 
   def index
     @surgical_operations = SurgicalOperation.all.order(created_at: :desc)
@@ -18,15 +19,12 @@ class SurgicalOperationsController < ApplicationController
   end
 
   def show
-    @surgical_operation = SurgicalOperation.find(params[:id])
   end
 
   def edit
-    @surgical_operation = SurgicalOperation.find(params[:id])
   end
 
   def update
-    @surgical_operation = SurgicalOperation.find(params[:id])
     if @surgical_operation.update(surgical_operation_params)
       redirect_to surgical_operations_path, notice: t('view.edit_content')
     else
@@ -37,5 +35,9 @@ class SurgicalOperationsController < ApplicationController
   private
   def surgical_operation_params
     params.require(:surgical_operation).permit(:title, :content)
+  end
+
+  def set_surgical_operation
+    @surgical_operation = SurgicalOperation.find(params[:id])
   end
 end

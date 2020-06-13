@@ -1,23 +1,2 @@
-<%= link_to t('view.surgical_operation_list'), surgical_operations_path %>
-<br>
-<%= form_with(model: @surgical_operation, local: true) do |form| %>
-  <% if @surgical_operation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @surgical_operation.errors.count %><%= t('view.error') %></h2>
-      <ul>
-      <% @surgical_operation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>  
-      </ul>
-    </div>
-  <% end %>
-  <div class="surgical_operation_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="surgical_operation_content">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-    <%= form.submit %>
-<% end %>
+<h2><%= t('view.new') %></h2>
+<%= render 'form' %>
