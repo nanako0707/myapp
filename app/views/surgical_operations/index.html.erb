@@ -1,12 +1,15 @@
 <%= link_to t('view.new_content'), new_surgical_operation_path %>
+<br>
 <h1><%= t('view.surgical_operation_list') %></h1>
+<br>
 <table>
   <tr>
     <th><%= t('view.title') %></th>
   </tr>
-<% @surgical_operations.each do |surgical_operation| %>
-  <tr>
-    <td><%= surgical_operation.title %></td>
-  </tr>
-<% end %>  
+  <% @surgical_operations.each do |surgical_operation| %>
+    <tr>
+      <td><%= surgical_operation.title %></td>
+      <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id) %></td>
+    </tr>
+  <% end %>  
 </table>

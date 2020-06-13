@@ -13,6 +13,10 @@ class SurgicalOperationsController < ApplicationController
     redirect_to new_surgical_operation_path
   end
 
+  def show
+    @surgical_operation = SurgicalOperation.find(params[:id])
+  end
+
   private
   def surgical_operation_params
     params.require(:surgical_operation).permit(:title, :content)

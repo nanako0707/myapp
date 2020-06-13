@@ -4,6 +4,7 @@ ja:
     new_content: 新しく手順を作成する
     title: 手術名
     content: 手順
+    content_confirmation: 詳細
   activerecord:
     models:
       surgical_operation: 手術
