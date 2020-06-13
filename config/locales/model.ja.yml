@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      surgical_operation: 手術
+      user: ユーザー
+    attributes:
+      surgical_operation:
+        title: 手術名
+        content: 手順
+      user:
+        title: タイトル
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード 
+        remember_me: ログインを記憶
