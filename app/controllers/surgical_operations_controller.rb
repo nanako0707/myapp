@@ -9,8 +9,12 @@ class SurgicalOperationsController < ApplicationController
   end
 
   def create
-    SurgicalOperation.create(surgical_operation_params)
-    redirect_to new_surgical_operation_path
+    @surgical_operation = SurgicalOperation.new(surgical_operation_params)
+    if @surgical_operation.save
+      redirect_to surgical_operations_path, notice: t('view.create_content')
+    else
+      render :new
+    end
   end
 
   def show

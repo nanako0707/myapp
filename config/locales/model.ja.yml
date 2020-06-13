@@ -5,6 +5,8 @@ ja:
     title: 手術名
     content: 手順
     content_confirmation: 詳細
+    create_content: 手順を作成しました！
+    error: 件のエラーがあります
   activerecord:
     models:
       surgical_operation: 手術
