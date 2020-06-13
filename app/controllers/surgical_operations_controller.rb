@@ -1,6 +1,7 @@
 class SurgicalOperationsController < ApplicationController
 
   def index
+    @surgical_operations = SurgicalOperation.all
   end
 
   def new
