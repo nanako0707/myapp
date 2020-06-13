@@ -9,6 +9,9 @@ ja:
     create_content: 手順を作成しました！
     edit_content: 手順を編集しました！
     error: 件のエラーがあります
+    logout: ログアウト
+    signup: 新規登録
+    login: ログイン
   activerecord:
     models:
       surgical_operation: 手術

@@ -1,4 +1,5 @@
 class SurgicalOperationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_surgical_operation, only: [:show, :edit, :update]
 
   def index
