@@ -1,7 +1,7 @@
 class SurgicalOperationsController < ApplicationController
 
   def index
-    @surgical_operations = SurgicalOperation.all
+    @surgical_operations = SurgicalOperation.all.order(created_at: :desc)
   end
 
   def new
@@ -19,6 +19,19 @@ class SurgicalOperationsController < ApplicationController
 
   def show
     @surgical_operation = SurgicalOperation.find(params[:id])
+  end
+
+  def edit
+    @surgical_operation = SurgicalOperation.find(params[:id])
+  end
+
+  def update
+    @surgical_operation = SurgicalOperation.find(params[:id])
+    if @surgical_operation.update(surgical_operation_params)
+      redirect_to surgical_operations_path, notice: t('view.edit_content')
+    else
+      render :edit
+    end
   end
 
   private

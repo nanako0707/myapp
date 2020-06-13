@@ -1,11 +1,13 @@
 ja:
   view:
     surgical_operation_list: 手術一覧
-    new_content: 新しく手順を作成する
+    new: 新しく手順を作成する
+    edit: 手順を編集する
     title: 手術名
     content: 手順
     content_confirmation: 詳細
     create_content: 手順を作成しました！
+    edit_content: 手順を編集しました！
     error: 件のエラーがあります
   activerecord:
     models:

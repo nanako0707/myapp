@@ -1,4 +1,5 @@
 <%= link_to t('view.surgical_operation_list'), surgical_operations_path %>
+<%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id) %>
 <br>
 <h1><%= @surgical_operation.title %></h1>
 <h2><%= t('view.content') %></h2>
