@@ -15,6 +15,7 @@ ja:
     login: ログイン
     cancel_stock: ストックを解除する
     stock: ストックする
+    create_user: 作成者
   activerecord:
     models:
       surgical_operation: 手術

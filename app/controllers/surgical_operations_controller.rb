@@ -11,8 +11,7 @@ class SurgicalOperationsController < ApplicationController
   end
 
   def create
-    @surgical_operation = SurgicalOperation.new(surgical_operation_params)
-    @surgical_operation.user_id = current_user.id
+    @surgical_operation = current_user.surgical_operations.build(surgical_operation_params)
     if @surgical_operation.save
       redirect_to surgical_operations_path, notice: t('view.create_content')
     else
