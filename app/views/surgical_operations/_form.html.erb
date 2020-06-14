@@ -1,5 +1,3 @@
-<%= link_to t('view.surgerylist'), surgical_operations_path %>
-<br>
 <%= form_with(model: @surgical_operation, local: true) do |form| %>
   <% if @surgical_operation.errors.any? %>
     <div id="error_explanation">

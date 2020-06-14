@@ -1,3 +1,4 @@
+<%= link_to t('view.new'), new_surgical_operation_path %>
 <% if current_user.try(:admin?) %>
   <h1><%= t('view.surgerylist_admin') %></h1>
 <% else %>
