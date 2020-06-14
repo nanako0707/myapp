@@ -1,11 +1,9 @@
 <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id) %>
 <br>
-<% unless @surgical_operation.user_id == current_user.id %>
-  <% if @stock.present? %>
-    <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to t('view.stock'), stocks_path(surgical_operation_id: @surgical_operation.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
+<% if @stock.present? %>
+  <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to t('view.stock'), stocks_path(surgical_operation_id: @surgical_operation.id), method: :post, class: 'btn btn-primary' %>
 <% end %>
 <br>
 <h1><%= @surgical_operation.title %></h1>
