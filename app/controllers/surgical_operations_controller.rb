@@ -12,6 +12,7 @@ class SurgicalOperationsController < ApplicationController
 
   def create
     @surgical_operation = SurgicalOperation.new(surgical_operation_params)
+    @surgical_operation.user_id = current_user.id
     if @surgical_operation.save
       redirect_to surgical_operations_path, notice: t('view.create_content')
     else
@@ -20,6 +21,7 @@ class SurgicalOperationsController < ApplicationController
   end
 
   def show
+    @stock = current_user.stocks.find_by(surgical_operation_id: @surgical_operation.id)
   end
 
   def edit
