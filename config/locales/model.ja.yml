@@ -1,6 +1,7 @@
 ja:
   view:
-    surgical_operation_list: 手術一覧
+    surgerylist: 手術一覧
+    surgerylist_admin: (管理者)手術一覧
     new: 新しく手順を作成する
     edit: 手順を編集する
     title: 手術名
