@@ -15,6 +15,7 @@ ja:
     login: ログイン
     cancel_stock: ストックを解除する
     stock: ストックする
+    stocklist: ストック一覧
     create_user: 作成者
     profile: プロフィール
     user_name: ユーザー名

@@ -5,5 +5,8 @@
 <h3><%= t('view.email') %></h3>
 <%= @user.email %>
 <br>
-
 <%= link_to t('view.edit_user'), edit_user_registration_path %>
+<br>
+<%= link_to t('view.new'), new_surgical_operation_path %>
+<br>
+<%= link_to t('view.stocklist'), "/users/#{@user.id}/stocks" %>
