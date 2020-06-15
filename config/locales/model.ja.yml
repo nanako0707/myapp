@@ -16,6 +16,10 @@ ja:
     cancel_stock: ストックを解除する
     stock: ストックする
     create_user: 作成者
+    profile: プロフィール
+    user_name: ユーザー名
+    email: メールアドレス
+    edit_user: プロフィールを編集する
   activerecord:
     models:
       surgical_operation: 手術

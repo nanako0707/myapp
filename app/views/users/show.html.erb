@@ -1,0 +1,9 @@
+<h1><%= t('view.profile') %></h1>
+
+<h3><%= t('view.user_name') %></h3>
+<%= @user.name %>
+<h3><%= t('view.email') %></h3>
+<%= @user.email %>
+<br>
+
+<%= link_to t('view.edit_user'), edit_user_registration_path %>
