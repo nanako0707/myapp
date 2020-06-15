@@ -21,6 +21,7 @@ ja:
     user_name: ユーザー名
     email: メールアドレス
     edit_user: プロフィールを編集する
+    image: 画像
   activerecord:
     models:
       surgical_operation: 手術
@@ -29,6 +30,7 @@ ja:
       surgical_operation:
         title: 手術名
         content: 手順
+        image: 画像
       user:
         title: タイトル
         name: 名前

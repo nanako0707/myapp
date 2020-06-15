@@ -12,3 +12,6 @@
 <br>
 <h2><%= t('view.content') %></h2>
 <%= @surgical_operation.content %>
+<p>
+  <%= image_tag @surgical_operation.image.url if @surgical_operation.image? %>
+</p>
