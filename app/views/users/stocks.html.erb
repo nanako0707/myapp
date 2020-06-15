@@ -1,0 +1,3 @@
+<% @stocks.each do |stock| %>
+  <% surgical_operation = SurgicalOperation.find_by(id: stock.surgical_operation.id) %>
+<% end %>

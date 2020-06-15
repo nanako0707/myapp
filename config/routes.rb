@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :surgical_operations
   resources :stocks, only: [:create, :destroy]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get '/users/:id/stocks', to: 'users#stocks'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
