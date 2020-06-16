@@ -1,3 +1,5 @@
+<%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: 'btn btn-link' %>
+<%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: 'btn btn-link' %>
 <% if current_user.try(:admin?) %>
   <h1><%= t('view.surgerylist_admin') %></h1>
 <% else %>

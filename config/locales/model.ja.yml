@@ -4,6 +4,7 @@ ja:
     surgerylist_admin: (管理者)手術一覧
     create_date: 作成日時
     update_date: 更新日時
+    sort_update_date: 更新日時順にソート
     new: 手順を作成する
     edit: 手順を編集する
     title: 手術名
@@ -41,6 +42,7 @@ ja:
     otolaryngology: 耳鼻咽喉科
     stomatognathic: 顎口腔外科
     obstetrics_gynecology: 産婦人科
+    sort_medical_department: 診療科目順にソート
 
   activerecord:
     models:
@@ -53,6 +55,7 @@ ja:
         image: 画像
         status: ステータス
         medical_department: 診療科目
+
       user:
         title: タイトル
         name: 名前

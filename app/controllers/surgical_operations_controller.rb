@@ -2,7 +2,13 @@ class SurgicalOperationsController < ApplicationController
   before_action :set_surgical_operation, only: [:show, :edit, :update]
 
   def index
-    @surgical_operations = SurgicalOperation.all.order(created_at: :desc)
+    if params[:sort_medical_department]
+      @surgical_operations = SurgicalOperation.order(medical_department: :desc)
+    elsif params[:sort_updated_at]
+      @surgical_operations = SurgicalOperation.order(updated_at: :desc)
+    else
+      @surgical_operations = SurgicalOperation.all.order(created_at: :desc)
+    end
   end
 
   def new

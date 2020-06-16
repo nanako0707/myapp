@@ -6,6 +6,7 @@
   <%= link_to t('view.stock'), stocks_path(surgical_operation_id: @surgical_operation.id), method: :post, class: 'btn btn-primary' %>
 <% end %>
 <br>
+<h1><%= @surgical_operation.medical_department %></h1>
 <h1><%= @surgical_operation.title %></h1>
 <br>
 <%= t('view.create_user') %>:<%= @surgical_operation.user.name %>
