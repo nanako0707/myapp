@@ -16,24 +16,27 @@
  */
 header {
   width: 100%;
-  background-color: aquamarine;
+  background-color: #55c500;
   height: 54px;
+  color: #fff;
 }
 
 .header_list {
   float: right;
+  line-height: 50px;
 }
 
 footer {
   width: 100%;
-  background-color: aquamarine;
+  background-color: #3e3e3e;
   padding: 20px 0 10px 0;
-  color: dodgerblue;
+  color: #fff;
   margin: auto;
   padding-bottom: 10px;
   font-size: 12px;
   position: absolute;
   bottom: 0;
+  box-sizing: inherit;
 }
 
 html {
@@ -42,4 +45,8 @@ html {
 }
 body {
   text-align: center;
+}
+
+a {
+  color : #fff;
 }

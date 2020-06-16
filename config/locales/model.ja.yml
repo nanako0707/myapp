@@ -4,7 +4,7 @@ ja:
     surgerylist_admin: (管理者)手術一覧
     create_date: 作成日時
     update_date: 更新日時
-    new: 新しく手順を作成する
+    new: 手順を作成する
     edit: 手順を編集する
     title: 手術名
     content: 手順

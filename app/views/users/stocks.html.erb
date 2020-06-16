@@ -1,6 +1,6 @@
 <% @stocks.each do |stock| %>
   <% surgical_operation = SurgicalOperation.find_by(id: stock.surgical_operation.id) %>
   <p><%= surgical_operation.title %>
-    <%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id) %>
+    <%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %>
   </p>
 <% end %>

@@ -1,4 +1,3 @@
-<%= link_to t('view.new'), new_surgical_operation_path %>
 <% if current_user.try(:admin?) %>
   <h1><%= t('view.surgerylist_admin') %></h1>
 <% else %>
@@ -17,7 +16,7 @@
       <td><%= surgical_operation.created_at.to_s(:datetime_jp) %></td>
       <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
       <td><%= surgical_operation.title %></td>
-      <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id) %></td>
+      <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
     </tr>
   <% end %>  
 </table>
