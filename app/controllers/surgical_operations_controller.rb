@@ -26,6 +26,8 @@ class SurgicalOperationsController < ApplicationController
 
   def show
     @stock = current_user.stocks.find_by(surgical_operation_id: @surgical_operation.id)
+    @comments = @surgical_operation.comments
+    @comment = @surgical_operation.comments.build
   end
 
   def edit

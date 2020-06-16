@@ -43,6 +43,13 @@ ja:
     stomatognathic: 顎口腔外科
     obstetrics_gynecology: 産婦人科
     sort_medical_department: 診療科目順にソート
+    can't_post: 投稿できませんでした...
+    commentlist: コメント一覧
+    in_comments: コメントの編集中
+    edit_comment_message: コメントが編集されました！
+    comment_failure: コメントの編集に失敗しました
+    edit_comment: コメント編集
+
 
   activerecord:
     models:
@@ -55,7 +62,7 @@ ja:
         image: 画像
         status: ステータス
         medical_department: 診療科目
-
+  
       user:
         title: タイトル
         name: 名前
@@ -64,3 +71,6 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード 
         remember_me: ログインを記憶
+      
+      comment:
+        content: コメント

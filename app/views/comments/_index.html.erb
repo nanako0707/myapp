@@ -1,0 +1,11 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li>
+        <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
+        <p><%= comment.content %></p>
+        <p><%= link_to t('view.edit_comment'), edit_surgical_operation_comment_path(surgical_operation, comment), remote: true, class: 'btn btn-link' %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
