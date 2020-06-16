@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_surgical_operation, only: [:create, :edit, :update]
   def create
     @comment = @surgical_operation.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.js { render :index }
