@@ -35,7 +35,7 @@ class SurgicalOperationsController < ApplicationController
 
   private
   def surgical_operation_params
-    params.require(:surgical_operation).permit(:title, :content, :image, :status)
+    params.require(:surgical_operation).permit(:title, :content, :image, :status, :medical_department)
   end
 
   def set_surgical_operation

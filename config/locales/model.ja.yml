@@ -27,6 +27,20 @@ ja:
     status: ステータス
     done: 編集済み
     wip: 編集中
+    medical_department: 診療科目
+    digestive: 消化器外科
+    respiratory: 呼吸器外科
+    breast: 乳腺外科
+    pediatric: 小児科
+    neurosurgery: 脳神経外科
+    cardiovascular: 心臓血管外科
+    orthopedics: 整形外科
+    plastic: 形成外科
+    urology: 泌尿器科
+    ophthalmology: 眼科
+    otolaryngology: 耳鼻咽喉科
+    stomatognathic: 顎口腔外科
+    obstetrics_gynecology: 産婦人科
 
   activerecord:
     models:
@@ -38,6 +52,7 @@ ja:
         content: 手順
         image: 画像
         status: ステータス
+        medical_department: 診療科目
       user:
         title: タイトル
         name: 名前

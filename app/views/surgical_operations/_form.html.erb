@@ -13,6 +13,24 @@
     <%= form.label :status %>
     <%= form.select :status, [ t('view.wip'), t('view.done') ], { include_blank: true } %>
   </div>
+  <div class="medical_department">
+    <%= form.label :medical_department %>
+    <%= form.select :medical_department, [ 
+      t('view.digestive'),
+      t('view.respiratory'),
+      t('view.breast'),
+      t('view.pediatric'),
+      t('view.neurosurgery'),
+      t('view.cardiovascular'),
+      t('view.orthopedics'),
+      t('view.plastic'),
+      t('view.urology'),
+      t('view.ophthalmology'),
+      t('view.otolaryngology'),
+      t('view.stomatognathic'),
+      t('view.obstetrics_gynecology'),
+    ], { include_blank: true } %>
+  </div>
   <div class="surgical_operation_title">
     <%= form.label :title %>
     <%= form.text_field :title %>
