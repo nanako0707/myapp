@@ -19,6 +19,7 @@ header {
   background-color: #55c500;
   height: 54px;
   color: #fff;
+  padding: 0px 8px;
 }
 
 .header_list {

@@ -24,6 +24,10 @@ ja:
     email: メールアドレス
     edit_user: プロフィールを編集する
     image: 画像
+    status: ステータス
+    done: 編集済み
+    wip: 編集中
+
   activerecord:
     models:
       surgical_operation: 手術
@@ -33,6 +37,7 @@ ja:
         title: 手術名
         content: 手順
         image: 画像
+        status: ステータス
       user:
         title: タイトル
         name: 名前
