@@ -48,8 +48,10 @@ ja:
     in_comments: コメントの編集中
     edit_comment_message: コメントが編集されました！
     comment_failure: コメントの編集に失敗しました
-    edit_comment: コメント編集
-
+    edit_comment: 編集
+    destroy_comment: 削除
+    destroy_comment_message: コメントが削除されました！
+    confirm_destroy: 本当に削除しますか？
 
   activerecord:
     models:

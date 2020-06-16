@@ -32,6 +32,15 @@ class CommentsController < ApplicationController
       end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    respond_to do |format|
+      flash.now[:notice] = t('view.destroy_comment_message')
+      format.js { render :index }
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:surgical_operation_id, :content)
