@@ -1,15 +1,18 @@
-<ul>
-  <% comments.each do |comment| %>
-    <% if comment.id.present? %>
-      <li>
-        <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
-        <%= comment.user.name %>
-        <%= comment.content %>
-        <% if current_user == comment.user %>
-          <%= link_to t('view.edit_comment'), edit_surgical_operation_comment_path(surgical_operation, comment), remote: true, class: 'btn btn-link' %>
-          <%= link_to t('view.destroy_comment'), surgical_operation_comment_path(comment.surgical_operation_id, comment.id), method: :delete, remote: true, data: { confirm: t('view.confirm_destroy')}, class: 'btn btn-link' %>
-        <% end %>
-      </li>
+<div class="comment_field">
+  <ul>
+    <% comments.each do |comment| %>
+      <% if comment.id.present? %>
+        <li>
+          <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
+          <%= surgical_operation.created_at.to_s(:datetime_jp) %>
+          <%= comment.user.name %>
+          <%= comment.content %>
+          <% if current_user == comment.user %>
+            <%= link_to t('view.edit_comment'), edit_surgical_operation_comment_path(surgical_operation, comment), remote: true, class: 'btn btn-link' %>
+            <%= link_to t('view.destroy_comment'), surgical_operation_comment_path(comment.surgical_operation_id, comment.id), method: :delete, remote: true, data: { confirm: t('view.confirm_destroy')}, class: 'btn btn-link' %>
+          <% end %>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div>

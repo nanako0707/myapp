@@ -1,24 +1,26 @@
-<%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id), class: 'btn btn-link' %>
-<br>
-<% if @stock.present? %>
-  <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
-<% else %>
-  <%= link_to t('view.stock'), stocks_path(surgical_operation_id: @surgical_operation.id), method: :post, class: 'btn btn-primary' %>
-<% end %>
-<br>
-<h1><%= @surgical_operation.medical_department %></h1>
-<h1><%= @surgical_operation.title %></h1>
-<br>
-<%= t('view.create_user') %>:<%= @surgical_operation.user.name %>
-<br>
-<h2><%= t('view.content') %></h2>
-<%= @surgical_operation.content %>
-<p>
-  <%= image_tag @surgical_operation.image.url if @surgical_operation.image? %>
-</p>
+<div class="container">
+  <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id), class: 'btn btn-link' %>
+  <br>
+  <% if @stock.present? %>
+    <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to t('view.stock'), stocks_path(surgical_operation_id: @surgical_operation.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+  <br>
+  <h1><%= @surgical_operation.medical_department %></h1>
+  <h1><%= @surgical_operation.title %></h1>
+  <br>
+  <%= t('view.create_user') %>:<%= @surgical_operation.user.name %>
+  <br>
+  <h2><%= t('view.content') %></h2>
+  <%= @surgical_operation.content %>
+  <p>
+    <%= image_tag @surgical_operation.image.url if @surgical_operation.image? %>
+  </p>
 
-<p><%= t('view.commentlist') %></p>
-<div id="comments_area">
-  <%= render partial: 'comments/index', locals: { comments: @comments, surgical_operation: @surgical_operation } %>
+  <p><%= t('view.commentlist') %></p>
+  <div id="comments_area">
+    <%= render partial: 'comments/index', locals: { comments: @comments, surgical_operation: @surgical_operation } %>
+  </div>
+  <%= render partial: 'comments/form', locals: { comment: @comment, surgical_operation: @surgical_operation } %>
 </div>
-<%= render partial: 'comments/form', locals: { comment: @comment, surgical_operation: @surgical_operation } %>

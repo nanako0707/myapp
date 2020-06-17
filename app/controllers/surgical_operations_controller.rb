@@ -17,7 +17,9 @@ class SurgicalOperationsController < ApplicationController
 
   def create
     @surgical_operation = current_user.surgical_operations.build(surgical_operation_params)
+    users = User.all
     if @surgical_operation.save
+      SurgicalOperationMailer.surgical_operation_mail(users, @surgical_operation).deliver
       redirect_to surgical_operations_path, notice: t('view.create_content')
     else
       render :new
@@ -35,6 +37,8 @@ class SurgicalOperationsController < ApplicationController
 
   def update
     if @surgical_operation.update(surgical_operation_params)
+      users = User.all
+      SurgicalOperationMailer.surgical_operation_mail(users, @surgical_operation).deliver
       redirect_to surgical_operations_path, notice: t('view.edit_content')
     else
       render :edit

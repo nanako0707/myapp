@@ -6,22 +6,24 @@
   <h1><%= t('view.surgerylist') %></h1>
 <% end %>
 <br>
-<table align="center">
-  <tr>
-    <th><%= t('view.status') %></th>
-    <th><%= t('view.create_date') %></th>
-    <th><%= t('view.update_date') %></th>
-    <th><%= t('view.medical_department') %></th>
-    <th><%= t('view.title') %></th>
-  </tr>
-  <% @surgical_operations.each do |surgical_operation| %>
+<div class="container">
+  <table align="center">
     <tr>
-      <td><%= surgical_operation.status %></td>
-      <td><%= surgical_operation.created_at.to_s(:datetime_jp) %></td>
-      <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
-      <td><%= surgical_operation.medical_department %></td>
-      <td><%= surgical_operation.title %></td>
-      <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
+      <th><%= t('view.status') %></th>
+      <th><%= t('view.create_date') %></th>
+      <th><%= t('view.update_date') %></th>
+      <th><%= t('view.medical_department') %></th>
+      <th><%= t('view.title') %></th>
     </tr>
-  <% end %>  
-</table>
+    <% @surgical_operations.each do |surgical_operation| %>
+      <tr>
+        <td><%= surgical_operation.status %></td>
+        <td><%= surgical_operation.created_at.to_s(:datetime_jp) %></td>
+        <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= surgical_operation.medical_department %></td>
+        <td><%= surgical_operation.title %></td>
+        <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
+      </tr>
+    <% end %>  
+  </table>
+</div>
