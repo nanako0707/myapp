@@ -1,6 +1,7 @@
 FROM ruby:2.6.5
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN mkdir /myapp
+RUN apt-get install -y cron
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
@@ -13,5 +14,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
+RUN bundle exec whenever --update-crontab
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
