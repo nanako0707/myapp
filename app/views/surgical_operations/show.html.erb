@@ -15,6 +15,9 @@
   <h2><%= t('view.content') %></h2>
   <%= @surgical_operation.content %>
   <p><%= image_tag @surgical_operation.image.url if @surgical_operation.image? %></p>
+  <p>
+    <%= Read.missing_record?(@surgical_operation.id, @current_user.id) ? '既読' : '未読' %>
+  </p>
   <p><%= t('view.commentlist') %></p>
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, surgical_operation: @surgical_operation } %>
