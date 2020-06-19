@@ -6,6 +6,8 @@ class SurgicalOperationMailer < ApplicationMailer
 
   def notify_user(users, surgical_operation)
     @surgical_operation = surgical_operation
-    mail to:users.map{ |u| u.email }, subject: "今週変更のあった#{user.name}さんが未読の手順"
+    if @surgical_operation.attribute(:complete, "false")
+      mail to:users.map{ |u| u.email }, subject: "今週変更のあった#{user.name}さんが未読の手順"
+    end
   end
 end

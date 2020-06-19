@@ -52,7 +52,6 @@ ja:
     destroy_comment: 削除
     destroy_comment_message: コメントが削除されました！
     confirm_destroy: 本当に削除しますか？
-    complete: 手順作成・変更を確認しました
 
   activerecord:
     models:
@@ -67,6 +66,9 @@ ja:
         image: 画像
         status: ステータス
         medical_department: 診療科目
+        complete: 手順を確認しました
+        true: 手順を確認しました
+        false: 手順未確認
   
       user:
         title: タイトル

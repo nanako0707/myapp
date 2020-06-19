@@ -27,6 +27,7 @@ class SurgicalOperationsController < ApplicationController
   end
 
   def show
+    @surgical_operation.update_attribute(:complete, "true")
     @stock = current_user.stocks.find_by(surgical_operation_id: @surgical_operation.id)
     @comments = @surgical_operation.comments
     @comment = @surgical_operation.comments.build
@@ -47,7 +48,7 @@ class SurgicalOperationsController < ApplicationController
 
   private
   def surgical_operation_params
-    params.require(:surgical_operation).permit(:title, :content, :image, :status, :medical_department)
+    params.require(:surgical_operation).permit(:title, :content, :image, :status, :medical_department, :complete)
   end
 
   def set_surgical_operation
