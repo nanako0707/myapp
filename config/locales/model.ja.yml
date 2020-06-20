@@ -59,6 +59,7 @@ ja:
       user: ユーザー
       comment: コメント
       stock: ストック
+      reading: 既読情報
     attributes:
       surgical_operation:
         title: 手術名
