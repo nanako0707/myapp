@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   get '/users/show', to: 'users#show'
   resources :surgical_operations do
+    resources :readings
+  end
+  resources :surgical_operations do
     resources :comments
   end
   resources :stocks, only: [:create, :destroy]

@@ -17,6 +17,37 @@
 Ruby 2.6.5
 Rails 5.2.4
 
+## 開発環境
+- Docker/docker-compose
+
+### Docker環境構築手順
+- 必要なファイル
+ - Dockerfile
+ - Gemfile
+ - Gemfile.lock
+ - entrypoint.sh
+ - docker-compose.yml
+- 新規プロフェクト作成コマンド実行
+
+```console
+docker-compose run web rails new . --force --no-deps --database=postgresql
+```
+- Dockerイメージ作成
+
+```console
+docker-compose build
+```
+- Railsデータベース作成
+
+```console
+docker-compose run web rake db:create
+```
+- サーバー起動
+
+```console
+docker-compose up
+```
+
 ## 機能一覧
 - [ ] ログイン機能
 - [ ] ユーザー登録機能

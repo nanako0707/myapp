@@ -18,12 +18,12 @@ set :enviroment, :development
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-every :friday, at: '8:30 am' do
-  runner ""
-end
-
-# every 1.minutes do
-#   runner "SurgicalOperationMailer.surgical_operation_mail(users, @surgical_operation).deliver"
+# every :friday, at: '8:30 am' do
+#   runner "SurgicalOperationMailer.notify_user"
 # end
+
+every 1.minutes do
+  runner "SurgicalOperationMailer.notify_user"
+end
 
 # Learn more: http://github.com/javan/whenever

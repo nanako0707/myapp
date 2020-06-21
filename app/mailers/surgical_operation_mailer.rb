@@ -4,10 +4,11 @@ class SurgicalOperationMailer < ApplicationMailer
     mail to: users.map{ |u| u.email }, subject: "手順作成・編集時の確認メール"
   end
 
-  def notify_user(users, surgical_operation)
+  def notify_user(users, surgical_operation, reading)
+    @users = User.where(complete: false)
     @surgical_operation = surgical_operation
-    if @surgical_operation.attribute(:complete, "false")
-      mail to:users.map{ |u| u.email }, subject: "今週変更のあった#{user.name}さんが未読の手順"
-    end
+    @reading = reading
+    mail to: User.pluck(:email),
+    subject: "今週変更のあった#{@users.name}さんが未読の手順"
   end
 end
