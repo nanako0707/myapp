@@ -21,12 +21,12 @@ Rails 5.2.4
 - Docker/docker-compose
 
 ### Docker環境構築手順
-- 必要なファイル
-1.Dockerfile
-2.Gemfile
-3.Gemfile.lock
-4.entrypoint.sh
-5.docker-compose.yml
+- 必要なファイル<br>
+1.Dockerfile<br>
+2.Gemfile<br>
+3.Gemfile.lock<br>
+4.entrypoint.sh<br>
+5.docker-compose.yml<br>
  
 - 新規プロフェクト作成コマンド実行
 
