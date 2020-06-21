@@ -27,6 +27,7 @@ Rails 5.2.4
  - Gemfile.lock
  - entrypoint.sh
  - docker-compose.yml
+ 
 - 新規プロフェクト作成コマンド実行
 
 ```console
