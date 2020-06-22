@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.js { render :index }
+        users = User.all
+        SurgicalOperationMailer.comment_mail(users, @surgical_operation, @comment).deliver
       else
         format.html { redirect_to surgical_operation_path(@surgical_operation), notice: t('view.can\'t_post') }
       end
@@ -26,6 +28,8 @@ class CommentsController < ApplicationController
         if @comment.update(comment_params)
           flash.now[:notice] = t('view.edit_comment_message')
           format.js { render :index }
+          users = User.all
+          SurgicalOperationMailer.comment_mail(users, @surgical_operation, @comment).deliver
         else
           flash.now[:notice] = t('view.comment_failure')
           format.js { render :edit_error }
