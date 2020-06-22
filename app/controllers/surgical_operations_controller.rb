@@ -28,7 +28,9 @@ class SurgicalOperationsController < ApplicationController
   end
 
   def show
-    @reading = current_user.readings.update(complete: true)
+    if Reading.create(surgical_operation_id: @surgical_operation.id, user_id: current_user.id) 
+      @reading = Reading.update(complete: true)
+    end
     @stock = current_user.stocks.find_by(surgical_operation_id: @surgical_operation.id)
     @comments = @surgical_operation.comments
     @comment = @surgical_operation.comments.build
