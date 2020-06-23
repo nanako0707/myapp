@@ -6,8 +6,12 @@
 # Example:
 #
 ENV.each { |k, v| env(k, v) }
-set :output, error: 'log/crontab_error.log', standard: "log/cron.log"
+set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
 set :enviroment, :development
+
+every 1.minutes do
+  runner "SurgicalOperationMailer.notify_mail"
+end
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -21,9 +25,5 @@ set :enviroment, :development
 # every :friday, at: '8:30 am' do
 #   runner "SurgicalOperationMailer.notify_user"
 # end
-
-every 1.minutes do
-  runner "SurgicalOperationMailer.notify_user"
-end
 
 # Learn more: http://github.com/javan/whenever

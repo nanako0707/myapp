@@ -1,6 +1,6 @@
 class SurgicalOperationsController < ApplicationController
   before_action :set_surgical_operation, only: [:show, :edit, :update]
-
+  
   def index
     if params[:sort_medical_department]
       @surgical_operations = SurgicalOperation.order(medical_department: :desc)
@@ -17,10 +17,10 @@ class SurgicalOperationsController < ApplicationController
 
   def create
     @surgical_operation = current_user.surgical_operations.build(surgical_operation_params)
-    # users = User.all
+    users = User.all
     if @surgical_operation.save
       # SurgicalOperationMailer.surgical_operation_mail(users, @surgical_operation).deliver
-      # SurgicalOperationMailer.notify_user(users, @surgical_operation, @reading).deliver
+      # SurgicalOperationMailer.notify_mail(users, @surgical_operation, @reading).deliver
       redirect_to surgical_operations_path, notice: t('view.create_content')
     else
       render :new
