@@ -5,9 +5,10 @@
 
 # Example:
 #
-ENV.each { |k, v| env(k, v) }
+rails_env = ENV
 set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
 set :enviroment, :development
+ENV.each { |k, v| env(k, v) }
 
 every 1.minutes do
   runner "SurgicalOperationMailer.notify_mail"

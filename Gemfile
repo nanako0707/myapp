@@ -18,7 +18,6 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'whenever', require:false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
