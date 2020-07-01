@@ -20,7 +20,6 @@ class SurgicalOperationsController < ApplicationController
     users = User.all
     if @surgical_operation.save
       SurgicalOperationMailer.surgical_operation_mail(users, @surgical_operation).deliver
-      # SurgicalOperationMailer.notify_mail(users, @surgical_operation, @reading).deliver
       redirect_to surgical_operations_path, notice: t('view.create_content')
     else
       render :new

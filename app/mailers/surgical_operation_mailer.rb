@@ -9,4 +9,10 @@ class SurgicalOperationMailer < ApplicationMailer
     @surgical_operation = surgical_operation
     mail to: users.map{ |u| u.email }, subject: "手順に対するコメントの確認メール"
   end
+
+  def notify_user_mail(user)
+    @user = user
+    mail to: "#{@user.email}", subject: "Hello, #{@user.name}"
+  end
 end
+

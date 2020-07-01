@@ -1,1 +1,1 @@
-* * * * * echo '=== environment variables ===' && env
+* * * * * cd /myapp/lib/tasks && bundle exec rake notify_user_mailer:notify_user_mail
