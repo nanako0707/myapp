@@ -4,6 +4,8 @@ services:
     build: .
     volumes:
       - ./crontab:/var/spool/cron/crontabs/root
+    depends_on:
+      - db
   db:
     image: postgres
     environment: 
