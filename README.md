@@ -25,7 +25,7 @@ Rails 5.2.4
 - 公式チュートリアルに沿って各種ファイル設定<br>
 [公式チュートリアル](https://docs.docker.com/compose/rails/)
 
-- Dockerイメージ作成
+- Dockerイメージ作成<br>
 Dockerfileを元にDockerイメージを作成します
 
 ```console

@@ -12,6 +12,8 @@ services:
       - POSTGRES_PASSWORD=password
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    expose:
+      - "5432"
   web:
     tty: true
     stdin_open: true
