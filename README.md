@@ -20,33 +20,28 @@ Rails 5.2.4
 ## 開発環境
 - Docker/docker-compose
 
-### Docker環境構築手順
-- 必要なファイル<br>
-1.Dockerfile<br>
-2.Gemfile<br>
-3.Gemfile.lock<br>
-4.entrypoint.sh<br>
-5.docker-compose.yml<br>
- 
-- 新規プロフェクト作成コマンド実行
+### Docker環境構築
 
-```console
-docker-compose run web rails new . --force --no-deps --database=postgresql
-```
+- 公式チュートリアルに沿って各種ファイル設定<br>
+[公式チュートリアル](https://docs.docker.com/compose/rails/)
+
 - Dockerイメージ作成
+Dockerfileを元にDockerイメージを作成します
 
 ```console
 docker-compose build
 ```
+
 - Railsデータベース作成
 
 ```console
 docker-compose run web rake db:create
 ```
-- サーバー起動
+
+- サーバー起動(background)
 
 ```console
-docker-compose up
+docker-compose up -d
 ```
 
 ## 機能一覧
