@@ -1,13 +1,16 @@
-<h4>テスト</h4>
-<%# <table>
-    <tr>
-      <th>手術名</th>
-    </tr>
-    <% @surgical_operations(complete: false).each do |surgical_operation| %>
-      <%# <tr>
-        <% <td><%= surgical_operation.title %></td> 
+<p>下記があなたの未読の手順です。</p>
 
-        <%# <td><%= link_to '手順を確認する', surgical_operation_path(surgical_operation.id)</td>  %>
-      <%# </tr>
-    <% end %>  
-  <%# </table> %> 
+<% @surgical_operations = SurgicalOperation.all %>
+<table>
+  <tr>
+    <th>手術名</th>
+  </tr>
+  <% @surgical_operations.each do |surgical_operation| %>
+  <tr>
+    <tr>
+      <td><%= surgical_operation.title %></td>
+      <td><%= link_to '手順を確認する', surgical_operation_url(surgical_operation.id) %></td>
+    </tr>
+  </tr>
+  <% end %>
+</table>
