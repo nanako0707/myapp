@@ -1,3 +1,36 @@
+<div class="search">
+  <%= form_with url: surgical_operations_path, method: :get, local: true do |form| %>
+    <div class="title">
+      <%= form.label :title, t('view.title') %>
+      <%= form.text_field :title %>
+    </div>
+    <div class="medical_department">
+      <%= form.label :medical_department, t('view.medical_department') %>
+      <%= form.select :medical_department, [ 
+        t('view.digestive'),
+        t('view.respiratory'),
+        t('view.breast'),
+        t('view.pediatric'),
+        t('view.neurosurgery'),
+        t('view.cardiovascular'),
+        t('view.orthopedics'),
+        t('view.plastic'),
+        t('view.urology'),
+        t('view.ophthalmology'),
+        t('view.otolaryngology'),
+        t('view.stomatognathic'),
+        t('view.obstetrics_gynecology'),
+      ], { include_blank: true } %>
+    </div>
+    <div class="status">
+      <%= form.label :status, t('view.status') %>
+      <%= form.select :status, [ t('view.wip'), t('view.done') ], { include_blank: true } %>
+    </div>
+    <%= form.hidden_field :search, value: 'true' %>
+    <%= form.submit t('view.search') %>
+  <% end %>
+</div>
+
 <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: 'btn btn-link' %>
 <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: 'btn btn-link' %>
 <% if current_user.try(:admin?) %>

@@ -8,4 +8,7 @@ class SurgicalOperation < ApplicationRecord
   has_many :reading_users, through: :readings, source: :user
   validates :title, :content, :medical_department, presence: true
   mount_uploader :image, ImageUploader
+  scope :title_like, -> title { where('title LIKE ?', "%#{title}%") }
+  scope :medical_department, -> medical_department { where(medical_department: medical_department) }
+  scope :status, -> status { where(status: status) }
 end

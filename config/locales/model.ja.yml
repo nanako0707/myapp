@@ -52,6 +52,7 @@ ja:
     destroy_comment: 削除
     destroy_comment_message: コメントが削除されました！
     confirm_destroy: 本当に削除しますか？
+    search: 検索する
 
   activerecord:
     models:

@@ -9,6 +9,24 @@ class SurgicalOperationsController < ApplicationController
     else
       @surgical_operations = SurgicalOperation.all.order(created_at: :desc)
     end
+
+    if params[:search].present?
+      if params[:title].present? && params[:medical_department].present? && params[:status].present?
+        @surgical_operations = SurgicalOperation.title_like(params[:title]).medical_department(params[:medical_department]).status(params[:status])
+      elsif params[:title].present? && params[:medical_department].present?
+        @surgical_operations = SurgicalOperation.title_like(params[:title]).medical_department(params[:medical_department])
+      elsif params[:title].present? && params[:status].present?
+        @surgical_operations = SurgicalOperation.title_like(params[:title]).status(params[:status])
+      elsif params[:status].present? && params[:medical_department].present?
+        @surgical_operations = SurgicalOperation.status(params[:status]).medical_department(params[:medical_department])
+      elsif params[:title].present?
+        @surgical_operations = SurgicalOperation.title_like(params[:title])
+      elsif params[:medical_department].present?
+        @surgical_operations = SurgicalOperation.medical_department(params[:medical_department])
+      elsif params[:status].present?
+        @surgical_operations = SurgicalOperation.status(params[:status])
+      end
+    end
   end
 
   def new
