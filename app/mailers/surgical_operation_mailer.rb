@@ -13,7 +13,7 @@ class SurgicalOperationMailer < ApplicationMailer
   def notify_user_mail(user, surgical_operation)
     @user = user
     @surgical_operation = surgical_operation
-    mail to: "#{@user.email}", subject: "#{@user.name}さんが未読の手順です"
+    mail to: "#{@user.email}", subject: "#{@user.name}さんの未読の手順確認メール"
   end
 end
 

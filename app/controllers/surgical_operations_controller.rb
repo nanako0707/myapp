@@ -17,8 +17,8 @@ class SurgicalOperationsController < ApplicationController
 
   def create
     @surgical_operation = current_user.surgical_operations.build(surgical_operation_params)
-    users = User.all
     if @surgical_operation.save
+      users = User.all
       SurgicalOperationMailer.surgical_operation_mail(users, @surgical_operation).deliver
       redirect_to surgical_operations_path, notice: t('view.create_content')
     else
@@ -27,9 +27,7 @@ class SurgicalOperationsController < ApplicationController
   end
 
   def show
-    if Reading.create(surgical_operation_id: @surgical_operation.id, user_id: current_user.id) 
-      @reading = Reading.update(complete: true)
-    end
+    @reading = Reading.create(surgical_operation_id: @surgical_operation.id, user_id: current_user.id)
     @stock = current_user.stocks.find_by(surgical_operation_id: @surgical_operation.id)
     @comments = @surgical_operation.comments
     @comment = @surgical_operation.comments.build

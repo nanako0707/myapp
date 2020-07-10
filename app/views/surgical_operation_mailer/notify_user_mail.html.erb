@@ -1,6 +1,6 @@
 <p>下記があなたの未読の手順です。</p>
 
-<% @surgical_operations = SurgicalOperation.all %>
+<% @surgical_operations = SurgicalOperation.all - @user.surgical_operations %>
 <table>
   <tr>
     <th>手術名</th>
