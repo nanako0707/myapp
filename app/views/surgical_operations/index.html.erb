@@ -57,6 +57,7 @@
         <td><%= surgical_operation.title %></td>
         <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
       </tr>
-    <% end %>  
+    <% end %>
+    <%= paginate @surgical_operations %>
   </table>
 </div>

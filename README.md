@@ -90,9 +90,9 @@ https://docs.google.com/spreadsheets/d/1gQun0BDy7NJJVVRwy-uO-mRCNIHExe1EzMaiNG7O
 * CarrierWave
 * mini_magick
 * devise
-* Whenever
 * rails_admin
 * cancancan
+* Kaminari
 
 # English Ver
 
@@ -154,6 +154,6 @@ Rails 5.2.4
 * CarrierWave
 * mini_magick
 * devise
-* Whenever
 * rails_admin
 * cancancan
+* Kaminari
