@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_235302) do
+ActiveRecord::Schema.define(version: 2020_07_12_082355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "surgical_operation_id"
-    t.text "content"
+    t.bigint "surgical_operation_id", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["surgical_operation_id"], name: "index_comments_on_surgical_operation_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -60,14 +60,14 @@ ActiveRecord::Schema.define(version: 2020_07_09_235302) do
   end
 
   create_table "surgical_operations", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
+    t.string "title", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "image"
     t.string "status"
-    t.string "medical_department"
+    t.string "medical_department", null: false
     t.index ["user_id"], name: "index_surgical_operations_on_user_id"
   end
 
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_235302) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "admin", default: false
-    t.string "name"
+    t.string "name", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
