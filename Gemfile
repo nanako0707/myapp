@@ -21,6 +21,7 @@ gem 'mini_magick'
 gem 'kaminari', '~> 0.17.0'
 gem 'faker'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
@@ -28,6 +29,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'ruby-debug-ide'
   gem 'debase'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
 end
 
 group :development do
