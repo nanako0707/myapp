@@ -19,3 +19,11 @@ User.all.each do |user|
     image: File.open('./app/assets/images/test.jpg')
   )
 end
+
+readings_list = []
+User.all.ids.each do |user_id|
+  SurgicalOperation.all.each do |surgical_operation|
+    readings_list << { user_id: user_id, surgical_operation_id: surgical_operation.id }
+  end
+end
+Reading.create!(readings_list)
