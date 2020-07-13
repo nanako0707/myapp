@@ -1,8 +1,19 @@
 require 'rails_helper'
-RSpec.describe '手術手順管理機能', type: :system do
+RSpec.describe '手術手順管理機能', type: :system, js: true do
+  before do
+    @user = FactoryBot.create(:user)
+    @surgical_operation = FactoryBot.create(:surgical_operation, user: @user)
+    @new_surgical_operation = FactoryBot.create(:new_surgical_operation, user: @user)
+    visit new_user_session_path
+    fill_in "session_email", with: "sample@example.com"
+    fill_in "session_password", with: "000000"
+    click_button 'ログイン'
+  end
   describe '手順一覧画面' do
     context '手順を作成した場合' do
       it '作成済みの手順が表示される' do
+        visit surgical_operations_path
+        expect(page).to have_content 'title'
       end
     end
   end
