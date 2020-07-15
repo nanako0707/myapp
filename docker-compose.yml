@@ -1,5 +1,9 @@
 version: '3'
 services:
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - '8025:8025'
   db:
     image: postgres
     environment: 
@@ -13,6 +17,9 @@ services:
     stdin_open: true
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
     volumes:
       - .:/myapp
       - /myapp/vendor
@@ -24,6 +31,7 @@ services:
     depends_on:
       - db
       - chrome
+      - mailhog
   chrome:
     image: selenium/standalone-chrome-debug:latest
     ports:

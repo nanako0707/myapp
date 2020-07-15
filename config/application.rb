@@ -10,6 +10,11 @@ module Myapp
     config.i18n.default_locale = :ja
     config.autoload_paths += %W(#{config.root}/lib)
     config.enable_dependency_loading = true 
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: ENV["SMTP_HOST"],
+      port: ENV["SMTP_PORT"],
+    }
     config.generators do |g|
       g.assets false
       g.helper false
