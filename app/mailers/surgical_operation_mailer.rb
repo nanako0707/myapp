@@ -10,7 +10,7 @@ class SurgicalOperationMailer < ApplicationMailer
     mail to: users.map{ |u| u.email }, subject: "手順に対するコメントの確認メール"
   end
 
-  def notify_user_mail(user, surgical_operation)
+  def unreading_mail(user, surgical_operation)
     @user = user
     @surgical_operation = surgical_operation
     mail to: "#{@user.email}", subject: "#{@user.name}さんの未読の手順確認メール"
