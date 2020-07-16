@@ -55,6 +55,7 @@
         <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
         <td><%= surgical_operation.medical_department %></td>
         <td><%= surgical_operation.title %></td>
+        <td><%= surgical_operation.comment_users.count %></td>
         <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
       </tr>
     <% end %>

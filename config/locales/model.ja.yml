@@ -56,7 +56,7 @@ ja:
 
   activerecord:
     models:
-      surgical_operation: 手術
+      surgical_operation: 手術手順
       user: ユーザー
       comment: コメント
       stock: ストック
