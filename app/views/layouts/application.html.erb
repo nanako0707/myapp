@@ -17,11 +17,16 @@
           <%= link_to t('view.new'), new_surgical_operation_path %>
           <%= link_to t('view.profile'), users_show_path %>
           <%= link_to t('view.logout'), destroy_user_session_path, method: :delete %>
+          <% if unchecked_notifications.any? %>
+            <%= tag.a(t('view.notice'), href: notifications_path, style:"color: red;") %>
+          <% else %>
+            <%= tag.a(t('view.notice'), href: notifications_path, style:"color: white;") %>
+          <% end %>
         <% else %>
           <%= link_to t('view.signup'), new_user_registration_path %>
           <%= link_to t('view.login'), new_user_session_path %>
         <% end %>
-      </div>       
+      </div>
     </header>
     <main>
       <% if notice %>

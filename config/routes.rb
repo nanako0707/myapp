@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'surgical_operations#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   get '/users/show', to: 'users#show'
+  resources :notifications, only: :index
   resources :surgical_operations do
     resources :readings
   end

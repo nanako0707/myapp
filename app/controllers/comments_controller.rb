@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
+        @surgical_operation.create_notification_comment!(current_user, @comment.id)
         format.js { render :index }
         users = User.all
         SurgicalOperationMailer.comment_mail(users, @surgical_operation, @comment).deliver

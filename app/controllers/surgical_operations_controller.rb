@@ -57,6 +57,10 @@ class SurgicalOperationsController < ApplicationController
   def update
     if @surgical_operation.update(surgical_operation_params)
       users = User.all
+
+      users.each do |user|
+        @readings = Reading.where(surgical_operation_id: @surgical_operation.id, user_id: user.id).delete_all
+      end
       SurgicalOperationMailer.surgical_operation_mail(users, @surgical_operation).deliver
       redirect_to surgical_operations_path, notice: t('view.edit_content')
     else
