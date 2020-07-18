@@ -93,7 +93,8 @@ https://docs.google.com/spreadsheets/d/1gQun0BDy7NJJVVRwy-uO-mRCNIHExe1EzMaiNG7O
 * rails_admin
 * cancancan
 * Kaminari
-* rspec-rails
+* redcarpet
+* coderay
 
 # English Ver
 
@@ -159,3 +160,5 @@ Rails 5.2.4
 * cancancan
 * Kaminari
 * rspec-rails
+* redcarpet
+* coderay

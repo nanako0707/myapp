@@ -20,6 +20,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari', '~> 0.17.0'
 gem 'faker'
+gem 'redcarpet', '~> 2.3.0'
+gem 'coderay'
 
 
 group :development, :test do

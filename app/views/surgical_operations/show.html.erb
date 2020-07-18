@@ -13,7 +13,9 @@
   <%= t('view.create_user') %>:<%= @surgical_operation.user.name %>
   <br>
   <h2><%= t('view.content') %></h2>
-  <%= @surgical_operation.content %>
+  <div class="content">
+    <%= markdown(@surgical_operation.content).html_safe %>
+  </div>
   <p><%= image_tag @surgical_operation.image.url if @surgical_operation.image? %></p>
   <p><%= @reading ? '既読' : '未読' %></p>
   <p><%= t('view.commentlist') %></p>
