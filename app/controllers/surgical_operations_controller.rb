@@ -1,5 +1,5 @@
 class SurgicalOperationsController < ApplicationController
-  before_action :set_surgical_operation, only: [:show, :edit, :update]
+  before_action :set_surgical_operation, only: [:show, :edit, :update, :pay]
   
   def index
     if params[:sort_medical_department]
@@ -67,10 +67,19 @@ class SurgicalOperationsController < ApplicationController
       render :edit
     end
   end
+  
+  def pay
+    Payjp.api_key = "sk_test_8ec9650f67c72958439da9be"
+    charge = Payjp::Charge.create(
+    amount: 300,
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
+  end
 
   private
   def surgical_operation_params
-    params.require(:surgical_operation).permit(:title, :content, :image, :status, :medical_department)
+    params.require(:surgical_operation).permit(:title, :content, :image, :status, :medical_department, :price)
   end
 
   def set_surgical_operation

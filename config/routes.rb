@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   get '/users/show', to: 'users#show'
   resources :notifications, only: :index
   resources :surgical_operations do
-    resources :readings
-  end
-  resources :surgical_operations do
     resources :comments
+    resources :readings
+    collection do
+      post 'pay/:id', to: 'surgical_operations#pay', as: 'pay'
+    end
   end
   resources :stocks, only: [:create, :destroy]
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/users/:id/stocks', to: 'users#stocks'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

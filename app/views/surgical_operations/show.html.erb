@@ -1,4 +1,13 @@
+<%= form_with url: pay_surgical_operations_path(@surgical_operation.id) do %>
+  <script src="https://checkout.pay.jp/" class="payjp-button" data-key="pk_test_a33b7ef2b25aa51a5df58de1"></script>
+<% end %>
+
 <div class="container">
+  <%= form_with url: surgical_operation_path(@surgical_operation.id) do %>
+    <% render plain: %>
+    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="
+    pk_test_a33b7ef2b25aa51a5df58de1"></script>
+  <% end %>
   <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id), class: 'btn btn-link' %>
   <br>
   <% if @stock.present? %>
