@@ -49,10 +49,14 @@ docker-compose up -d
 - [ ] ユーザー登録機能
   - [ ] メールアドレス、名前、パスワードは必須
 - [ ] ユーザー編集機能
+- [ ] 管理者権限
+  - [ ] 手順の削除は管理者のみ行える
+  - [ ] ユーザー作成・編集・削除操作ができる
 - [ ] 手術手順一覧表示機能
   - [ ] コメント数を表示
 - [ ] 手術手順作成機能
   - [ ] 手術名、手順、作成日は必須
+  - [ ] 手順をMarkdown形式で投稿できる
 - [ ] 手術手順編集機能
   - [ ] 手順一覧、作成、編集はログインしているユーザーのみ実行可能
   - [ ] 編集者の名前、編集日、ステータス(変更あり・なし・編集中)は必須
@@ -62,15 +66,17 @@ docker-compose up -d
   - [ ] 手順のストックについては、1つの手順に対して一人一回しかできない
 - [ ] コメント機能とストック機能については、ページ遷移なしで実行できる
 - [ ] メール機能
-  - [ ] 手順作成・編集完了時、ユーザー全員にメールで通知される
+  - [ ] コメント・手順作成・編集完了時、ユーザー全員にメールで通知される
 - [ ] 検索機能
   - [ ] 診療科目・手術名のキーワード(あいまい)検索、ステータスそれぞれの検索、または絞り込み検索が可能
 - [ ] コメント機能
   - [ ] 手術手順に対し、コメントをすることが可能
 - [ ] 手順一覧ソート機能
-  - [ ] 手順を診療科目ごと、またはあいうえお順に表示することができます
+  - [ ] 手順を診療科目ごと、または更新日時順に表示することができます
 - [ ] バッチ処理
-  - [ ] 変更した手順を確認していないユーザーに対し、定期的(1日ごと)に通知を行う  
+  - [ ] 変更した手順を確認していないユーザーに対し、定期的(毎週月曜日の8時)に通知を行う
+- [ ] 通知機能
+  - [ ] 自分が投稿した手順に対してコメント、ストックされた際に、画面上に通知される
 
 
 ## カタログ設計
@@ -120,30 +126,36 @@ Rails 5.2.4
 ## Functions list
 - [ ] Login function
 - [ ] User registration function
-  - [ ] Email address, name, password required
+  - [ ] Email address, name and password are required
 - [ ] User edit function
-- [ ] Operation procedure list display function
+- [ ] Administrator privileges
+  - [ ] Procedure can be deleted only by administrator
+  - [ ] Can create/edit/delete users
+- [ ] Surgical procedure list display function
   - [ ] Show the number of comments
 - [ ] Operation procedure creation function
-  - [ ] Required surgery name, procedure, creation date
+  - [ ] Operation name, procedure and creation date are required
+  - [ ] You can post the procedure in Markdown format
 - [ ] Surgical procedure editing function
-  - [ ] Procedure list, creation, and editing can be executed only by the logged-in user.
-  - [ ] Editor's name, edit date, status (changed/not modified/editing) required
-- [ ] Function to delete surgical procedure
+  - [ ] Procedure list, creation and editing can be executed only by the logged-in user.
+  - [ ] Editor's name, edit date, status (change/no change/editing) are required
+- [ ] Operation procedure deletion function
   - [ ] Procedure can be deleted only by administrator
-- [ ] Procedure Stock Function
-  - [ ] Regarding the stock of procedures, it can be done only once for each procedure
-- [ ] About comment function and stock function can be executed without page transition
-- [ ] Email function
-  - [ ] When the procedure creation/editing is completed, all users are notified by email.
+- [ ] Stock function of procedure
+  - [ ] Regarding procedure stock, you can only do it once per procedure
+- [ ] Comment function and stock function can be executed without page transition
+- [ ] Mail function
+  - [ ] All users will be notified by email when comments/procedures are created/edited
 - [ ] Search function
   - [ ] Keyword (fuzzy) search for medical department/surgery name, search for each status, or narrowed search
 - [ ] Comment function
   - [ ] It is possible to comment on the surgical procedure
 - [ ] Procedure list sort function
-  - [ ] Procedures can be displayed for each medical department or in order of AIUEO
+  - [ ] Procedures can be displayed by medical department or by update date/time
 - [ ] Batch processing
-  - [ ] Periodically (daily) notify users who have not confirmed the changed procedure.
+  - [ ] Notify users who have not confirmed the changed procedure regularly (every Monday at 8 o'clock)
+- [ ] Notification function
+  - [ ] You will be notified on the screen when you comment or stock the procedure you posted.
 
 ## Catalog design,Table_Definition,Screen transition diagram,,Wire frame
 * https://docs.google.com/spreadsheets/d/e/2PACX-1vQBI5Za3X0_-KUGobWm3zLDX5_i1uQdEStIWrtyo4_UDet2LuzlMq6k_-4AZioMtwCug5dYjDX6eyK6/pubhtml
