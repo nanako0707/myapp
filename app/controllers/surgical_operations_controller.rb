@@ -67,15 +67,6 @@ class SurgicalOperationsController < ApplicationController
       render :edit
     end
   end
-  
-  def pay
-    Payjp.api_key = "sk_test_8ec9650f67c72958439da9be"
-    charge = Payjp::Charge.create(
-    amount: 300,
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
-  end
 
   private
   def surgical_operation_params

@@ -101,6 +101,7 @@ https://docs.google.com/spreadsheets/d/1gQun0BDy7NJJVVRwy-uO-mRCNIHExe1EzMaiNG7O
 * Kaminari
 * redcarpet
 * coderay
+* payjp
 
 # English Ver
 
@@ -174,3 +175,4 @@ Rails 5.2.4
 * rspec-rails
 * redcarpet
 * coderay
+* payjp

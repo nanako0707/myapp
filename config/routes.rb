@@ -6,14 +6,18 @@ Rails.application.routes.draw do
   resources :surgical_operations do
     resources :comments
     resources :readings
-    collection do
-      post 'pay/:id', to: 'surgical_operations#pay', as: 'pay'
-    end
   end
   resources :stocks, only: [:create, :destroy]
   get '/users/:id/stocks', to: 'users#stocks'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+  resources :cards, only: [:new, :show] do
+    collection do
+      post 'show', to: 'cards#show'
+      post 'pay', to: 'cards#pay'
+      post 'delete', to: 'cards#delete'
+    end
   end
 end
