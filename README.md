@@ -22,6 +22,9 @@ Rails 5.2.4
 
 ### Docker環境構築
 
+- Docker for Macのインストール<br>
+[公式サイト](https://docs.docker.com/docker-for-mac/install/)からDocker for Macをダウンロードしてインストールします
+
 - 公式チュートリアルに沿って各種ファイル設定<br>
 [公式チュートリアル](https://docs.docker.com/compose/rails/)
 
