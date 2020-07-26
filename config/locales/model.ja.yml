@@ -62,6 +62,8 @@ ja:
       comment: コメント
       stock: ストック
       reading: 既読情報
+      card: カード情報
+      notification: 通知
     attributes:
       surgical_operation:
         title: 手術名
