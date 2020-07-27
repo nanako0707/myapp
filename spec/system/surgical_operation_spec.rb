@@ -18,6 +18,7 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
       end
     end
   end
+
   describe '手順登録画面' do
     context '必要項目を入力して、createボタンを押した場合' do
       it 'データが保存される' do
@@ -28,14 +29,16 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
         click_button '登録する'
         expect(page).to have_content (I18n.t('view.digestive'))
         expect(page).to have_content 'title'
-        expect(page).to have_content 'content'
       end
     end
   end
+
   describe '手順詳細画面' do
-     context '任意のタスク詳細画面に遷移した場合' do
+    context '任意のタスク詳細画面に遷移した場合' do
        it '該当タスクの内容が表示されたページに遷移する' do
-      end
-     end
+        visit surgical_operation_path(@surgical_operation.id)
+        expect(page).to have_content 'content'
+       end
+    end
   end
 end
