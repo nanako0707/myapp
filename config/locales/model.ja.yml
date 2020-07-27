@@ -55,6 +55,8 @@ ja:
     search: 検索する
     notice: 通知
     card_information: カード情報
+    purchase_confirm: 購入を確定しますか？
+    purchase: 購入する
 
   activerecord:
     models:
