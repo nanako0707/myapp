@@ -4,7 +4,7 @@ ja:
     surgerylist_admin: (管理者)手術一覧
     create_date: 作成日時
     update_date: 更新日時
-    sort_update_date: 更新日時順にソート
+    sort_update_date: 更新日時順に並び替え
     new: 手順を作成する
     edit: 手順を編集する
     title: 手術名
@@ -20,7 +20,7 @@ ja:
     stock: ストックする
     stocklist: ストック一覧
     create_user: 作成者
-    profile: プロフィール
+    mypage: マイページ
     user_name: ユーザー名
     email: メールアドレス
     edit_user: プロフィールを編集する
@@ -42,7 +42,7 @@ ja:
     otolaryngology: 耳鼻咽喉科
     stomatognathic: 顎口腔外科
     obstetrics_gynecology: 産婦人科
-    sort_medical_department: 診療科目順にソート
+    sort_medical_department: 診療科目ごとに並び替え
     can't_post: 投稿できませんでした...
     commentlist: コメント一覧
     in_comments: コメントの編集中

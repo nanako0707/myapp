@@ -28,6 +28,22 @@ Rails 5.2.4
 - 公式チュートリアルに沿って各種ファイル設定<br>
 [公式チュートリアル](https://docs.docker.com/compose/rails/)
 
+- 必要な環境変数設定<br>
+  - .envにPOSTGRES_PASSWORDを記述します
+
+  ```
+  POSTGRES_PASSWORD=**********
+  ```
+  - my_env_file.envにAPIキー情報を記述します
+
+  ```
+  <!-- テスト秘密鍵 -->
+  PAYJP_PRIVATE_KEY=sk_test_****************
+  <!-- テスト公開鍵 -->
+  PAYJP_KEY=pk_test_****************
+  ```
+  - crontabに環境変数を記述します
+
 - Dockerイメージ作成<br>
 Dockerfileを元にDockerイメージを作成します
 

@@ -12,11 +12,12 @@
 
   <body>
     <header>
+      <div class="header_logo">Opereminder</div>
       <div class="header_list">
         <% if user_signed_in? %>
           <%= link_to t('view.surgerylist'), surgical_operations_path %>
           <%= link_to t('view.new'), new_surgical_operation_path %>
-          <%= link_to t('view.profile'), users_show_path %>
+          <%= link_to t('view.mypage'), users_show_path %>
           <%= link_to t('view.logout'), destroy_user_session_path, method: :delete %>
           <% if unchecked_notifications.any? %>
             <%= tag.a(t('view.notice'), href: notifications_path, style:"color: red;") %>
