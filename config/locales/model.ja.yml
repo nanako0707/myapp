@@ -54,6 +54,7 @@ ja:
     confirm_destroy: 本当に削除しますか？
     search: 検索する
     notice: 通知
+    card_information: カード情報
 
   activerecord:
     models:

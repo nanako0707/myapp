@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :readings, dependent: :destroy
   has_many :reading_surgical_operations, through: :readings, source: :surgical_operation
-  has_many :cards, dependent: :destroy
+  has_one :card, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates :name, uniqueness: true, length: { minimum: 4, maximum: 20 }

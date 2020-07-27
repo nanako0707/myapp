@@ -5,6 +5,8 @@
 <h3><%= t('view.email') %></h3>
 <%= @user.email %>
 <br>
-<%= link_to t('view.edit_user'), edit_user_registration_path, class: 'btn btn-link' %>
+<%= link_to t('view.edit_user'), edit_user_registration_path %>
 <br>
-<%= link_to t('view.stocklist'), "/users/#{@user.id}/stocks", class: 'btn btn-link' %>
+<%= link_to t('view.card_information'), cards_path %>
+<br>
+<%= link_to t('view.stocklist'), "/users/#{@user.id}/stocks" %>

@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id), class: 'btn btn-link' %>
+  <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id) %>
   <br>
   <% if @stock.present? %>
     <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id, surgical_operation_id: @surgical_operation.id), method: :delete, class: 'btn btn-danger' %>
