@@ -16,15 +16,23 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def plan
+    Payjp::Plan.create(
+      :amount => 1000,
+      :interval => 'month',
+      :currency => 'jpy',
+    )
+  end
+
   def pay
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    Payjp::Charge.create(
-    :amount => 3000,
+    Payjp::Subscription.create(
     :customer => card.customer_id, 
-    :currency => 'jpy', 
+    :plan => plan,
     )
-    
+    user = User.where(id: current_user.id)
+    user.update(premium: true)
     redirect_to action: 'done' 
   end
 end

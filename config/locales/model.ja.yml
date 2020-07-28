@@ -58,6 +58,8 @@ ja:
     purchase_confirm: 購入を確定しますか？
     premium: プレミアム会員登録する
     purchase: 購入する
+    month: 月額
+    premium_member: プレミアム会員登録してください
 
   activerecord:
     models:

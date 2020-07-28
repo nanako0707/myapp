@@ -1,5 +1,6 @@
 class SurgicalOperationsController < ApplicationController
   before_action :set_surgical_operation, only: [:show, :edit, :update, :pay]
+  before_action :ensure_premium_user, {only: [:new, :create, :edit, :update]}
   
   def index
     if params[:sort_medical_department]
@@ -65,6 +66,13 @@ class SurgicalOperationsController < ApplicationController
       redirect_to surgical_operations_path, notice: t('view.edit_content')
     else
       render :edit
+    end
+  end
+
+  def ensure_premium_user
+    if User.where(id: current_user.id, premium: false).exists? 
+      flash[:notice] = t('view.premium_member')
+      redirect_to surgical_operations_path
     end
   end
 

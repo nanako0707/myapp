@@ -16,7 +16,9 @@
       <div class="header_list">
         <% if user_signed_in? %>
           <%= link_to t('view.surgerylist'), surgical_operations_path %>
-          <%= link_to t('view.new'), new_surgical_operation_path %>
+          <% if User.where(id: current_user.id, premium: true).exists? %>
+            <%= link_to t('view.new'), new_surgical_operation_path %>
+          <% end %>
           <%= link_to t('view.mypage'), users_show_path %>
           <%= link_to t('view.logout'), destroy_user_session_path, method: :delete %>
           <% if unchecked_notifications.any? %>
