@@ -60,6 +60,9 @@ ja:
     purchase: 購入する
     month: 月額
     premium_member: プレミアム会員登録してください
+    already_premium: 既にプレミアム会員登録済みです
+    cancel?: キャンセルしますか？
+    cancel: キャンセルする
 
   activerecord:
     models:

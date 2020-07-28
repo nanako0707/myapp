@@ -20,6 +20,7 @@ class PurchasesController < ApplicationController
     Payjp::Plan.create(
       :amount => 1000,
       :interval => 'month',
+      :billing_day => 27,
       :currency => 'jpy',
     )
   end
@@ -34,5 +35,15 @@ class PurchasesController < ApplicationController
     user = User.where(id: current_user.id)
     user.update(premium: true)
     redirect_to action: 'done' 
+  end
+
+  def cancel
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    subscription = Payjp::Subscription.retrieve('sub_2a8f597af1fd191e7254de2adbbc')
+    subscription.cancel
+    user = User.where(id: current_user.id)
+    user.update(premium: false)
+    redirect_to action: 'canceled' 
   end
 end
