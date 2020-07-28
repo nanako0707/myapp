@@ -56,6 +56,7 @@ ja:
     notice: 通知
     card_information: カード情報
     purchase_confirm: 購入を確定しますか？
+    premium: プレミアム会員登録する
     purchase: 購入する
 
   activerecord:
