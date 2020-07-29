@@ -28,27 +28,20 @@ class PurchasesController < ApplicationController
   def pay
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    Payjp::Subscription.create(
+    subscription = Payjp::Subscription.create(
     :customer => card.customer_id, 
     :plan => plan,
+    metadata: {user_id: current_user.id}
     )
-    user = User.find(current_user.id)
-    user.update(premium: true)
-    redirect_to action: 'done' 
-  end
-
-  def done
-    user = User.find(current_user.id)
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    subscription_id = Payjp::Subscription.retrieve(user.subscription_id)
+    current_user.update(subscription_id: subscription.id, premium: true)
+    redirect_to action: 'done'
   end
 
   def cancel
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    subscription = Payjp::Subscription.retrieve(user.subscription_id)
+    subscription = Payjp::Subscription.retrieve(current_user.subscription_id)
     subscription.cancel
-    user = User.find(current_user.id)
-    user.update(premium: false)
+    current_user.update(premium: false)
     redirect_to action: 'canceled' 
   end
 end
