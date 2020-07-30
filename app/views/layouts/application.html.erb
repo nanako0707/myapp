@@ -21,10 +21,15 @@
           <% end %>
           <%= link_to t('view.mypage'), users_show_path %>
           <%= link_to t('view.logout'), destroy_user_session_path, method: :delete %>
-          <% if unchecked_notifications.any? %>
-            <%= tag.a(t('view.notice'), href: notifications_path, style:"color: red;") %>
-          <% else %>
-            <%= tag.a(t('view.notice'), href: notifications_path, style:"color: white;") %>
+          <%= link_to(notifications_path) do %>
+            <% if unchecked_notifications.any? %>
+              <span class="fa-stack">
+                <i class="fa fa-bell fa-lg fa-stack-2x" style="font-size: 1.5em;"></i>
+                <i class="fa fa-circle n-circle fa-stack-1x"></i>
+              </span>
+            <% else  %>
+              <i class="fa fa-bell fa-lg" style="font-size: 1.5em;"></i>
+            <% end %>
           <% end %>
         <% else %>
           <%= link_to t('view.signup'), new_user_registration_path %>
