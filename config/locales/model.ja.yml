@@ -2,7 +2,6 @@ ja:
   view:
     surgerylist: 手術一覧
     surgerylist_admin: (管理者)手術一覧
-    create_date: 作成日時
     update_date: 更新日時
     sort_update_date: 更新日時順に並び替え
     new: 手順を作成する

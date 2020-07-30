@@ -13,6 +13,40 @@
   <body>
     <header>
       <div class="header_logo">Opereminder</div>
+      <% if current_page?(root_path) || current_page?(surgical_operations_path) %>
+        <div class="search">
+          <%= form_with url: surgical_operations_path, method: :get, local: true do |form| %>
+            <i class="fa fa-search title">
+              <%= form.label :title, t('view.title') %>
+              <%= form.text_field :title %>
+            </i>
+            <i class="fa fa-search medical_department">
+              <%= form.label :medical_department, t('view.medical_department') %>
+              <%= form.select :medical_department, [
+                "breast(乳腺外科)",
+                "cardiovascular(心臓血管外科)",
+                "digestive(消化器外科)",
+                "neurosurgery(脳神経外科)",
+                "obstetrics_gynecology(産婦人科)",
+                "ophthalmology(眼科)",
+                "orthopedics(整形外科)",
+                "otolaryngology(耳鼻咽喉科)",
+                "pediatric(小児科)",
+                "plastic(形成外科)",
+                "respiratory(呼吸器外科)",
+                "stomatognathic(顎口腔外科)",
+                "urology(泌尿器科)",
+              ], { include_blank: true } %>
+            </i>
+            <i class="fa fa-search status">
+              <%= form.label :status, t('view.status') %>
+              <%= form.select :status, [ t('view.wip'), t('view.done') ], { include_blank: true } %>
+            </i>
+            <%= form.hidden_field :search, value: 'true' %>
+            <%= form.submit t('view.search') %>
+          <% end %>
+        </div>
+      <% end %>
       <div class="header_list">
         <% if user_signed_in? %>
           <%= link_to t('view.surgerylist'), surgical_operations_path %>

@@ -72,6 +72,7 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   text-align: center;
 }
@@ -81,4 +82,6 @@ body {
   overflow: scroll;
 }
 
-
+.search{
+  align-items: center;
+}

@@ -1,4 +1,5 @@
 <div class="container">
+  <p><%= t('view.update_date') %> <%= @surgical_operation.updated_at.to_s(:datetime_jp) %></p>
   <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id) %>
   <br>
   <% if @stock.present? %>

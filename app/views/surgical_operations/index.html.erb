@@ -1,36 +1,3 @@
-<div class="search">
-  <%= form_with url: surgical_operations_path, method: :get, local: true do |form| %>
-    <div class="title">
-      <%= form.label :title, t('view.title') %>
-      <%= form.text_field :title %>
-    </div>
-    <div class="medical_department">
-      <%= form.label :medical_department, t('view.medical_department') %>
-      <%= form.select :medical_department, [
-        "breast(乳腺外科)",
-        "cardiovascular(心臓血管外科)",
-        "digestive(消化器外科)",
-        "neurosurgery(脳神経外科)",
-        "obstetrics_gynecology(産婦人科)",
-        "ophthalmology(眼科)",
-        "orthopedics(整形外科)",
-        "otolaryngology(耳鼻咽喉科)",
-        "pediatric(小児科)",
-        "plastic(形成外科)",
-        "respiratory(呼吸器外科)",
-        "stomatognathic(顎口腔外科)",
-        "urology(泌尿器科)",
-      ], { include_blank: true } %>
-    </div>
-    <div class="status">
-      <%= form.label :status, t('view.status') %>
-      <%= form.select :status, [ t('view.wip'), t('view.done') ], { include_blank: true } %>
-    </div>
-    <%= form.hidden_field :search, value: 'true' %>
-    <%= form.submit t('view.search') %>
-  <% end %>
-</div>
-
 <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: 'btn btn-link' %>
 <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: 'btn btn-link' %>
 <% if current_user.try(:admin?) %>
@@ -39,26 +6,27 @@
   <h1><%= t('view.surgerylist') %></h1>
 <% end %>
 <br>
-<div class="container">
-  <table align="center">
+<table align="center">
+  <tr>
+    <th><%= t('view.status') %></th>
+    <th><%= t('view.update_date') %></th>
+    <th><%= t('view.medical_department') %></th>
+    <th><%= t('view.title') %></th>
+  </tr>
+  <% @surgical_operations.each do |surgical_operation| %>
     <tr>
-      <th><%= t('view.status') %></th>
-      <th><%= t('view.create_date') %></th>
-      <th><%= t('view.update_date') %></th>
-      <th><%= t('view.medical_department') %></th>
-      <th><%= t('view.title') %></th>
+      <td><%= surgical_operation.status %></td>
+      <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
+      <td><%= surgical_operation.medical_department %></td>
+      <td><%= surgical_operation.title %></td>
+      <td>
+        <span class="fa-stack fa-lg">
+          <span class="fa fa fa-comment-o fa-stack-1x" style="color: #666; font-size: 1.5em;"></span>
+          <span class="fa fa-stack-1x" style="font-size: 0.8em;"><%= surgical_operation.comment_users.count %></span>
+        </span>
+      </td>
+      <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
     </tr>
-    <% @surgical_operations.each do |surgical_operation| %>
-      <tr>
-        <td><%= surgical_operation.status %></td>
-        <td><%= surgical_operation.created_at.to_s(:datetime_jp) %></td>
-        <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
-        <td><%= surgical_operation.medical_department %></td>
-        <td><%= surgical_operation.title %></td>
-        <td><%= surgical_operation.comment_users.count %></td>
-        <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
-      </tr>
-    <% end %>
-    <%= paginate @surgical_operations %>
-  </table>
-</div>
+  <% end %>
+  <%= paginate @surgical_operations %>
+</table>
