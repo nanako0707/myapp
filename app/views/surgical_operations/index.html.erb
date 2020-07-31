@@ -1,32 +1,34 @@
-<%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: 'btn btn-link' %>
-<%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: 'btn btn-link' %>
-<% if current_user.try(:admin?) %>
-  <h1><%= t('view.surgerylist_admin') %></h1>
-<% else %>
-  <h1><%= t('view.surgerylist') %></h1>
-<% end %>
-<br>
-<table align="center">
-  <tr>
-    <th><%= t('view.status') %></th>
-    <th><%= t('view.update_date') %></th>
-    <th><%= t('view.medical_department') %></th>
-    <th><%= t('view.title') %></th>
-  </tr>
-  <% @surgical_operations.each do |surgical_operation| %>
-    <tr>
-      <td><%= surgical_operation.status %></td>
-      <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
-      <td><%= surgical_operation.medical_department %></td>
-      <td><%= surgical_operation.title %></td>
-      <td>
-        <span class="fa-stack fa-lg">
-          <span class="fa fa fa-comment-o fa-stack-1x" style="color: #666; font-size: 1.5em;"></span>
-          <span class="fa fa-stack-1x" style="font-size: 0.8em;"><%= surgical_operation.comment_users.count %></span>
-        </span>
-      </td>
-      <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
-    </tr>
+<div class="container">
+  <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: 'btn btn-link' %>
+  <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: 'btn btn-link' %>
+  <% if current_user.try(:admin?) %>
+    <h1><%= t('view.surgerylist_admin') %></h1>
+  <% else %>
+    <h1><%= t('view.surgerylist') %></h1>
   <% end %>
-  <%= paginate @surgical_operations %>
-</table>
+  <br>
+  <table align="center">
+    <tr>
+      <th><%= t('view.status') %></th>
+      <th><%= t('view.update_date') %></th>
+      <th><%= t('view.medical_department') %></th>
+      <th><%= t('view.title') %></th>
+    </tr>
+    <% @surgical_operations.each do |surgical_operation| %>
+      <tr>
+        <td><%= surgical_operation.status %></td>
+        <td><%= surgical_operation.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= surgical_operation.medical_department %></td>
+        <td><%= surgical_operation.title %></td>
+        <td>
+          <span class="fa-stack fa-lg">
+            <span class="fa fa fa-comment-o fa-stack-1x" style="color: #666; font-size: 1.5em;"></span>
+            <span class="fa fa-stack-1x" style="font-size: 0.8em;"><%= surgical_operation.comment_users.count %></span>
+          </span>
+        </td>
+        <td><%= link_to t('view.content_confirmation'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %></td>
+      </tr>
+    <% end %>
+    <%= paginate @surgical_operations %>
+  </table>
+</div>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: 'surgical_operations#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
   get '/users/show', to: 'users#show'
   resources :notifications, only: :index
   resources :surgical_operations do

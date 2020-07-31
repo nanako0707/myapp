@@ -14,6 +14,14 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, length: { minimum: 4, maximum: 20 }
   before_destroy :do_not_destroy_last_admin
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = "guest"
+      user.password = SecureRandom.urlsafe_base64
+      user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    end
+  end
+
   private
   def do_not_destroy_last_admin
     throw(:abort) if User.where(admin: true).count <= 1 && self.admin?

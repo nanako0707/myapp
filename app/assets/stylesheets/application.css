@@ -15,6 +15,16 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  text-align: center;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -25,6 +35,10 @@ header {
     margin-right: auto;
     background-color: #55c500;
     color: #fff;
+}
+
+.search{
+  align-items: center;
 }
 
 .header_list {
@@ -68,20 +82,3 @@ footer {
   box-sizing: inherit;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  text-align: center;
-}
-
-.container{
-  height: 600px;
-  overflow: scroll;
-}
-
-.search{
-  align-items: center;
-}
