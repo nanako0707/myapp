@@ -1,6 +1,8 @@
 FROM ruby:2.6.5
 ENV TZ=Asia/Tokyo
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && apt-get install -y nodejs
 RUN gem install reverse_markdown redcarpet
 RUN mkdir /myapp
 WORKDIR /myapp

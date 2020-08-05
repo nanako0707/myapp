@@ -2,7 +2,7 @@
   "name": "myapp",
   "private": true,
   "dependencies": {
-    "bootstrap": "3",
+    "bootstrap": "^4.5.1",
     "jquery": "^3.5.1"
   }
 }

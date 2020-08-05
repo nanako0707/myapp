@@ -12,9 +12,8 @@
  *
  *= require bootstrap/dist/css/bootstrap.min
  *= require font-awesome
- *= require_tree .
- *= require_self
  */
+@import "bootstrap";
 
 html {
   position: relative;
