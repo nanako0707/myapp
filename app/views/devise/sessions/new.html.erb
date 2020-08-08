@@ -1,28 +1,55 @@
-<h2><%= t('.sign_in') %></h2>
+<body class="login-page">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field_checkbox">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-7 col-xl-8 d-none d-lg-block">
+        <img src="/assets/img/auth.svg" alt="" class="img-fluid w-100">
+      </div>
+      <div class="col-lg-5 col-xl-4 d-flex justify-content-center align-items-start">
+        <div class="card mb-3">
+          <div class="card-body p-4">
+            <h3><%= t('.sign_in') %></h3>
+            <hr>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-group">
+                <%= f.label :email, {class: "font-size-sm", for:"InputEmail"} %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control bg-gray-200 border-gray-200", id: "InputEmail", placeholder: "", autocomplete: "off" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password, {class: "font-size-sm", for: "InputPassword"} %><br />
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control bg-gray-200 border-gray-200", id: "InputPassword", placeholder: "" %>
+              </div>
+              <div class="form-group d-flex justify-content-between align-items-center">
+                <div class="custom-control custom-checkbox">
+                  <% if devise_mapping.rememberable? %>
+                    <div class="field_checkbox">
+                      <%= f.check_box :remember_me, class: "custom-control-input", id: "remember" %>
+                      <%= f.label :remember_me, {class: "custom-control-label", for: "remember"} %>
+                    </div>
+                  <% end %>
+                  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                    <%= link_to "パスワードを忘れましたか？", new_password_path(resource_name), class: "text-primary text-decoration-underline small" %><br />
+                  <% end %>
+                </div>
+              </div>
+                <div class="actions">
+                  <%= f.submit t('.sign_in'), class: "btn btn-primary btn-block" %>
+                </div>
+              <!-- <div class="divider-text">or</div>
+              <button type="button" class="btn btn-sm btn-outline-primary btn-block has-icon"><i class="fab fa-facebook"></i> Login with Facebook</button>
+              <button type="button" class="btn btn-sm btn-outline-info btn-block has-icon"><i class="fab fa-facebook"></i> Login with Twitter</button> -->
+            <% end %>
+            <br>
+            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning" %>
+            <br>
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit t('.sign_in') %>
   </div>
-<% end %>
 
-<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-<br>
-<%= render "devise/shared/links" %>
+  <!-- Plugins -->
+  <!-- JS plugins goes here -->
+
+</body>

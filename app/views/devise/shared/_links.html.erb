@@ -1,18 +1,32 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to t(".sign_in"), new_session_path(resource_name) %><br />
+<% if current_page?(new_user_registration_path) %>
+  <div class="small mt-4">
+    既にアカウントをお持ちですか？<br>
+    <%- if controller_name != 'sessions' %>
+      <%= link_to t(".sign_in"), new_session_path(resource_name), class: "text-decoration-underline" %><br />
+    <% end %>
+  </div>
 <% end %>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to t(".sign_up"), new_registration_path(resource_name) %><br />
+<% if current_page?(new_user_session_path) %>
+  <div class="small mt-4">
+    アカウントをお持ちではないですか ?<br>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to t(".sign_up"), new_registration_path(resource_name), class: "text-decoration-underline" %><br />
+    <% end %>
+  </div>
 <% end %>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to t(".forgot_your_password"), new_password_path(resource_name) %><br />
+<% if current_page?(new_user_confirmation_path) %>
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <%= link_to t(".forgot_your_password"), new_password_path(resource_name) %><br />
+  <% end %>
 <% end %>
 
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name) %><br />
-<% end %>
+<div class="small mt-4">
+  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+    <%= link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name), class: "text-decoration-underline" %><br />
+  <% end %>
+</div>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name) %><br />

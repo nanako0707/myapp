@@ -15,87 +15,87 @@
  */
 @import "bootstrap";
 
-html {
-  position: relative;
-  min-height: 100%;
-}
+// html {
+//   position: relative;
+//   min-height: 100%;
+// }
 
-h2 {
-  font-weight: 900;
-}
+// h2 {
+//   font-weight: 900;
+// }
 
-a {
-  color: #3e3e3e;
-}
+// a {
+//   color: #3e3e3e;
+// }
 
-body {
-  text-align: center;
-}
+// body {
+//   text-align: center;
+// }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-}
+// header {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     height: 56px;
+//     width: 100%;
+//     margin-left: auto;
+//     margin-right: auto;
+//     background-color: #fff;
+// }
 
-.field input {
-  width: 280px;
-  height: 35px
-}
+// .field input {
+//   width: 280px;
+//   height: 35px
+// }
 
-.actions input {
-  background-color: black;
-  color: #fff;
-  width: 280px;
-  height: 35px;
-  margin-top: 18px;
-}
+// .actions input {
+//   background-color: black;
+//   color: #fff;
+//   width: 280px;
+//   height: 35px;
+//   margin-top: 18px;
+// }
 
-.search{
-  align-items: center;
-}
+// .search{
+//   align-items: center;
+// }
 
-.header_list {
-  float: right;
-  line-height: 50px;
-  padding-right: 8px;
-}
+// .header_list {
+//   float: right;
+//   line-height: 50px;
+//   padding-right: 8px;
+// }
 
-.header_logo {
-  float: left;
-  line-height: 50px;
-  font-size: 20px;
-  padding-left: 8px;
-  font-weight: 900;
-  font-family: cursive;
-}
+// .header_logo {
+//   float: left;
+//   line-height: 50px;
+//   font-size: 20px;
+//   padding-left: 8px;
+//   font-weight: 900;
+//   font-family: cursive;
+// }
 
-.n-circle {
-  position: absolute;
-  padding-left: 1.5rem;
-  padding-top: 0rem;
-  color: #efa04c;
-}
+// .n-circle {
+//   position: absolute;
+//   padding-left: 1.5rem;
+//   padding-top: 0rem;
+//   color: #efa04c;
+// }
 
-.alert {
-  padding-top: 8px;
-}
+// .alert {
+//   padding-top: 8px;
+// }
 
-footer {
-  width: 100%;
-  background-color: #fff;
-  padding: 20px 0 10px 0;
-  color: #3e3e3e;
-  margin: auto;
-  padding-bottom: 10px;
-  font-size: 12px;
-  position: absolute;
-  bottom: 0;
-  box-sizing: inherit;
-}
+// footer {
+//   width: 100%;
+//   background-color: #fff;
+//   padding: 20px 0 10px 0;
+//   color: #3e3e3e;
+//   margin: auto;
+//   padding-bottom: 10px;
+//   font-size: 12px;
+//   position: absolute;
+//   bottom: 0;
+//   box-sizing: inherit;
+// }
 
