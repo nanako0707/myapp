@@ -1,3 +1,15 @@
+<head>
+  <!-- Font & Icon -->
+  <link rel="stylesheet" href="../../../font/inter/inter.min.css">
+  <link href="assets/plugins/material-design-icons-iconfont/material-design-icons.min.css" rel="stylesheet">
+  <!-- Plugins -->
+  <!-- CSS plugins goes here -->
+  <!-- Main Style -->
+  <link rel="stylesheet" href="assets/plugins/simplebar/simplebar.min.css">
+  <link rel="stylesheet" href="/assets/css/style.min.css" id="main-css">
+  <link rel="stylesheet" href="/assets/css/sidebar-gray.min.css" id="theme-css"> <!-- options: blue,cyan,dark,gray,green,pink,purple,red,royal,ash,crimson,namn,frost -->
+</head>
+
 <body class="login-page">
 
   <div class="container mt-5">
@@ -15,7 +27,7 @@
               <%= render "devise/shared/error_messages", resource: resource %>
               <div class="form-group">
                 <span class="input-icon">
-                  <%= f.label :email %><br />
+                  <i class="material-icons">mail_outline</i>
                   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "resetEmailInput", placeholder: "", autocomplete: "off", required: "" %>
                 </span>
               </div>
@@ -23,7 +35,7 @@
                 <%= f.submit t('.send_me_reset_password_instructions'), class: "btn btn-danger btn-block" %>
               </div>
             <% end %>
-            <hr>       
+            <hr>
             <%= link_to "ログインに戻る", new_user_session_path, class: "btn btn-light has-icon btn-sm" %><br />
           </div>
         </div>
