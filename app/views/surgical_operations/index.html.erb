@@ -5,10 +5,13 @@
 
     <!-- Sidebar header -->
     <div class="sidebar-header">
-      <a href="index.html" class="logo">
-        <img src="/assets/img/logo-white.svg" alt="Logo" id="main-logo">
+      <%= link_to surgical_operations_path, class: "logo" do %>
+        <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
         Opereminder
-      </a>
+      <% end %>
+
+       
+
       <a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
         <i class="material-icons">close</i>
       </a> </div>
@@ -17,141 +20,29 @@
     <!-- Sidebar body -->
     <div class="sidebar-body">
       <ul class="nav nav-sub">
-        <li class="nav-label">DASHBOARD</li>
+        <li class="nav-label"></li>
         <li class="nav-item">
-          <a class="nav-link has-icon" href="index.html"><i data-feather="globe"></i>管理画面</a>
+        <% if current_user.try(:admin?) %>
+          <%= link_to rails_admin_path, class: "nav-link has-icon" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <%= t('view.admin_screen') %>
+          <% end %>
+        <% end %>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link has-icon" href="index2.html"><i data-feather="shopping-bag"></i>Sales Monitoring</a>
         </li> -->
-        <li class="nav-label">APPLICATION</li>
         <li class="nav-item">
-          <a class="nav-link has-icon" href="mail.html"><i class="material-icons">mail_outline</i>Mail<span class="badge badge-warning ml-auto badge-pill">3</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="file-manager.html"><i class="material-icons">folder_open</i>File Manager</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="chat.html"><i data-feather="message-square"></i>Chat</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="calendar.html"><i data-feather="calendar"></i>Calendar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="todo-list.html"><i data-feather="check-square"></i>Todo List</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="images.html"><i data-feather="image"></i>Images</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="pricing.html"><i class="material-icons">list_alt</i>Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="timeline.html"><i data-feather="clock"></i>Timeline</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="invoice.html"><i class="fa fa-file-invoice-dollar"></i>Invoice</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon" href="forum.html"><i class="fa fa-comments"></i>Forum</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle" href="#"><i data-feather="lock"></i>Authentication</a>
+          <a class="nav-link has-icon dropdown-toggle active" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %></a>
           <ul>
-            <li><a href="../static/login.html">Login v1</a></li>
-            <li><a href="../static/login2.html">Login v2</a></li>
-            <li><a href="../static/register.html">Register</a></li>
-            <li><a href="../static/forgot-password.html">Forgot Password</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle active show" href="#"><i data-feather="rss"></i>Blog</a>
-          <ul>
-            <li><a href="post-all.html" class="active">All Posts</a></li>
-            <li><a href="post-new.html">Add New Post</a></li>
-          </ul>
-        </li>
-        <li class="nav-label">UI DESIGN</li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle" href="#"><i data-feather="pie-chart"></i>Charts</a>
-          <ul>
-            <li><a href="chart-line.html">Line Charts</a></li>
-            <li><a href="chart-bar.html">Bar Charts</a></li>
-            <li><a href="chart-radar.html">Radar Charts</a></li>
-            <li><a href="chart-doughnutpie.html">Doughnut and Pie</a></li>
-            <li><a href="sparkline.html">Sparkline</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle" href="#"><i data-feather="box"></i>UI Elements</a>
-          <ul>
-            <li><a href="accordion.html">Accordion</a></li>
-            <li><a href="alerts.html">Alerts</a></li>
-            <li><a href="badge.html">Badge</a></li>
-            <li><a href="breadcrumb.html">Breadcrumb</a></li>
-            <li><a href="buttons.html">Buttons</a></li>
-            <li><a href="cards.html">Cards</a></li>
-            <li><a href="carousel.html">Carousel</a></li>
-            <li><a href="collapse.html">Collapse</a></li>
-            <li><a href="dropdowns.html">Dropdowns</a></li>
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="lists.html">List Group</a></li>
-            <li><a href="media-object.html">Media Object</a></li>
-            <li><a href="modal.html">Modal</a></li>
-            <li><a href="navigation.html">Navigation</a></li>
-            <li><a href="notifications.html">Notifications</a></li>
-            <li><a href="pagination.html">Pagination</a></li>
-            <li><a href="popovers.html">Popovers</a></li>
-            <li><a href="progress.html">Progress Bars</a></li>
-            <li><a href="sortable.html">Sortable List</a></li>
-            <li><a href="spinners.html">Spinners</a></li>
-            <li><a href="tooltips.html">Tooltips</a></li>
-            <li><a href="typography.html">Typography</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle" href="#"><i class="material-icons">table_chart</i>Tables</a>
-          <ul>
-            <li><a href="table-basic.html">Table Basic</a></li>
-            <li><a href="table-advanced.html">Table Advanced</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle" href="#"><i class="material-icons">notes</i>Forms</a>
-          <ul>
-            <li><a href="form-elements.html">Elements</a></li>
-            <li><a href="form-layouts.html">Layouts</a></li>
-            <li><a href="bootstrap-select.html">Bootstrap Select</a></li>
-            <li><a href="color-picker.html">Color Picker</a></li>
-            <li><a href="date-picker.html">Date Picker</a></li>
-            <li><a href="text-editor.html">Editor</a></li>
-            <li><a href="input-group.html">Input Group</a></li>
-            <li><a href="input-masks.html">Input Masks</a></li>
-            <li><a href="markdown-parser.html">Markdown</a></li>
-            <li><a href="range-slider.html">Range Slider</a></li>
-            <li><a href="select2.html">Select2</a></li>
-            <li><a href="tag-input.html">Tag Input</a></li>
-            <li><a href="bootstrap-touchspin.html">TouchSpin</a></li>
-            <li><a href="form-wizard.html">Wizard</a></li>
-            <li><a href="form-validation.html">Validation</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle" href="#"><i data-feather="users"></i>User</a>
-          <ul>
-            <li><a href="user-profile.html">User Profile</a></li>
-            <li><a href="user-list.html">User List</a></li>
-            <li><a href="user-grid.html">User Grid</a></li>
-            <li><a href="user-profile-setting.html">Profile Settings</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle" href="#"><i class="material-icons">error_outline</i>Error Pages</a>
-          <ul>
-            <li><a href="../static/error-404.html">Page Not Found</a></li>
-            <li><a href="../static/error-500.html">Internal Server Error</a></li>
-            <li><a href="../static/error-503.html">Service Unavailable</a></li>
-            <li><a href="../static/error-505.html">Forbidden Access</a></li>
+            <li><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
+            <li><%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true") %></li>
+            <li><%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true") %></li>
+            <li>
+              <% if User.where(id: current_user.id, premium: true).exists? %>
+                <%= link_to t('view.new'), new_surgical_operation_path %>
+              <% end %>
+            </li>
           </ul>
         </li>
       </ul>
@@ -166,95 +57,39 @@
 
     <!-- Main header -->
     <div class="main-header">
-      <a href="index.html" class="logo d-none d-lg-flex">
-        <img src="/assets/img/logo.svg" alt="Logo" id="main-logo">
+      <%= link_to surgical_operations_path, class: "logo d-none d-lg-flex" do %>
+        <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
         Opereminder
-      </a>
+      <% end %>
+
       <a class="nav-link nav-link-faded rounded-circle nav-icon d-lg-none" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
       <ul class="nav nav-circle ml-auto">
         <li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#searchModal"></a></li>
         <li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
+      
         <li class="nav-item dropdown nav-notif">
-          <a class="nav-link nav-link-faded nav-icon has-badge dropdown-toggle no-caret" href="#" data-toggle="dropdown" data-display="static">
-            <i data-feather="bell"></i>
-            <span class="badge badge-pill badge-danger">4</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right p-0">
-            <div class="card">
-              <div class="card-header bg-primary text-white">
-                <i data-feather="bell" class="mr-2"></i>通知
-              </div>
-              <div class="card-body p-0 pt-1">
-                <div class="list-group list-group-sm list-group-flush">
-                  <a href="javascript:void(0)" class="list-group-item list-group-item-action">
-                    <div class="media">
-                      <span class="bg-primary text-white btn-icon rounded-circle"><i data-feather="user-plus"></i></span>
-                      <div class="media-body ml-2">
-                        <p class="mb-0">5 New members joined today</p>
-                        <small class="text-secondary">
-                          <i class="material-icons icon-inline mr-1">access_time</i>5 minutes ago
-                        </small>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="javascript:void(0)" class="list-group-item list-group-item-action">
-                    <div class="media">
-                      <span class="bg-info text-white btn-icon rounded-circle"><i data-feather="message-square"></i></span>
-                      <div class="media-body ml-2">
-                        <p class="mb-0">2 New comments</p>
-                        <small class="text-secondary">
-                          <i class="material-icons icon-inline mr-1">access_time</i>10 minutes ago
-                        </small>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="javascript:void(0)" class="list-group-item list-group-item-action">
-                    <div class="media">
-                      <span class="bg-success text-white btn-icon rounded-circle"><i data-feather="shopping-bag"></i></span>
-                      <div class="media-body ml-2">
-                        <p class="mb-0">10+ New orders</p>
-                        <small class="text-secondary">
-                          <i class="material-icons icon-inline mr-1">access_time</i>15 minutes ago
-                        </small>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="javascript:void(0)" class="list-group-item list-group-item-action">
-                    <div class="media">
-                      <span class="bg-warning text-white btn-icon rounded-circle"><i data-feather="user-check"></i></span>
-                      <div class="media-body ml-2">
-                        <p class="mb-0">Complete your account details</p>
-                        <small class="text-secondary">
-                          <i class="material-icons icon-inline mr-1">access_time</i>20 minutes ago
-                        </small>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="card-footer justify-content-center">
-                <a href="javascript:void(0)">View more &rsaquo;</a>
-              </div>
-            </div>
-          </div>
+          <%= link_to notifications_path, class: "nav-link nav-link-faded nav-icon has-badge dropdown-toggle no-caret" do %>
+            <% if unchecked_notifications.any? %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span class="badge badge-pill badge-danger"></span>
+            <% else  %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <% end %>
+          <% end %>
         </li>
+
         <li class="nav-item dropdown ml-2">
           <a class="nav-link nav-link-faded rounded nav-link-img dropdown-toggle px-2" href="#" data-toggle="dropdown" data-display="static">
-            <img src="/assets/img/user.svg" alt="Admin" class="rounded-circle mr-2">
-            <!-- 管理者のみ表示 -->
-            <span class="d-none d-sm-block">管理者</span>
+            <img src="/assets/img/logo.svg" alt="users" class="rounded-circle mr-2">
           </a>
           <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
             <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
-              <img src="/assets/img/user.svg" alt="Admin" class="rounded-circle" width="50" height="50">
               <div class="media-body ml-2 text-nowrap">
-                <h6 class="mb-0">Admin</h6>
-                <!-- <span class="text-gray-400 font-size-sm">Administrator</span> -->
               </div>
             </div>
-            <a class="dropdown-item has-icon" href="javascript:void(0)"><i class="mr-2" data-feather="user"></i>マイページ</a>
+            <%= link_to t('view.mypage'), users_show_path, class: "dropdown-item has-icon" %>
             <!-- <a class="dropdown-item has-icon" href="javascript:void(0)"><i class="mr-2" data-feather="settings"></i>Settings</a> -->
-            <a class="dropdown-item has-icon text-danger" href="../static/login2.html"><i class="mr-2" data-feather="log-out"></i>ログアウト</a>
+            <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item has-icon text-danger" %>
           </div>
         </li>
       </ul>
@@ -263,53 +98,32 @@
 
     <!-- Main navbar -->
     <nav class="main-navbar navbar main-navbar navbar-expand navbar-light shadow-sm sticky-top">
-      <a class="nav-link nav-link-faded nav-icon rounded-circle" data-scroll="left" href="#"><i class="material-icons">chevron_left</i></a>
       <div class="navbar-collapse">
-        <div class="navbar-nav nav-pills nav-gap-x-1"> <a class="nav-item nav-link nav-link-faded has-icon" href="index.html"><i data-feather="globe"></i>管理画面</a>
-          <div class="nav-item dropdown">
-          </div>
+        <div class="navbar-nav nav-pills nav-gap-x-1"> 
+          <% if current_user.try(:admin?) %>
+            <%= link_to rails_admin_path, class: "nav-item nav-link nav-link-faded has-icon" do %>
+              <i data-feather="globe"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <%= t('view.admin_screen') %>
+            <% end %>
+          <% end %>
+
           <div class="nav-item dropdown">
             <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
-              <i data-feather="rss"></i>手術
+              <i data-feather="rss"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %>
             </a>
-            <div class="dropdown-menu"> <a class="dropdown-item active" href="post-all.html">手術一覧</a> <a class="dropdown-item" href="post-new.html">手順を作成する</a> </div>
+            <div class="dropdown-menu"> <%= link_to t('view.surgerylist'), surgical_operations_path, class: "dropdown-item active" %>
+              <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: "dropdown-item" %>
+              <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: "dropdown-item" %>
+              <% if User.where(id: current_user.id, premium: true).exists? %>
+                <%= link_to t('view.new'), new_surgical_operation_path, class: "dropdown-item" %>
+              <% end %>
+            </div>
           </div>
           <div class="nav-item dropdown">
             <div class="dropdown-menu"> <a class="dropdown-item" href="chart-line.html">Line Charts</a> <a class="dropdown-item" href="chart-bar.html">Bar Charts</a> <a class="dropdown-item" href="chart-radar.html">Radar Charts</a> <a class="dropdown-item" href="chart-doughnutpie.html">Doughnut and Pie</a> <a class="dropdown-item" href="sparkline.html">Sparkline</a> </div>
           </div>
-          <div class="nav-item dropdown">
-            <a class="nav-link nav-link-faded dropdown-toggle has-icon active show" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
-              <i data-feather="box"></i>UI Elements
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="accordion.html">Accordion</a> <a class="dropdown-item" href="alerts.html">Alerts</a> <a class="dropdown-item" href="badge.html">Badge</a> <a class="dropdown-item" href="breadcrumb.html">Breadcrumb</a> <a class="dropdown-item" href="buttons.html">Buttons</a> <a class="dropdown-item" href="cards.html">Cards</a> <a class="dropdown-item" href="carousel.html">Carousel</a> <a class="dropdown-item" href="collapse.html">Collapse</a> <a class="dropdown-item" href="dropdowns.html">Dropdowns</a> <a class="dropdown-item" href="icons.html">Icons</a> <a class="dropdown-item" href="lists.html">List Group</a> <a class="dropdown-item" href="media-object.html">Media Object</a> <a class="dropdown-item" href="modal.html">Modal</a> <a class="dropdown-item" href="navigation.html">Navigation</a> <a class="dropdown-item" href="notifications.html">Notifications</a> <a class="dropdown-item" href="pagination.html">Pagination</a> <a class="dropdown-item" href="popovers.html">Popovers</a> <a class="dropdown-item" href="progress.html">Progress Bars</a> <a class="dropdown-item" href="sortable.html">Sortable List</a> <a class="dropdown-item" href="spinners.html">Spinners</a> <a class="dropdown-item" href="tooltips.html">Tooltips</a> <a class="dropdown-item" href="typography.html">Typography</a> </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
-              <i class="material-icons">table_chart</i>Tables
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="table-basic.html">Table Basic</a> <a class="dropdown-item" href="table-advanced.html">Table Advanced</a> </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
-              <i class="material-icons">notes</i>Forms
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="form-elements.html">Elements</a> <a class="dropdown-item" href="form-layouts.html">Layouts</a> <a class="dropdown-item" href="bootstrap-select.html">Bootstrap Select</a> <a class="dropdown-item" href="color-picker.html">Color Picker</a> <a class="dropdown-item" href="date-picker.html">Date Picker</a> <a class="dropdown-item" href="text-editor.html">Editor</a> <a class="dropdown-item" href="input-group.html">Input Group</a> <a class="dropdown-item" href="input-masks.html">Input Masks</a> <a class="dropdown-item" href="markdown-parser.html">Markdown</a> <a class="dropdown-item" href="range-slider.html">Range Slider</a> <a class="dropdown-item" href="select2.html">Select2</a> <a class="dropdown-item" href="tag-input.html">Tag Input</a> <a class="dropdown-item" href="bootstrap-touchspin.html">TouchSpin</a> <a class="dropdown-item" href="form-wizard.html">Wizard</a> <a class="dropdown-item" href="form-validation.html">Validation</a> </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
-              <i data-feather="users"></i>User
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="user-profile.html">User Profile</a> <a class="dropdown-item" href="user-list.html">User List</a> <a class="dropdown-item" href="user-grid.html">User Grid</a> <a class="dropdown-item" href="user-profile-setting.html">Profile Settings</a> </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
-              <i class="material-icons">error_outline</i>Error Pages
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="../static/error-404.html">Page Not Found</a> <a class="dropdown-item" href="../static/error-500.html">Internal Server Error</a> <a class="dropdown-item" href="../static/error-503.html">Service Unavailable</a> <a class="dropdown-item" href="../static/error-505.html">Forbidden Access</a> </div>
-          </div>
         </div>
       </div>
-      <a class="nav-link nav-link-faded nav-icon rounded-circle" data-scroll="right" href="#"><i class="material-icons">chevron_right</i></a>
     </nav>
     <!-- /Main navbar -->
 
@@ -322,229 +136,94 @@
           
           <!-- <li class="breadcrumb-item"><a href="index.html">Home</a></li> -->
           <!-- <li class="breadcrumb-item"><a href="javascript:void(0)">UI Elements</a></li> -->
-          <li class="breadcrumb-item active" aria-current="page">手術一覧</li>
-          <button class="btn btn-outline-primary btn-sm has-icon" type="button" onclick="$('.sidebar-body').find(`a:contains('Add New Post')`)[0].click()"><i data-feather="plus" class="mr-1"></i>手順を作成する</button>
+          <li class="breadcrumb-item active" aria-current="page"><%= t('view.surgerylist') %></li>
+          <% if User.where(id: current_user.id, premium: true).exists? %>
+            <%= link_to new_surgical_operation_path do %>
+              <%= button_to t('view.new'), {controller: 'surgical_operations', action: 'new'}, {method: :get, class: "btn btn-outline-primary btn-sm has-icon" } %>
+            <% end %>
+          <% end %>
         </ol>
         
       </nav>
       <!-- /Breadcrumb -->
-      <select class="custom-select custom-select-sm w-auto">
-        <option value="all">診療科目</option>
-        <option value="published">呼吸器外科</option>
-        <option value="draft">耳鼻咽喉科</option>
-        <option value="draft">産婦人科</option>
-      </select>
-      <select class="custom-select custom-select-sm w-auto">
-        <option value="all">ステータス</option>
-        <option value="published">編集中</option>
-        <option value="draft">編集済み</option>
-      </select><br><br>
-      <div class="card mb-3">
+      <%= form_with url: surgical_operations_path, method: :get, local: true do |form| %>
+        <%= form.select :medical_department, [
+          "breast(乳腺外科)",
+          "cardiovascular(心臓血管外科)",
+          "digestive(消化器外科)",
+          "neurosurgery(脳神経外科)",
+          "obstetrics_gynecology(産婦人科)",
+          "ophthalmology(眼科)",
+          "orthopedics(整形外科)",
+          "otolaryngology(耳鼻咽喉科)",
+          "pediatric(小児科)",
+          "plastic(形成外科)",
+          "respiratory(呼吸器外科)",
+          "stomatognathic(顎口腔外科)",
+          "urology(泌尿器科)",
+        ], {prompt: "診療科目"}, {class: "custom-select custom-select-sm w-auto"} %>
+
+        <%= form.select :status, [ t('view.wip'), t('view.done') ], {prompt: "ステータス"}, {class: "custom-select custom-select-sm w-auto"} %>
+        <br>
+        <br>
+        <span class="input-icon input-icon-sm">
+          <i class="material-icons">search</i>
+          <%= form.text_field :title, class: "form-control form-control-sm bg-gray-200 border-gray-200", placeholder: "手術名を入力してください" %>
+        </span>
+        <br>
+        <%= form.hidden_field :search, value: 'true' %>
+        <%= form.submit t('view.search') ,class: "btn btn-outline-secondary btn-sm" %>
+      <% end %>
+
+      <%# <div class="card mb-3">
         <div class="card-body p-2" style="height: 47px">
-          <div class="d-flex align-items-center collapse transition-none blog-toolbar">
-            <button class="btn btn-sm btn-icon mr-2" data-toggle="collapse" data-target=".blog-toolbar">
-              <i data-feather="chevron-left"></i>
+          <div class="d-flex align-items-center transition-none blog-toolbar collapse" style="">
+            <button class="btn btn-sm btn-icon mr-2" data-toggle="collapse" data-target=".blog-toolbar" aria-expanded="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-            <span class="input-icon input-icon-sm">
-              <i class="material-icons">search</i>
-              <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200" placeholder="手術名を入力してください">
-            </span>
+            
           </div>
-          <div class="d-flex align-items-center collapse transition-none show blog-toolbar">
+          <div class="d-flex align-items-center transition-none blog-toolbar collapse show" style="">
 
-            <button class="btn btn-light btn-sm btn-icon ml-auto mr-1" type="button" data-toggle="collapse" data-target=".blog-toolbar">
-              <i data-feather="search"></i>
+            <button class="btn btn-light btn-sm btn-icon ml-auto mr-1" type="button" data-toggle="collapse" data-target=".blog-toolbar" aria-expanded="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
           </div>
         </div>
-      </div>
-
+      </div> %>
+      <br>
       <div class="row gutters-sm">
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">呼吸器外科</h6>
-              <h6 class="card-title">手術名</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">菅 奈々子</a></div>
-              <!-- <a href="javascript:void(0)" class="badge badge-pill badge-light">react</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">react-native</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">scroll</a> -->
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span>更新日時</span>,
-              <span class="ml-1 mr-auto">2020年07月30日20時15分</span>
-              <!-- <span><i class="fa fa-eye"></i> 19</span> -->
-              <span><i class="fa fa-comment ml-2"></i> 3</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">When You Should use Redux with APIs</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">santiago-rodrig</a></div>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">react</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">react-redux</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">api</a>
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span class="text-warning">draft</span>,
-              <span class="ml-1 mr-auto">07/04/20</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
+        <% @surgical_operations.each do |surgical_operation| %>
+          <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
+            <div class="card h-100">
+              <div class="card-body">
+                <h6 class="card-title"><%= surgical_operation.medical_department %></h6>
+                <h6 class="card-title"><%= surgical_operation.title %></h6>
+                <h6 class="card-footer font-size-sm text-muted"><%= surgical_operation.status %></h6>
+              </div>
+              <div class="card-footer font-size-sm text-muted">
+                <span><%= t('view.update_date') %></span>,
+                <span class="ml-1 mr-auto"><%= surgical_operation.updated_at.to_s(:datetime_jp) %></span>
+                <span><i class="fa fa-comment ml-2"></i> <%= surgical_operation.comment_users.count %></span>
+              </div>
+              <div class="card-footer justify-content-between">
+                <%= link_to surgical_operation_path(surgical_operation.id), class: "btn btn-link has-icon btn-xs bigger-130 text-success" do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mr-1"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><%= t('view.content_confirmation') %>
+                <% end %>
+
+                <% if current_user.try(:admin?) %>
+                  <%= link_to surgical_operation_path(surgical_operation.id), method: :delete, data: {confirm: t('view.confirm_destroy')}, class: "btn btn-link has-icon btn-xs bigger-130 text-danger" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><%= t('view.delete') %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">Beginners Guider To React Router</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">melbeavs_</a></div>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">react</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">react-router</a>
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span>published</span>,
-              <span class="ml-1 mr-auto">07/02/20</span>
-              <span><i class="fa fa-eye"></i> 46</span>
-              <span><i class="fa fa-comment ml-2"></i> 4</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/4.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">JavaScript Promises from Scratch</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">thejscode</a></div>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">javascript</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">promise</a>
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span>published</span>,
-              <span class="ml-1 mr-auto">07/01/20</span>
-              <span><i class="fa fa-eye"></i> 44</span>
-              <span><i class="fa fa-comment ml-2"></i> 7</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/5.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">Learning ReactJS From Scratch</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">KGPrajwal</a></div>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">react</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">get-started</a>
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span>published</span>,
-              <span class="ml-1 mr-auto">06/30/20</span>
-              <span><i class="fa fa-eye"></i> 52</span>
-              <span><i class="fa fa-comment ml-2"></i> 9</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/6.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">Jamstack Tools, Explained</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">CookieDuster</a></div>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">jamstack</a>
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span>published</span>,
-              <span class="ml-1 mr-auto">06/28/20</span>
-              <span><i class="fa fa-eye"></i> 33</span>
-              <span><i class="fa fa-comment ml-2"></i> 8</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/7.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">How To Handle Form and Validation with React?</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">si-le</a></div>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">form</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">validation</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">react</a>
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span>published</span>,
-              <span class="ml-1 mr-auto">06/23/20</span>
-              <span><i class="fa fa-eye"></i> 42</span>
-              <span><i class="fa fa-comment ml-2"></i> 10</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
-          <div class="card h-100">
-            <img src="/assets/img/blog/8.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h6 class="card-title">What Are JWTs And Should You Use Them?</h6>
-              <div class="card-subtitle text-muted font-size-sm mb-2">by <a href="javascript:void(0)">vivekkrishnavk</a></div>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">jwt</a>
-              <a href="javascript:void(0)" class="badge badge-pill badge-light">auth</a>
-            </div>
-            <div class="card-footer font-size-sm text-muted">
-              <span>published</span>,
-              <span class="ml-1 mr-auto">06/22/20</span>
-              <span><i class="fa fa-eye"></i> 39</span>
-              <span><i class="fa fa-comment ml-2"></i> 7</span>
-            </div>
-            <div class="card-footer justify-content-between">
-              <!-- <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-primary"><i class="mr-1" data-feather="eye"></i>View</a> -->
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-success"><i class="mr-1" data-feather="edit"></i>編集</a>
-              <a href="javascript:void(0)" class="btn btn-link has-icon btn-xs bigger-130 text-danger"><i class="mr-1" data-feather="trash"></i>削除</a>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
 
       <ul class="pagination justify-content-center mb-0">
-        <li class="page-item disabled"><span class="page-link">Previous</span></li>
-        <li class="page-item active"><span class="page-link">1</span></li>
-        <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-        <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+        <%= paginate @surgical_operations %>
       </ul>
 
     </div>

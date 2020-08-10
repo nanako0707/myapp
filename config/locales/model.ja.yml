@@ -5,7 +5,7 @@ ja:
     update_date: 更新日時
     sort_update_date: 更新日時順に並び替え
     new: 手順を作成する
-    edit: 手順を編集する
+    edit: 編集
     title: 手術名
     content: 手順
     content_confirmation: 詳細
@@ -34,9 +34,8 @@ ja:
     in_comments: コメントの編集中
     edit_comment_message: コメントが編集されました！
     comment_failure: コメントの編集に失敗しました
-    edit_comment: 編集
-    destroy_comment: 削除
     destroy_comment_message: コメントが削除されました！
+    destroy_surgical_operation: 手順が削除されました！
     confirm_destroy: 本当に削除しますか？
     search: 検索する
     notice: 通知
@@ -49,6 +48,13 @@ ja:
     already_premium: 既にプレミアム会員登録済みです
     cancel?: キャンセルしますか？
     cancel: キャンセルする
+    admin: 管理者
+    admin_screen: 管理画面
+    surgical_operation: 手術
+    notification_list: 通知一覧を見る
+    delete: 削除
+    delete_confirm: 本当に削除していいですか？
+    not_authorized: 権限がありません
 
   activerecord:
     models:

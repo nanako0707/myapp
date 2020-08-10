@@ -17,30 +17,6 @@
   </head>
 
   <body>
-  <div class="header_list">
-    <% if user_signed_in? %>
-      <%= link_to t('view.surgerylist'), surgical_operations_path %>
-      <% if User.where(id: current_user.id, premium: true).exists? %>
-        <%= link_to t('view.new'), new_surgical_operation_path %>
-      <% end %>
-      <%= link_to t('view.mypage'), users_show_path %>
-      <%= link_to t('view.logout'), destroy_user_session_path, method: :delete %>
-      <%= link_to(notifications_path) do %>
-        <% if unchecked_notifications.any? %>
-          <span class="fa-stack">
-            <i class="fa fa-bell fa-lg fa-stack-2x" style="font-size: 1.5em;"></i>
-            <i class="fa fa-circle n-circle fa-stack-1x"></i>
-          </span>
-        <% else  %>
-          <i class="fa fa-bell fa-lg" style="font-size: 1.5em;"></i>
-        <% end %>
-      <% end %>
-    <% else %>
-      <%= link_to t('view.signup'), new_user_registration_path %>
-      <%= link_to t('view.login'), new_user_session_path %>
-    <% end %>
-  </div>
-
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>

@@ -1,5 +1,6 @@
 class SurgicalOperationsController < ApplicationController
   before_action :set_surgical_operation, only: [:show, :edit, :update, :pay]
+  before_action :admin_user, only: :destroy
   before_action :ensure_premium_user, {only: [:new, :create, :edit, :update]}
   
   def index
@@ -72,6 +73,19 @@ class SurgicalOperationsController < ApplicationController
   def ensure_premium_user
     if User.where(id: current_user.id, premium: false).exists? 
       flash[:notice] = t('view.premium_member')
+      redirect_to surgical_operations_path
+    end
+  end
+
+  def destroy
+    @surgical_operation.destroy
+    redirect_to surgical_operations_path, notice: t('view.destroy_surgical_operation')
+  end
+
+  def admin_user
+    @surgical_operation = SurgicalOperation.find_by(id: params[:id])
+    unless current_user.try(:admin?)
+      flash[:notice] = t("not_authorized")
       redirect_to surgical_operations_path
     end
   end

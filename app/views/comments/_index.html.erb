@@ -8,8 +8,8 @@
           <%= comment.user.name %>
           <%= comment.content %>
           <% if current_user == comment.user %>
-            <%= link_to t('view.edit_comment'), edit_surgical_operation_comment_path(surgical_operation, comment), remote: true, class: 'btn btn-link' %>
-            <%= link_to t('view.destroy_comment'), surgical_operation_comment_path(comment.surgical_operation_id, comment.id), method: :delete, remote: true, data: { confirm: t('view.confirm_destroy')}, class: 'btn btn-link' %>
+            <%= link_to t('view.edit'), edit_surgical_operation_comment_path(surgical_operation, comment), remote: true, class: 'btn btn-link' %>
+            <%= link_to t('view.delete'), surgical_operation_comment_path(comment.surgical_operation_id, comment.id), method: :delete, remote: true, data: { confirm: t('view.confirm_destroy')}, class: 'btn btn-link' %>
           <% end %>
         </li>
       <% end %>
