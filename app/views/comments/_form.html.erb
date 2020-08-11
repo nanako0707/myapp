@@ -11,11 +11,12 @@
       </div>
   <% end %>
   <div class="field">
+    <i class="fa fa-comments"></i>
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class:"form-control", placeholder: "テキストを入力" %>
   </div>
   <div class="actions">
-    <%= form.submit %>
+    <button type="submit" class="btn btn-dark"><%= t('view.post') %></button>
   </div>
   <% end %>
 </div>

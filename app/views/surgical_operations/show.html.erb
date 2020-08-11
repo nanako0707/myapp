@@ -1,26 +1,137 @@
-<div class="container">
-  <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id) %>
-  <br>
-  <% if @stock.present? %>
-    <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id, surgical_operation_id: @surgical_operation.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to t('view.stock'), stocks_path(surgical_operation_id: @surgical_operation.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-  <br>
-  <h1><%= @surgical_operation.medical_department %></h1>
-  <h1><%= @surgical_operation.title %></h1>
-  <br>
-  <%= t('view.create_user') %>:<%= @surgical_operation.user.name %>
-  <br>
-  <h2><%= t('view.content') %></h2>
-  <div class="content">
-    <%= markdown(@surgical_operation.content).html_safe %>
+<body class="sticky-navbar" style="background-image: url('/assets/img/pattern/pattern1.png');">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <%= link_to surgical_operations_path, class: "logo" do %>
+        <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
+        Opereminder
+      <% end %>
+      <a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
+        <i class="material-icons">close</i>
+      </a> 
+    </div>
+
+    <div class="sidebar-body">
+      <ul class="nav nav-sub">
+        <li class="nav-label"></li>
+        <li class="nav-item">
+        <% if current_user.try(:admin?) %>
+          <%= link_to rails_admin_path, class: "nav-link has-icon" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <%= t('view.admin_screen') %>
+          <% end %>
+        <% end %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon dropdown-toggle active" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %></a>
+          <ul>
+            <li><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
+            <li><%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true") %></li>
+            <li><%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true") %></li>
+            <li>
+              <% if User.where(id: current_user.id, premium: true).exists? %>
+                <%= link_to t('view.new'), new_surgical_operation_path %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-  <p><%= image_tag @surgical_operation.image.url if @surgical_operation.image? %></p>
-  <p><%= @reading ? '既読' : '未読' %></p>
-  <p><%= t('view.commentlist') %></p>
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments, surgical_operation: @surgical_operation } %>
+
+  <div class="main">
+    <div class="main-header">
+      <%= link_to surgical_operations_path, class: "logo d-none d-lg-flex" do %>
+        <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
+        Opereminder
+      <% end %>
+
+      <a class="nav-link nav-link-faded rounded-circle nav-icon d-lg-none" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
+      <ul class="nav nav-circle ml-auto">
+        <li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#searchModal"></a></li>
+        <li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
+      
+        <li class="nav-item dropdown nav-notif">
+          <%= link_to notifications_path, class: "nav-link nav-link-faded nav-icon has-badge dropdown-toggle no-caret" do %>
+            <% if unchecked_notifications.any? %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span class="badge badge-pill badge-danger"></span>
+            <% else %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <% end %>
+          <% end %>
+        </li>
+
+        <li class="nav-item dropdown ml-2">
+          <a class="nav-link nav-link-faded rounded nav-link-img dropdown-toggle px-2" href="#" data-toggle="dropdown" data-display="static">
+            <img src="/assets/img/logo.svg" alt="users" class="rounded-circle mr-2">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
+            <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
+              <div class="media-body ml-2 text-nowrap">
+              </div>
+            </div>
+            <%= link_to t('view.mypage'), users_show_path, class: "dropdown-item has-icon" %>
+            <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item has-icon text-danger" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <nav class="main-navbar navbar main-navbar navbar-expand navbar-light shadow-sm sticky-top">
+      <div class="navbar-collapse">
+        <div class="navbar-nav nav-pills nav-gap-x-1"> 
+          <% if current_user.try(:admin?) %>
+            <%= link_to rails_admin_path, class: "nav-item nav-link nav-link-faded has-icon" do %>
+              <i data-feather="globe"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <%= t('view.admin_screen') %>
+            <% end %>
+          <% end %>
+
+          <div class="nav-item dropdown">
+            <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
+              <i data-feather="rss"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %>
+            </a>
+            <div class="dropdown-menu"> <%= link_to t('view.surgerylist'), surgical_operations_path, class: "dropdown-item active" %>
+              <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: "dropdown-item" %>
+              <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: "dropdown-item" %>
+              <% if User.where(id: current_user.id, premium: true).exists? %>
+                <%= link_to t('view.new'), new_surgical_operation_path, class: "dropdown-item" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <div class="dropdown-menu"> <a class="dropdown-item" href="chart-line.html">Line Charts</a> <a class="dropdown-item" href="chart-bar.html">Bar Charts</a> <a class="dropdown-item" href="chart-radar.html">Radar Charts</a> <a class="dropdown-item" href="chart-doughnutpie.html">Doughnut and Pie</a> <a class="dropdown-item" href="sparkline.html">Sparkline</a> </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-  <%= render partial: 'comments/form', locals: { comment: @comment, surgical_operation: @surgical_operation } %>
-</div>
+  <br>
+  <div class="container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+    <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id) %>
+    <br>
+    <br>
+    <% if @stock.present? %>
+      <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id, surgical_operation_id: @surgical_operation.id), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to t('view.stock'), stocks_path(surgical_operation_id: @surgical_operation.id), method: :post, class: 'btn btn-primary' %>
+    <% end %>
+    <br>
+    <br>
+    <h3><%= @surgical_operation.medical_department %></h3>
+    <h2><%= @surgical_operation.title %></h2>
+    <%= t('view.create_user') %>:<%= @surgical_operation.user.name %>
+    <br>
+    <br>
+    <div class="content">
+      <%= markdown(@surgical_operation.content).html_safe %>
+    </div>
+    <p><%= image_tag @surgical_operation.image.url if @surgical_operation.image? %></p>
+    <p><%= @reading ? '既読' : '未読' %></p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, surgical_operation: @surgical_operation } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, surgical_operation: @surgical_operation } %>
+  </div>
+</body>

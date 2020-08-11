@@ -1,1 +1,9 @@
 <%= render 'form' %>
+<div class="main-body">
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('view.new') %></li>
+    </ol>
+  </nav>
+</div>

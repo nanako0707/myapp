@@ -7,7 +7,7 @@ ja:
     new: 手順を作成する
     edit: 編集する
     title: 手術名
-    content: 手順
+    content: 手順 
     content_confirmation: 詳細
     create_content: 手順を作成しました！
     edit_content: 手順を編集しました！
@@ -30,7 +30,6 @@ ja:
     medical_department: 診療科目
     sort_medical_department: 診療科目ごとに並び替え
     can't_post: 投稿できませんでした...
-    commentlist: コメント一覧
     in_comments: コメントの編集中
     edit_comment_message: コメントが編集されました！
     comment_failure: コメントの編集に失敗しました
@@ -56,6 +55,8 @@ ja:
     delete_confirm: 本当に削除していいですか？
     not_authorized: 権限がありません
     register: 登録する
+    post: 投稿
+    update: 更新
 
   activerecord:
     models:

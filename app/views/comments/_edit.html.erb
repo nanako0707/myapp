@@ -10,10 +10,9 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.text_area :content, id: "comment_content_#{surgical_operation.id}" %>
-    <%= form.label :content %>
+    <%= form.text_area :content, id: "comment_content_#{surgical_operation.id}", class: "form-control", placeholder: "テキストを入力" %>
   </div>
   <div class="actions">
-    <%= form.submit %>
+    <button type="submit" class="btn btn-dark"><%= t('view.update') %></button>
   </div>
 <% end %>

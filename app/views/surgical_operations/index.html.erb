@@ -1,23 +1,16 @@
 <body class="sticky-navbar">
 
-  <!-- Sidebar -->
   <div class="sidebar">
-
-    <!-- Sidebar header -->
     <div class="sidebar-header">
       <%= link_to surgical_operations_path, class: "logo" do %>
         <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
         Opereminder
       <% end %>
 
-       
-
       <a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
         <i class="material-icons">close</i>
-      </a> </div>
-    <!-- /Sidebar header -->
-
-    <!-- Sidebar body -->
+      </a> 
+    </div>
     <div class="sidebar-body">
       <ul class="nav nav-sub">
         <li class="nav-label"></li>
@@ -29,9 +22,6 @@
           <% end %>
         <% end %>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link has-icon" href="index2.html"><i data-feather="shopping-bag"></i>Sales Monitoring</a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link has-icon dropdown-toggle active" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %></a>
           <ul>
@@ -47,15 +37,9 @@
         </li>
       </ul>
     </div>
-    <!-- /Sidebar body -->
-
   </div>
-  <!-- /Sidebar -->
 
-  <!-- Main -->
   <div class="main">
-
-    <!-- Main header -->
     <div class="main-header">
       <%= link_to surgical_operations_path, class: "logo d-none d-lg-flex" do %>
         <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
@@ -88,15 +72,12 @@
               </div>
             </div>
             <%= link_to t('view.mypage'), users_show_path, class: "dropdown-item has-icon" %>
-            <!-- <a class="dropdown-item has-icon" href="javascript:void(0)"><i class="mr-2" data-feather="settings"></i>Settings</a> -->
             <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item has-icon text-danger" %>
           </div>
         </li>
       </ul>
     </div>
-    <!-- /Main header -->
 
-    <!-- Main navbar -->
     <nav class="main-navbar navbar main-navbar navbar-expand navbar-light shadow-sm sticky-top">
       <div class="navbar-collapse">
         <div class="navbar-nav nav-pills nav-gap-x-1"> 
@@ -120,32 +101,25 @@
             </div>
           </div>
           <div class="nav-item dropdown">
-            <div class="dropdown-menu"> <a class="dropdown-item" href="chart-line.html">Line Charts</a> <a class="dropdown-item" href="chart-bar.html">Bar Charts</a> <a class="dropdown-item" href="chart-radar.html">Radar Charts</a> <a class="dropdown-item" href="chart-doughnutpie.html">Doughnut and Pie</a> <a class="dropdown-item" href="sparkline.html">Sparkline</a> </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="chart-line.html">Line Charts</a> <a class="dropdown-item" href="chart-bar.html">Bar Charts</a> <a class="dropdown-item" href="chart-radar.html">Radar Charts</a> <a class="dropdown-item" href="chart-doughnutpie.html">Doughnut and Pie</a> <a class="dropdown-item" href="sparkline.html">Sparkline</a>
+            </div>
           </div>
         </div>
       </div>
     </nav>
-    <!-- /Main navbar -->
 
-    <!-- Main body -->
     <div class="main-body">
-
-      <!-- Breadcrumb -->
       <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-          
-          <!-- <li class="breadcrumb-item"><a href="index.html">Home</a></li> -->
-          <!-- <li class="breadcrumb-item"><a href="javascript:void(0)">UI Elements</a></li> -->
           <li class="breadcrumb-item active" aria-current="page"><%= t('view.surgerylist') %></li>
           <% if User.where(id: current_user.id, premium: true).exists? %>
             <%= link_to new_surgical_operation_path do %>
               <%= button_to t('view.new'), {controller: 'surgical_operations', action: 'new'}, {method: :get, class: "btn btn-outline-primary btn-sm has-icon" } %>
             <% end %>
           <% end %>
-        </ol>
-        
+        </ol>       
       </nav>
-      <!-- /Breadcrumb -->
       <%= form_with url: surgical_operations_path, method: :get, local: true do |form| %>
         <%= form.select :medical_department, [
           "breast(乳腺外科)",
@@ -162,7 +136,6 @@
           "stomatognathic(顎口腔外科)",
           "urology(泌尿器科)",
         ], {prompt: "診療科目"}, {class: "custom-select custom-select-sm w-auto"} %>
-
         <%= form.select :status, [ t('view.wip'), t('view.done') ], {prompt: "ステータス"}, {class: "custom-select custom-select-sm w-auto"} %>
         <br>
         <br>
@@ -174,23 +147,6 @@
         <%= form.hidden_field :search, value: 'true' %>
         <%= form.submit t('view.search') ,class: "btn btn-outline-secondary btn-sm" %>
       <% end %>
-
-      <%# <div class="card mb-3">
-        <div class="card-body p-2" style="height: 47px">
-          <div class="d-flex align-items-center transition-none blog-toolbar collapse" style="">
-            <button class="btn btn-sm btn-icon mr-2" data-toggle="collapse" data-target=".blog-toolbar" aria-expanded="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            
-          </div>
-          <div class="d-flex align-items-center transition-none blog-toolbar collapse show" style="">
-
-            <button class="btn btn-light btn-sm btn-icon ml-auto mr-1" type="button" data-toggle="collapse" data-target=".blog-toolbar" aria-expanded="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </button>
-          </div>
-        </div>
-      </div> %>
       <br>
       <div class="row gutters-sm">
         <% @surgical_operations.each do |surgical_operation| %>
@@ -210,7 +166,6 @@
                 <%= link_to surgical_operation_path(surgical_operation.id), class: "btn btn-link has-icon btn-xs bigger-130 text-success" do %>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mr-1"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><%= t('view.content_confirmation') %>
                 <% end %>
-
                 <% if current_user.try(:admin?) %>
                   <%= link_to surgical_operation_path(surgical_operation.id), method: :delete, data: {confirm: t('view.confirm_destroy')}, class: "btn btn-link has-icon btn-xs bigger-130 text-danger" do %>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><%= t('view.delete') %>
@@ -221,25 +176,15 @@
           </div>
         <% end %>
       </div>
-
       <ul class="pagination justify-content-center mb-0">
         <%= paginate @surgical_operations %>
       </ul>
-
     </div>
-    <!-- /Main body -->
-
   </div>
-  <!-- /Main -->
-
-  <!-- Main Scripts -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/plugins/simplebar/simplebar.min.js"></script>
   <script src="assets/plugins/feather-icons/feather.min.js"></script>
   <script src="assets/js/script.min.js"></script>
   <script src="assets/js/settings.min.js"></script>
-  <!-- Plugins -->
-  <!-- JS plugins goes here -->
-
 </body>

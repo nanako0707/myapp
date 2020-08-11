@@ -1,17 +1,4 @@
-<head>
-  <!-- Font & Icon -->
-  <link rel="stylesheet" href="/assets/font/inter/inter.min.css">
-  <link href="/assets/plugins/material-design-icons-iconfont/material-design-icons.min.css" rel="stylesheet">
-  <!-- Plugins -->
-  <!-- CSS plugins goes here -->
-  <!-- Main Style -->
-  <link rel="stylesheet" href="/assets/plugins/simplebar/simplebar.min.css">
-  <link rel="stylesheet" href="/assets/css/style.min.css" id="main-css">
-  <link rel="stylesheet" href="/assets/css/sidebar-gray.min.css" id="theme-css"> <!-- options: blue,cyan,dark,gray,green,pink,purple,red,royal,ash,crimson,namn,frost -->
-</head>
-
 <body class="login-page">
-
   <div class="container mt-5">
     <div class="row">
       <div class="col-lg-7 col-xl-8 d-none d-lg-block">
@@ -44,12 +31,9 @@
                   <% end %>
                 </div>
               </div>
-                <div class="actions">
-                  <%= f.submit t('.sign_in'), class: "btn btn-primary btn-block" %>
-                </div>
-              <!-- <div class="divider-text">or</div>
-              <button type="button" class="btn btn-sm btn-outline-primary btn-block has-icon"><i class="fab fa-facebook"></i> Login with Facebook</button>
-              <button type="button" class="btn btn-sm btn-outline-info btn-block has-icon"><i class="fab fa-facebook"></i> Login with Twitter</button> -->
+              <div class="actions">
+                <%= f.submit t('.sign_in'), class: "btn btn-primary btn-block" %>
+              </div>
             <% end %>
             <br>
             <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning" %>
@@ -60,8 +44,4 @@
       </div>
     </div>
   </div>
-
-  <!-- Plugins -->
-  <!-- JS plugins goes here -->
-
 </body>
