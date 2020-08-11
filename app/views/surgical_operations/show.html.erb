@@ -63,7 +63,7 @@
 
         <li class="nav-item dropdown ml-2">
           <a class="nav-link nav-link-faded rounded nav-link-img dropdown-toggle px-2" href="#" data-toggle="dropdown" data-display="static">
-            <img src="/assets/img/logo.svg" alt="users" class="rounded-circle mr-2">
+            <img src="/assets/img/profile.svg" alt="users" class="rounded-circle mr-2">
           </a>
           <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
             <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
@@ -108,9 +108,10 @@
   </div>
   <br>
   <div class="container">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-    <%= link_to t('view.edit'), edit_surgical_operation_path(@surgical_operation.id) %>
-    <br>
+    <%= link_to edit_surgical_operation_path(@surgical_operation.id), class: "breadcrumb-item active", aria_current: "page" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+      <%= t('view.edit') %>
+    <% end %>
     <br>
     <% if @stock.present? %>
       <%= link_to t('view.cancel_stock'), stock_path(id: @stock.id, surgical_operation_id: @surgical_operation.id), method: :delete, class: 'btn btn-danger' %>

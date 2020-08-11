@@ -1,7 +1,10 @@
-class UsersController < ApplicationController
+class UsersController < CardsController
 
   def show
     @user = current_user
+    if @user.card.present? 
+      public_method(:show).super_method.call
+    end
   end
 
   def stocks
