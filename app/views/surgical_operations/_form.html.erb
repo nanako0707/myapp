@@ -1,49 +1,195 @@
-<%= form_with(model: @surgical_operation, local: true) do |form| %>
-  <% if @surgical_operation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @surgical_operation.errors.count %><%= t('view.error') %></h2>
-      <ul>
-      <% @surgical_operation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>  
+<body class="sticky-navbar">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- Sidebar header -->
+    <div class="sidebar-header">
+      <%= link_to surgical_operations_path, class: "logo" do %>
+        <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
+        Opereminder
+      <% end %>
+
+      <a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
+        <i class="material-icons">close</i>
+      </a> </div>
+    <!-- /Sidebar header -->
+
+    <!-- Sidebar body -->
+    <div class="sidebar-body">
+      <ul class="nav nav-sub">
+        <li class="nav-label"></li>
+        <li class="nav-item">
+        <% if current_user.try(:admin?) %>
+          <%= link_to rails_admin_path, class: "nav-link has-icon" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <%= t('view.admin_screen') %>
+          <% end %>
+        <% end %>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link has-icon" href="index2.html"><i data-feather="shopping-bag"></i>Sales Monitoring</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link has-icon dropdown-toggle active" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %></a>
+          <ul>
+            <li><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
+            <li><%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true") %></li>
+            <li><%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true") %></li>
+            <li>
+              <% if User.where(id: current_user.id, premium: true).exists? %>
+                <%= link_to t('view.new'), new_surgical_operation_path %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
-  <% end %>
-  <div class="surgical_operation_form">
-    <div class="surgical_operation_status">
-      <%= form.label :status %>
-      <%= form.select :status, [ t('view.wip'), t('view.done') ], { include_blank: true } %>
-    </div>
-    <div class="medical_department">
-      <%= form.label :medical_department %>
-      <%= form.select :medical_department, [ 
-        "breast(乳腺外科)",
-        "cardiovascular(心臓血管外科)",
-        "digestive(消化器外科)",
-        "neurosurgery(脳神経外科)",
-        "obstetrics_gynecology(産婦人科)",
-        "ophthalmology(眼科)",
-        "orthopedics(整形外科)",
-        "otolaryngology(耳鼻咽喉科)",
-        "pediatric(小児科)",
-        "plastic(形成外科)",
-        "respiratory(呼吸器外科)",
-        "stomatognathic(顎口腔外科)",
-        "urology(泌尿器科)",
-      ], { include_blank: true } %>
-    </div>
-    <div class="surgical_operation_title">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-    </div>
-    <div class="surgical_operation_content">
-      <%= form.label :content %>
-      <%= form.text_area :content %>
-    </div>
-    <div class="surgical_operation_image">
-      <%= form.label :image %>
-      <%= form.file_field :image %>
-    </div>
-    <%= form.submit %>
+    <!-- /Sidebar body -->
+
   </div>
-<% end %>
+  <!-- /Sidebar -->
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- Main header -->
+    <div class="main-header">
+      <%= link_to surgical_operations_path, class: "logo d-none d-lg-flex" do %>
+        <%= image_tag "/assets/img/logo.svg", id: "main-logo" %>
+        Opereminder
+      <% end %>
+
+      <a class="nav-link nav-link-faded rounded-circle nav-icon d-lg-none" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
+      <ul class="nav nav-circle ml-auto">
+        <li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#searchModal"></a></li>
+        <li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
+      
+        <li class="nav-item dropdown nav-notif">
+          <%= link_to notifications_path, class: "nav-link nav-link-faded nav-icon has-badge dropdown-toggle no-caret" do %>
+            <% if unchecked_notifications.any? %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span class="badge badge-pill badge-danger"></span>
+            <% else  %>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <% end %>
+          <% end %>
+        </li>
+
+        <li class="nav-item dropdown ml-2">
+          <a class="nav-link nav-link-faded rounded nav-link-img dropdown-toggle px-2" href="#" data-toggle="dropdown" data-display="static">
+            <img src="/assets/img/logo.svg" alt="users" class="rounded-circle mr-2">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
+            <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
+              <div class="media-body ml-2 text-nowrap">
+              </div>
+            </div>
+            <%= link_to t('view.mypage'), users_show_path, class: "dropdown-item has-icon" %>
+            <!-- <a class="dropdown-item has-icon" href="javascript:void(0)"><i class="mr-2" data-feather="settings"></i>Settings</a> -->
+            <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item has-icon text-danger" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- /Main header -->
+
+    <!-- Main navbar -->
+    <nav class="main-navbar navbar main-navbar navbar-expand navbar-light shadow-sm sticky-top">
+      <div class="navbar-collapse">
+        <div class="navbar-nav nav-pills nav-gap-x-1"> 
+          <% if current_user.try(:admin?) %>
+            <%= link_to rails_admin_path, class: "nav-item nav-link nav-link-faded has-icon" do %>
+              <i data-feather="globe"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <%= t('view.admin_screen') %>
+            <% end %>
+          <% end %>
+
+          <div class="nav-item dropdown">
+            <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
+              <i data-feather="rss"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %>
+            </a>
+            <div class="dropdown-menu"> <%= link_to t('view.surgerylist'), surgical_operations_path, class: "dropdown-item active" %>
+              <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: "dropdown-item" %>
+              <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: "dropdown-item" %>
+              <% if User.where(id: current_user.id, premium: true).exists? %>
+                <%= link_to t('view.new'), new_surgical_operation_path, class: "dropdown-item" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <div class="dropdown-menu"> <a class="dropdown-item" href="chart-line.html">Line Charts</a> <a class="dropdown-item" href="chart-bar.html">Bar Charts</a> <a class="dropdown-item" href="chart-radar.html">Radar Charts</a> <a class="dropdown-item" href="chart-doughnutpie.html">Doughnut and Pie</a> <a class="dropdown-item" href="sparkline.html">Sparkline</a> </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- /Main navbar -->
+
+    <!-- Main body -->
+    <div class="main-body">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
+          <!-- <li class="breadcrumb-item"><a href="javascript:void(0)">Blog</a></li> -->
+          <li class="breadcrumb-item active" aria-current="page"><%= t('view.new') %></li>
+        </ol>
+      </nav>
+      <!-- /Breadcrumb -->
+      <%= form_with(model: @surgical_operation, local: true) do |form| %>
+        <% if @surgical_operation.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= @surgical_operation.errors.count %><%= t('view.error') %></h2>
+            <ul>
+            <% @surgical_operation.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>  
+            </ul>
+          </div>
+        <% end %>
+        <div class="surgical_operation_form">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group">
+                          <%= form.select :medical_department, [ 
+                            "breast(乳腺外科)",
+                            "cardiovascular(心臓血管外科)",
+                            "digestive(消化器外科)",
+                            "neurosurgery(脳神経外科)",
+                            "obstetrics_gynecology(産婦人科)",
+                            "ophthalmology(眼科)",
+                            "orthopedics(整形外科)",
+                            "otolaryngology(耳鼻咽喉科)",
+                            "pediatric(小児科)",
+                            "plastic(形成外科)",
+                            "respiratory(呼吸器外科)",
+                            "stomatognathic(顎口腔外科)",
+                            "urology(泌尿器科)",
+                          ], {prompt: "診療科目"}, class: "custom-select custom-select-sm w-auto" %>
+                          <%= form.select :status, [ t('view.wip'), t('view.done') ], {prompt: "ステータス"}, class: "custom-select custom-select-sm w-auto" %>
+                      </div>
+                      <div class="form-group">
+                        <%= form.label :title %>
+                        <%= form.text_field :title, class: "form-control", id: "blogTitle", autofocus_autocomplete: "off" %>
+                      </div>
+                      <div class="form-group">
+                        <%= form.label :image %>
+                        <%= form.file_field :image %>
+                      </div>
+                      <div class="form-group">
+                        <%= form.label :content %>
+                        <%= form.text_area :content, class: "form-control", rows: "2", placeholder: "マークダウンが使用できます", style: "margin-top: 4px; margin-bottom: 4px; height: 148px;" %>
+                      </div>
+                      <button type="submit" class="btn btn-dark"><%= t('view.register') %></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <!-- /Main body -->
+        </div>
+      <% end %>
+  <!-- /Main -->
+</body>

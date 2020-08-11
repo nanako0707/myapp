@@ -55,6 +55,7 @@ ja:
     delete: 削除
     delete_confirm: 本当に削除していいですか？
     not_authorized: 権限がありません
+    register: 登録する
 
   activerecord:
     models:
