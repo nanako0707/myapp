@@ -133,7 +133,11 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
           <!-- <li class="breadcrumb-item"><a href="javascript:void(0)">Blog</a></li> -->
-          <li class="breadcrumb-item active" aria-current="page"><%= t('view.new') %></li>
+          <% if current_page?(new_surgical_operation_path) %>
+            <li class="breadcrumb-item active" aria-current="page"><%= t('view.new') %></li>
+          <% else current_page?(edit_surgical_operation_path) %>
+            <li class="breadcrumb-item active" aria-current="page"><%= t('view.edit') %></li>
+          <% end %>
         </ol>
       </nav>
       <!-- /Breadcrumb -->
