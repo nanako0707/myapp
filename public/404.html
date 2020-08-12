@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .error {
-    padding-top: 16%
-  }
-  p{
-    text-align: center;
-  }
-  img{
-    display: block;
-    margin: 0 auto;
-  }
-  </style>
-</head>
 <body>
-  <!-- This file lives in public/404.html -->
-  <div class="error">
-    <img src="/404.png">
-    <p>お探しのページは見つかりません。</p>
+  <div class="container pt-3">
+    <div class="row justify-content-center text-center">
+      <div class="col-8 col-lg-6 col-xl-5">
+        <img src="/404.svg" class="img-fluid" alt="Page not found">
+      </div>
+      <div class="col-12 my-3">
+        <h2>404 Page Not Found</h2>
+        <p class="lead text-dark">Oopps. The page you were looking for doesn't exist.</p>
+        <p class="lead small text-secondary">You may have mistyped the address or the page may have moved. Try searching below.</p>
+        <form class="form-inline d-inline-flex">
+          <span class="input-icon">
+            <i class="material-icons">search</i>
+            <input type="search" placeholder="Search..." class="form-control shadow-none bg-light w-100">
+          </span>
+        </form>
+      </div>
+    </div>
   </div>
 </body>
-</html>

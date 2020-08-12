@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Internal Server Error (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .error {
-    padding-top: 16%
-  }
-  p{
-    text-align: center;
-  }
-  img{
-    display: block;
-    margin: 0 auto;
-  }
-  </style>
-</head>
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="error">
-    <img src="/500.png">
-    <p>Internal Server Error</p>
+  <div class="container pt-3">
+    <div class="row justify-content-center text-center">
+      <div class="col-8 col-lg-6 col-xl-5">
+        <img src="/500.svg" class="img-fluid" alt="Internal Server Error">
+      </div>
+      <div class="col-12 my-3">
+        <h2>500 Internal Server Error</h2>
+        <p class="lead text-dark">Oopps. There was an error, please try again later.</p>
+        <p class="lead small text-secondary">The server encountered an internal server error and was unable to complete your request.</p>
+        <button class="btn btn-light" type="button" onclick="history.back()">Go Back</button>
+      </div>
+    </div>
   </div>
 </body>
-</html>
