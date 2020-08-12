@@ -1,11 +1,19 @@
-<label>登録クレジットカード</label>
-<br/>
-<%= "**** **** **** " + @default_card_information.last4 %>
-<br/>
-<% exp_month = @default_card_information.exp_month.to_s %>
-<% exp_year = @default_card_information.exp_year.to_s.slice(2,3) %>
-<%= exp_month + " / " + exp_year %>
-<%= form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm", data: {confirm: t('view.confirm_destroy')}) do %>
-  <input name="card_id" type="hidden">
-  <button>削除する</button>
-<% end %>
+<div style="margin: 12px">
+  <ol class="breadcrumb border">
+    <li class="breadcrumb-item active" aria-current="page"><%= link_to t('view.back_mypage'), users_show_path %></li>
+  </ol>
+  <br>
+  <div class="text-center">
+    <label><%= t('view.card_registration') %></label>
+    <br/>
+    <%= "**** **** **** " + @default_card_information.last4 %>
+    <br/>
+    <% exp_month = @default_card_information.exp_month.to_s %>
+    <% exp_year = @default_card_information.exp_year.to_s.slice(2,3) %>
+    <%= exp_month + " / " + exp_year %>
+    <%= form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm", data: {confirm: t('view.confirm_destroy')}) do %>
+      <input name="card_id" type="hidden">
+      <button class="btn btn-outline-danger"><%= t('view.delete') %></button>
+    <% end %>
+  </div>
+</div>

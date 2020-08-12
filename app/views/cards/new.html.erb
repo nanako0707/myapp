@@ -1,58 +1,66 @@
-<h2>クレジットカード情報入力</h2>
-<%= form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do %>
-  <div class="form-group">
-    <label>カード番号</label>
-    <span class="required">必須</span>
-    <br/>
-    <%= text_field_tag "number", "", class: "input-default", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number" %>
+<div style="margin: 12px">
+  <ol class="breadcrumb border">
+    <li class="breadcrumb-item active" aria-current="page"><%= link_to t('view.back_mypage'), users_show_path %></li>
+  </ol>
+  <br>
+  <div class="text-center">
+    <h3><%= t('view.card_infomation') %></h3>
+    <%= form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do %>
+      <div class="form-group">
+        <label><%= t('view.card_number') %></label>
+        <span class="required"><%= t('view.must') %></span>
+        <br/>
+        <%= text_field_tag "number", "", class: "input-default", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number" %>
+      </div>
+      <div class="form-group">
+        <label><%= t('view.expiration_date') %></label>
+        <span class="required"><%= t('view.must') %></span>
+        <br/>
+        <select class="card-valid" id="exp_month" name="exp_month" type="text">
+          <option>--</option>
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+          <option value="4">04</option>
+          <option value="5">05</option>
+          <option value="6">06</option>
+          <option value="7">07</option>
+          <option value="8">08</option>
+          <option value="9">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <span><%= t('view.month') %></span>
+        <select class="card-valid" id="exp_year" name="exp_year" type="text">
+          <option>--</option>
+          <option value="2019">19</option>
+          <option value="2020">20</option>
+          <option value="2021">21</option>
+          <option value="2022">22</option>
+          <option value="2023">23</option>
+          <option value="2024">24</option>
+          <option value="2025">25</option>
+          <option value="2026">26</option>
+          <option value="2027">27</option>
+          <option value="2028">28</option>
+          <option value="2029">29</option>
+        </select>
+        <span><%= t('view.year') %></span>
+      </div>
+      <div class="form-group">
+        <label><%= t('view.security_code') %></label>
+        <span class="required"><%= t('view.must') %></span>
+        <br/>
+        <%= text_field_tag "cvc", "", class: "input-default", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" %>
+      </div>
+      <div class="form-group">
+        <div id="card_token"></div>
+        <%= submit_tag t('view.add'), id: "token_submit", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <label>有効期限</label>
-    <span class="required">必須</span>
-    <br/>
-    <select class="card-valid" id="exp_month" name="exp_month" type="text">
-      <option>--</option>
-      <option value="1">01</option>
-      <option value="2">02</option>
-      <option value="3">03</option>
-      <option value="4">04</option>
-      <option value="5">05</option>
-      <option value="6">06</option>
-      <option value="7">07</option>
-      <option value="8">08</option>
-      <option value="9">09</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-    </select>
-    <span>月/</span>
-    <select class="card-valid" id="exp_year" name="exp_year" type="text">
-      <option>--</option>
-      <option value="2019">19</option>
-      <option value="2020">20</option>
-      <option value="2021">21</option>
-      <option value="2022">22</option>
-      <option value="2023">23</option>
-      <option value="2024">24</option>
-      <option value="2025">25</option>
-      <option value="2026">26</option>
-      <option value="2027">27</option>
-      <option value="2028">28</option>
-      <option value="2029">29</option>
-    </select>
-    <span>年</span>
-  </div>
-  <div class="form-group">
-    <label>セキュリティコード</label>
-    <span class="required">必須</span>
-    <br/>
-    <%= text_field_tag "cvc", "", class: "input-default", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" %>
-  </div>
-  <div class="form-group">
-    <div id="card_token"></div>
-    <%= submit_tag "追加する", id: "token_submit", class: 'btn' %>
-  </div>
-<% end %>
+</div>
 
 
 

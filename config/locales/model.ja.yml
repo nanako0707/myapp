@@ -41,7 +41,15 @@ ja:
     search: 検索する
     notice: 通知
     no_notification: 通知はありません
-    card_information: カード情報
+    card_infomation: クレジットカード情報入力
+    card_number: カード番号
+    must: (必須)
+    month: 月/
+    year: 年
+    security_code: セキュリティコード
+    expiration_date: 有効期限
+    card_registration: 登録カード
+    add: 追加する
     purchase_confirm: 購入を確定しますか？
     premium: プレミアム会員登録する
     purchase: 購入する
