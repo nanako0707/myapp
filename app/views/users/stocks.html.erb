@@ -1,6 +1,19 @@
-<% @stocks.each do |stock| %>
-  <% surgical_operation = SurgicalOperation.find_by(id: stock.surgical_operation.id) %>
-  <p><%= surgical_operation.title %>
-    <%= link_to t('view.detail'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %>
-  </p>
-<% end %>
+<div style="margin: 12px">
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to t('view.mypage'), users_show_path %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t('view.stocklist') %></li>
+    </ol>
+  </nav>
+  <br>
+  <div class="text-center">
+    <% @stocks.each do |stock| %>
+      <% surgical_operation = SurgicalOperation.find_by(id: stock.surgical_operation.id) %>
+      <p>
+        <%= surgical_operation.title %>
+        <%= link_to t('view.detail'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %>
+      </p>
+    <% end %>
+  </div>
+</div>
+

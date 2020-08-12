@@ -21,6 +21,7 @@ ja:
     stock_content: ストックした手順
     create_user: 作成者
     mypage: マイページ
+    back_mypage: マイページに戻る
     user_name: ユーザー名
     email: メールアドレス
     edit_user: プロフィールを編集する
@@ -44,7 +45,9 @@ ja:
     purchase_confirm: 購入を確定しますか？
     premium: プレミアム会員登録する
     purchase: 購入する
-    month: 月額
+    explanation: 月額1000円で手順の作成・編集が可能になります！
+    purchase_canceled: 購入がキャンセルされました！
+    purchase_done: 購入が完了しました！
     premium_member: マイページでプレミアム会員登録してください
     already_premium: 既にプレミアム会員登録済みです
     cancel?: キャンセルしますか？
