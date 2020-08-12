@@ -23,11 +23,11 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
     context '必要項目を入力して、createボタンを押した場合' do
       it 'データが保存される' do
         visit new_surgical_operation_path
-        select (I18n.t('view.digestive')), from: 'surgical_operation_medical_department'
+        select ('cardiovascular(心臓血管外科)'), from: 'surgical_operation_medical_department'
         fill_in 'surgical_operation[title]', with: 'title'
         fill_in 'surgical_operation[content]', with: 'content'
         click_button '登録する'
-        expect(page).to have_content (I18n.t('view.digestive'))
+        expect(page).to have_content ('cardiovascular(心臓血管外科)')
         expect(page).to have_content 'title'
       end
     end
