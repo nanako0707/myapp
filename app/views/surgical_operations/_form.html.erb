@@ -26,7 +26,6 @@
           <ul>
             <li><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
             <li><%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true") %></li>
-            <li><%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true") %></li>
             <li>
               <% if User.where(id: current_user.id, premium: true).exists? %>
                 <%= link_to t('view.new'), new_surgical_operation_path %>
@@ -94,7 +93,6 @@
             </a>
             <div class="dropdown-menu"> <%= link_to t('view.surgerylist'), surgical_operations_path, class: "dropdown-item active" %>
               <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: "dropdown-item" %>
-              <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: "dropdown-item" %>
               <% if User.where(id: current_user.id, premium: true).exists? %>
                 <%= link_to t('view.new'), new_surgical_operation_path, class: "dropdown-item" %>
               <% end %>

@@ -6,10 +6,8 @@ class SurgicalOperationsController < ApplicationController
   def index
     if params[:sort_medical_department]
       @surgical_operations = SurgicalOperation.sort_medical_department.page(params[:page]).per(10)
-    elsif params[:sort_updated_at]
-      @surgical_operations = SurgicalOperation.sort_updated_at.page(params[:page]).per(10)
     else
-      @surgical_operations = SurgicalOperation.created_at.page(params[:page]).per(10)
+      @surgical_operations = SurgicalOperation.updated_at.page(params[:page]).per(10)
     end
 
     if params[:search].present?

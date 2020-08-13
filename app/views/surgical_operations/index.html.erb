@@ -27,7 +27,6 @@
           <ul>
             <li><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
             <li><%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true") %></li>
-            <li><%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true") %></li>
             <li>
               <% if User.where(id: current_user.id, premium: true).exists? %>
                 <%= link_to t('view.new'), new_surgical_operation_path %>
@@ -95,7 +94,6 @@
             </a>
             <div class="dropdown-menu"> <%= link_to t('view.surgerylist'), surgical_operations_path, class: "dropdown-item active" %>
               <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: "dropdown-item" %>
-              <%= link_to t('view.sort_update_date'), surgical_operations_path(sort_updated_at: "true"), class: "dropdown-item" %>
               <% if User.where(id: current_user.id, premium: true).exists? %>
                 <%= link_to t('view.new'), new_surgical_operation_path, class: "dropdown-item" %>
               <% end %>
@@ -114,6 +112,10 @@
       <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item active" aria-current="page"><%= t('view.surgerylist') %></li>
+          <li class="breadcrumb-item">
+            <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true") %>
+          </li>
+
           <% if User.where(id: current_user.id, premium: true).exists? %>
             <%= link_to new_surgical_operation_path do %>
               <%= button_to t('view.new'), {controller: 'surgical_operations', action: 'new'}, {method: :get, class: "btn btn-outline-primary btn-sm has-icon" } %>
@@ -154,7 +156,7 @@
           <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
             <div class="card h-100">
               <div class="card-body">
-                <h6><%= surgical_operation.medical_department %></h6>
+                <h6 class="card-category"><%= surgical_operation.medical_department %></h6>
                 <h6 class="card-title"><%= surgical_operation.title %></h6>
                 <h6 class="card-footer font-size-sm text-muted"><%= surgical_operation.status %></h6>
               </div>

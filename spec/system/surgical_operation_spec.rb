@@ -88,6 +88,28 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
     end
   end
 
+  describe 'ソート機能' do
+    before do
+      @user = create(:admin_user)
+      @surgical_operation = create(:surgical_operation, user: @user)
+      @new_surgical_operation = create(:new_surgical_operation, user: @user)
+      visit new_user_session_path
+      fill_in "user[email]", with: "admin@example.com"
+      fill_in "user[password]", with: "111111"
+      click_button 'ログイン'
+    end
+
+    context '診療科目ごとに並び替えするリンクをクリックした場合' do
+      it '手順が診療科目のアルファベット順に並んでいる' do
+        visit surgical_operations_path
+        click_link (I18n.t('view.sort_medical_department'))
+        surgical_operation_list = all('.card-category')
+        expect(surgical_operation_list[0]).to have_content 'cardiovascular(心臓血管外科)'
+        expect(surgical_operation_list[1]).to have_content 'pediatric(小児科)'
+      end
+    end
+  end
+
   describe '手順登録画面' do
     before do
       @user = create(:admin_user)
