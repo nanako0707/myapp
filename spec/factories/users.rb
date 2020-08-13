@@ -6,7 +6,7 @@ FactoryBot.define do
     password { '000000' }
     password_confirmation { '000000' }
     admin { false }
-    premium { true }
+    premium { false }
     confirmed_at { Date.today }
   end
   

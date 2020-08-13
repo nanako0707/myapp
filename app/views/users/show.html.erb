@@ -112,6 +112,9 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
         <li class="breadcrumb-item active" aria-current="page"><%= t('view.mypage') %></li>
+        <li class="breadcrumb-item">
+          <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "has-icon text-danger" %>
+        </li>
       </ol>
     </nav>
 
