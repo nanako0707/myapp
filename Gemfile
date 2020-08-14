@@ -28,6 +28,8 @@ gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 gem 'material_icons'
 gem 'feathericon-rails'
+gem 'fog-aws'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
