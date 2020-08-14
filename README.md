@@ -3,10 +3,10 @@
 # オペリマインダー
 
 ## 概要
-全診療科目の手術手順書がこのアプリで管理できます。手順の編集、作成に特化したサービスです。
-手順編集の完了時には全ての登録ユーザーにメールで通知されるようになっているため、
+全診療科目の手術手順書がこのアプリで管理できます。手順の作成・編集に特化したサービスです。
+手順作成・編集の完了時には全ての登録ユーザーにメールで通知されるようになっているため、
 手順の変更に気づかないという事態を防いでくれます。
-手順にはコメントを入れることができます。
+さらに、毎週月曜日に未読の手順の通知メールが届くようになっています。
 
 ## コンセプト
 膨大な手順書をこのアプリ一つで管理、
@@ -27,22 +27,6 @@ Rails 5.2.4
 
 - 公式チュートリアルに沿って各種ファイル設定<br>
 [公式チュートリアル](https://docs.docker.com/compose/rails/)
-
-- 必要な環境変数設定<br>
-  - .envにPOSTGRES_PASSWORDを記述します
-
-  ```
-  POSTGRES_PASSWORD=**********
-  ```
-  - my_env_file.envにAPIキー情報を記述します
-
-  ```
-  <!-- テスト秘密鍵 -->
-  PAYJP_PRIVATE_KEY=sk_test_****************
-  <!-- テスト公開鍵 -->
-  PAYJP_KEY=pk_test_****************
-  ```
-  - crontabに環境変数を記述します
 
 - Dockerイメージ作成<br>
 Dockerfileを元にDockerイメージを作成します
@@ -74,28 +58,30 @@ docker-compose up -d
 - [ ] 手術手順一覧表示機能
   - [ ] コメント数を表示
 - [ ] 手術手順作成機能
-  - [ ] 手術名、手順、作成日は必須
+  - [ ] 手術名、診療科目、手順は必須
   - [ ] 手順をMarkdown形式で投稿できる
 - [ ] 手術手順編集機能
   - [ ] 手順一覧、作成、編集はログインしているユーザーのみ実行可能
-  - [ ] 編集者の名前、編集日、ステータス(変更あり・なし・編集中)は必須
 - [ ] 手術手順削除機能
   - [ ] 手順の削除は管理者のみ実行可能
+- [ ] カード決済機能
+  - [ ] 定期課金(毎月27日に1000円の課金)することで、プレミアム会員登録できます。手順投稿・編集機能を使用できるようになります
 - [ ] 手順のストック機能
   - [ ] 手順のストックについては、1つの手順に対して一人一回しかできない
 - [ ] コメント機能とストック機能については、ページ遷移なしで実行できる
-- [ ] メール機能
+- [ ] 通知機能
   - [ ] コメント・手順作成・編集完了時、ユーザー全員にメールで通知される
 - [ ] 検索機能
   - [ ] 診療科目・手術名のキーワード(あいまい)検索、ステータスそれぞれの検索、または絞り込み検索が可能
 - [ ] コメント機能
   - [ ] 手術手順に対し、コメントをすることが可能
 - [ ] 手順一覧ソート機能
-  - [ ] 手順を診療科目ごと、または更新日時順に表示することができます
+  - [ ] 手順を診療科目ごと(アルファベット順)に表示することができます
 - [ ] バッチ処理
   - [ ] 変更した手順を確認していないユーザーに対し、定期的(毎週月曜日の8時)に通知を行う
 - [ ] 通知機能
   - [ ] 自分が投稿した手順に対してコメント、ストックされた際に、画面上に通知される
+  - [ ] 手順作成・変更、コメント時、全てのユーザーにメールで通知してくれます
 
 
 ## カタログ設計
@@ -118,10 +104,11 @@ https://docs.google.com/spreadsheets/d/1gQun0BDy7NJJVVRwy-uO-mRCNIHExe1EzMaiNG7O
 * rails_admin
 * cancancan
 * Kaminari
+* faker
 * redcarpet
 * coderay
 * payjp
-* font-awesome-rails
+* fog-aws
 
 # English Ver
 
@@ -147,7 +134,7 @@ Rails 5.2.4
 ## Functions list
 - [ ] Login function
 - [ ] User registration function
-  - [ ] Email address, name and password are required
+  - [ ] Email address, name, password required
 - [ ] User edit function
 - [ ] Administrator privileges
   - [ ] Procedure can be deleted only by administrator
@@ -155,28 +142,30 @@ Rails 5.2.4
 - [ ] Surgical procedure list display function
   - [ ] Show the number of comments
 - [ ] Operation procedure creation function
-  - [ ] Operation name, procedure and creation date are required
-  - [ ] You can post the procedure in Markdown format
+  - [ ] Surgery name, medical department, procedure required
+  - [ ] You can post instructions in Markdown format
 - [ ] Surgical procedure editing function
-  - [ ] Procedure list, creation and editing can be executed only by the logged-in user.
-  - [ ] Editor's name, edit date, status (change/no change/editing) are required
+  - [ ] Procedure list, creation, and editing can be executed only by the logged-in user.
 - [ ] Operation procedure deletion function
   - [ ] Procedure can be deleted only by administrator
-- [ ] Stock function of procedure
-  - [ ] Regarding procedure stock, you can only do it once per procedure
+- [ ] Card payment function
+  - [ ] You can register as a premium member by paying a fixed fee (1000 yen charge on the   27th of every month). You will be able to use the procedure posting / editing function
+- [ ] Procedure stock function
+  - [ ] Regarding the stock of procedures, you can only do this once per procedure
 - [ ] Comment function and stock function can be executed without page transition
-- [ ] Mail function
-  - [ ] All users will be notified by email when comments/procedures are created/edited
+- [ ] Notification function
+  - [ ] Upon completion of comment/procedure creation/edit, all users will be notified by   email
 - [ ] Search function
-  - [ ] Keyword (fuzzy) search for medical department/surgery name, search for each status, or narrowed search
+  - [ ] Keyword (fuzzy) search for medical department/surgery name, search for each status,   or narrowed search
 - [ ] Comment function
   - [ ] It is possible to comment on the surgical procedure
 - [ ] Procedure list sort function
-  - [ ] Procedures can be displayed by medical department or by update date/time
+  - [ ] Procedures can be displayed by medical department (alphabetical order)
 - [ ] Batch processing
-  - [ ] Notify users who have not confirmed the changed procedure regularly (every Monday at 8 o'clock)
+  - [ ] Periodically (every Monday at 8:00) notify users who have not confirmed the changed procedure.
 - [ ] Notification function
   - [ ] You will be notified on the screen when you comment or stock the procedure you posted.
+  - [ ] When creating/changing a procedure or commenting, all users will be notified by email.
 
 ## Catalog design,Table_Definition,Screen transition diagram,,Wire frame
 * https://docs.google.com/spreadsheets/d/e/2PACX-1vQBI5Za3X0_-KUGobWm3zLDX5_i1uQdEStIWrtyo4_UDet2LuzlMq6k_-4AZioMtwCug5dYjDX6eyK6/pubhtml
@@ -192,8 +181,8 @@ Rails 5.2.4
 * rails_admin
 * cancancan
 * Kaminari
-* rspec-rails
+* faker
 * redcarpet
 * coderay
 * payjp
-* font-awesome-rails
+* fog-aws
