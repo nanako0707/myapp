@@ -159,42 +159,42 @@
 
 /* line 131, ../../.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.2/vendor/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
 .colorpicker_rgb_r {
-  background-image: url(/assets/rails_admin/colorpicker/custom_rgb_r-54289ccad89df00514d84ba6d16d1a0abc0d61de95dcfc054bf2202e238a7cb6.png);
+  background-image: image-url(/assets/rails_admin/colorpicker/custom_rgb_r-54289ccad89df00514d84ba6d16d1a0abc0d61de95dcfc054bf2202e238a7cb6.png);
   top: 52px;
   left: 212px;
 }
 
 /* line 136, ../../.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.2/vendor/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
 .colorpicker_rgb_g {
-  background-image: url(/assets/rails_admin/colorpicker/custom_rgb_g-8ab4d41c46fc26080b75eecc6f8c25d8f6db5264cf56ecc4993f86d100ebd71f.png);
+  background-image: image-url(/assets/rails_admin/colorpicker/custom_rgb_g-8ab4d41c46fc26080b75eecc6f8c25d8f6db5264cf56ecc4993f86d100ebd71f.png);
   top: 82px;
   left: 212px;
 }
 
 /* line 141, ../../.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.2/vendor/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
 .colorpicker_rgb_b {
-  background-image: url(/assets/rails_admin/colorpicker/custom_rgb_b-22f2da1810cd9da18a1f93418b8f45bd3cb676aa9790ad5e1aba37779fb3ac31.png);
+  background-image: image-url(/assets/rails_admin/colorpicker/custom_rgb_b-22f2da1810cd9da18a1f93418b8f45bd3cb676aa9790ad5e1aba37779fb3ac31.png);
   top: 112px;
   left: 212px;
 }
 
 /* line 146, ../../.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.2/vendor/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
 .colorpicker_hsb_h {
-  background-image: url(/assets/rails_admin/colorpicker/custom_hsb_h-df01edb80a710cdd9d9057201eaa682a8c86cd80ad6c6929f1d4a9182ad6aed3.png);
+  background-image: image-url(/assets/rails_admin/colorpicker/custom_hsb_h-df01edb80a710cdd9d9057201eaa682a8c86cd80ad6c6929f1d4a9182ad6aed3.png);
   top: 52px;
   left: 282px;
 }
 
 /* line 151, ../../.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.2/vendor/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
 .colorpicker_hsb_s {
-  background-image: url(/assets/rails_admin/colorpicker/custom_hsb_s-9277f3fd9eb79baef2384f7b38968184fd40d631024149c7b41543b7796c0706.png);
+  background-image: image-url(/assets/rails_admin/colorpicker/custom_hsb_s-9277f3fd9eb79baef2384f7b38968184fd40d631024149c7b41543b7796c0706.png);
   top: 82px;
   left: 282px;
 }
 
 /* line 156, ../../.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.2/vendor/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
 .colorpicker_hsb_b {
-  background-image: url(/assets/rails_admin/colorpicker/custom_hsb_b-7160b5fd5c5779102cb91f771b80ef2621dabe10bf06e8359deaefece831b58b.png);
+  background-image: image-url(/assets/rails_admin/colorpicker/custom_hsb_b-7160b5fd5c5779102cb91f771b80ef2621dabe10bf06e8359deaefece831b58b.png);
   top: 112px;
   left: 282px;
 }
