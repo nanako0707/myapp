@@ -16,7 +16,7 @@ User.all.each do |user|
     content: '手順',
     status: '編集済み',
     medical_department: '診療科目',
-    image: File.open('./app/assets/images/test.jpg')
+    image: File.open('./public/images/img/test.jpg')
   )
 end
 
