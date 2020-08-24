@@ -17,12 +17,15 @@ services:
     stdin_open: true
     build: .
     env_file: my_env_file.env
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec unicorn -p 3000 -c /myapp/config/unicorn.conf.rb 
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
       SMTP_HOST: mailhog
       SMTP_PORT: 1025
     volumes:
-      - .:/myapp
+      - .:/myapp:cached 
+      - tmp-data:/myapp/tmp/sockets
+      - public-data:/myapp/public
       - /myapp/vendor
       - /myapp/tmp
       - /myapp/log
@@ -33,7 +36,23 @@ services:
       - db
       - chrome
       - mailhog
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    restart: always
+    volumes:
+      - tmp-data:/myapp/tmp/sockets
+      - public-data:/myapp/public
+    depends_on:
+      - web 
   chrome:
     image: selenium/standalone-chrome-debug:latest
     ports:
       - 5900:5900
+
+volumes:
+  public-data:
+  tmp-data:
