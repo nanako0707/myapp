@@ -198,7 +198,7 @@ GEM
       actionmailer (>= 3.2)
       letter_opener (~> 1.0)
       railties (>= 3.2)
-    libv8 (8.4.255.0-x86_64-linux)
+    libv8 (8.4.255.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -325,6 +325,7 @@ GEM
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
+    ruby_http_client (3.5.1)
     rubyzip (2.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -348,6 +349,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sendgrid-ruby (6.3.4)
+      ruby_http_client (~> 3.4)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -439,6 +442,7 @@ DEPENDENCIES
   ruby-debug-ide
   sass-rails (~> 5.0)
   selenium-webdriver
+  sendgrid-ruby
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
