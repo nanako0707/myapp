@@ -13667,7 +13667,7 @@ a.sorting.desc::after {
   display: block;
   width: 16px;
   height: 16px;
-  background-image: image-url(../img/check.svg);
+  background-image: image-url("../img/check.svg");
 }
 
 .msg-status.read {
@@ -13675,7 +13675,7 @@ a.sorting.desc::after {
 }
 
 .msg-status.read::after {
-  background-image: image-url(../img/check-read.svg);
+  background-image: image-url("../img/check-read.svg");
 }
 
 .msg-status.sent {
@@ -14252,7 +14252,7 @@ svg.icon-inline {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: image-url(../img/loading.svg);
+  background-image: image-url("../img/loading.svg");
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: top;
