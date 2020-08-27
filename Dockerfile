@@ -13,8 +13,6 @@ RUN apt-get update && apt-get install -y \
     postgresql-client \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
-
-# RUN gem install reverse_markdown redcarpet
 ENV LANG ja_JP.UTF-8
 
 RUN mkdir /myapp
