@@ -30,7 +30,6 @@ gem 'material_icons'
 gem 'feathericon-rails'
 gem 'fog-aws'
 gem 'dotenv-rails'
-gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
 gem 'sendgrid-ruby'
 
@@ -47,7 +46,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano3-puma'
 end
 
 group :development do

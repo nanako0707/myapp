@@ -1,19 +1,11 @@
-lock '3.6.0'
-set :application, 'myapp'
-set :deploy_to, '/var/www/myapp'
-set :repo_url,  'https://github.com/nanakobaby/myapp'
-set :linked_files, fetch(:linked_files, []).push("config/master.key")
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+lock "3.6.0"
+set :application, "myapp"
+set :repo_url, "https://github.com/nanakobaby/myapp"
+set :deploy_to, "/var/www/myapp"
 set :rbenv_type, :system
-set :rbenv_ruby, '2.6.5'
-set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/myapp-key.pem'] 
-set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
-set :unicorn_config_path, -> { "#{current_path}/config/unicorn.conf.rb" }
-set :keep_releases, 5
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
+set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+append :linked_dirs, '.bundle'
+set :bundle_jobs, 4
+append :linked_files, "config/master.key"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
