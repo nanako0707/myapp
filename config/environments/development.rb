@@ -26,5 +26,6 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
   config.assets.debug = true
   config.assets.quiet = true
+  config.serve_static_assets = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
