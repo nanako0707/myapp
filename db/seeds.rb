@@ -1,3 +1,12 @@
+User.create!(
+  name: "admin",
+  email: "admin@gmail.com",
+  password: "foobar",
+  password_confirmation: "foobar",
+  premium: true,
+  admin: true
+)
+
 30.times do |n|
   email = Faker::Internet.email
   name = Faker::Name.name
@@ -6,8 +15,10 @@
     name: name,
     email: email,
     password: password,
-    password_confirmation: password
-    )
+    password_confirmation: password,
+    premium: false,
+    admin: false
+  )
 end
 
 User.all.each do |user|
