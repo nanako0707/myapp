@@ -1,6 +1,6 @@
 User.create!(
   name: "admin",
-  email: "admin@gmail.com",
+  email: ENV['SENDGRID_DOMAIN'],
   password: "foobar",
   password_confirmation: "foobar",
   premium: true,
