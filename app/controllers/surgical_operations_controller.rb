@@ -83,7 +83,7 @@ class SurgicalOperationsController < ApplicationController
   def admin_user
     @surgical_operation = SurgicalOperation.find_by(id: params[:id])
     unless current_user.try(:admin?)
-      flash[:notice] = t("not_authorized")
+      flash[:notice] = t("view.not_authorized")
       redirect_to surgical_operations_path
     end
   end
