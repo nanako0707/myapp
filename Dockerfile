@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     locales \
     locales-all \
     postgresql-client \
+    cron \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 ENV LANG ja_JP.UTF-8

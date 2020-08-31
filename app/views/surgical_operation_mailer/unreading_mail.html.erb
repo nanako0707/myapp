@@ -9,8 +9,8 @@
   <tr>
     <tr>
       <td><%= surgical_operation.title %></td>
-      <%# = link_to '手順を確認する', "http://localhost:3000/surgical_operations/#{@surgical_operation.id}" %>
-      <td><%= link_to '手順を確認する', "http://54.238.255.197/surgical_operations/#{@surgical_operation.id}" %></td>
+      <%#= link_to '手順を確認する', surgical_operation_url(surgical_operation.id) %>
+      <td><%= link_to '手順を確認する', "http://54.238.255.197/surgical_operations/#{surgical_operation.id}" %></td>
     </tr>
   </tr>
   <% end %>
