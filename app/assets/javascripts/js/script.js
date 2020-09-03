@@ -1,4 +1,4 @@
-const App = (() => {
+var App = (() => {
   'use strict'
 
   // Debounced resize event (width only). [ref: https://paulbrowne.xyz/debouncing]
