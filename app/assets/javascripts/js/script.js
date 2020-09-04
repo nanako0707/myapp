@@ -1,4 +1,4 @@
-var App = (() => {
+var App = ((App) => {
   'use strict'
 
   // Debounced resize event (width only). [ref: https://paulbrowne.xyz/debouncing]
@@ -562,6 +562,7 @@ var App = (() => {
   }
 
   return {
+    ...App,
     resize: callback => resize(callback),
     xs: () => xs(),
     sm: () => sm(),
@@ -602,7 +603,7 @@ var App = (() => {
     bootstrapSelect: () => bootstrapSelect(),
     select2: () => select2(),
   }
-})()
+})(this.App || (this.App = {}))
 
 $(() => {
   $('[data-toggle="popover"]').popover()
