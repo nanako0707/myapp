@@ -1,4 +1,4 @@
-var App = (() => {
+var App = ((App) => {
   'use strict'
 
   // Debounced resize event (width only). [ref: https://paulbrowne.xyz/debouncing]
@@ -90,7 +90,7 @@ var App = (() => {
 
     void function () {
       // Insert sidebar backdrop
-      document.body.insertAdjacentHTML('beforeend', '<div class="sidebar-backdrop" id="sidebarBackdrop" data-toggle="sidebar"></div>')
+      // document.body.insertAdjacentHTML('<div data-toggle="sidebar"></div>')
 
       // Remember sidebar scroll position
       const sidebar = document.querySelector('.sidebar')
@@ -126,9 +126,9 @@ var App = (() => {
   }
 
   // Custom scrollbar for sidebar
-  function sidebarBodyCustomScrollBar() {
-    new SimpleBar(document.querySelector('.sidebar .sidebar-body'))
-  }
+  // function sidebarBodyCustomScrollBar() {
+  //   new SimpleBar(document.querySelector('.sidebar .sidebar-body'))
+  // }
 
   // Focus to modal content who has 'autofocus' attribute
   function autofocusModal() {
@@ -334,12 +334,12 @@ var App = (() => {
   }
 
   // Feather icon
-  function featherIcon() {
-    feather.replace()
-    const observer = new MutationObserver(() => feather.replace())
-    observer.observe(document.querySelector('.main'), { childList: true, subtree: true, })
-    observer.observe(document.querySelector('.sidebar'), { childList: true, subtree: true, })
-  }
+  // function featherIcon() {
+  //   feather.replace()
+  //   const observer = new MutationObserver(() => feather.replace())
+  //   observer.observe(document.querySelector('.main'), { childList: true, subtree: true, })
+  //   observer.observe(document.querySelector('.sidebar'), { childList: true, subtree: true, })
+  // }
 
   // Togle Todo item done
   function todo() {
@@ -562,6 +562,7 @@ var App = (() => {
   }
 
   return {
+    ...App,
     resize: callback => resize(callback),
     xs: () => xs(),
     sm: () => sm(),
@@ -576,9 +577,9 @@ var App = (() => {
     lgUp: () => lgUp(),
     navSub: () => navSub(),
     toggleSidebar: () => toggleSidebar(),
-    sidebarBodyCustomScrollBar: () => sidebarBodyCustomScrollBar(),
+    // sidebarBodyCustomScrollBar: () => sidebarBodyCustomScrollBar(),
     autofocusModal: () => autofocusModal(),
-    color: variant => getComputedStyle(document.body).getPropertyValue('--' + variant).trim(),
+    // color: variant => getComputedStyle(document.body).getPropertyValue('--' + variant).trim(),
     customFileInput: () => customFileInput(),
     cardToolbar: () => cardToolbar(),
     stopCardLoader: card => {
@@ -592,7 +593,7 @@ var App = (() => {
     backgroundCover: () => backgroundCover(),
     innerToggleSidebar: () => innerToggleSidebar(),
     scrollNavbar: () => scrollNavbar(),
-    featherIcon: () => featherIcon(),
+    // featherIcon: () => featherIcon(),
     todo: () => todo(),
     fixFlatpickr: () => fixFlatpickr(),
     summernoteFocus: () => summernoteFocus(),
@@ -602,7 +603,7 @@ var App = (() => {
     bootstrapSelect: () => bootstrapSelect(),
     select2: () => select2(),
   }
-})()
+})(this.App || (this.App = {}))
 
 $(() => {
   $('[data-toggle="popover"]').popover()
@@ -611,7 +612,7 @@ $(() => {
 
 App.navSub()
 App.toggleSidebar()
-App.sidebarBodyCustomScrollBar()
+// App.sidebarBodyCustomScrollBar()
 App.autofocusModal()
 App.customFileInput()
 App.cardToolbar()
@@ -622,7 +623,7 @@ App.checkAll()
 App.backgroundCover()
 App.innerToggleSidebar()
 App.scrollNavbar()
-App.featherIcon()
+// App.featherIcon()
 App.todo()
 App.fixFlatpickr()
 App.summernoteFocus()
@@ -641,17 +642,17 @@ if (document.querySelector('.main')) {
 }
 
 // Sample colors
-const blue   = App.color('blue')
-const indigo = App.color('indigo')
-const purple = App.color('purple')
-const pink   = App.color('pink')
-const red    = App.color('red')
-const orange = App.color('orange')
-const yellow = App.color('yellow')
-const green  = App.color('green')
-const teal   = App.color('teal')
-const cyan   = App.color('cyan')
-const gray   = App.color('gray')
+// const blue   = App.color('blue')
+// const indigo = App.color('indigo')
+// const purple = App.color('purple')
+// const pink   = App.color('pink')
+// const red    = App.color('red')
+// const orange = App.color('orange')
+// const yellow = App.color('yellow')
+// const green  = App.color('green')
+// const teal   = App.color('teal')
+// const cyan   = App.color('cyan')
+// const gray   = App.color('gray')
 const lime   = '#cddc39'
 
 // This is for development, attach breakpoint to document title

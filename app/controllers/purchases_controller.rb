@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
 
   def pay
     card = Card.where(user_id: current_user.id).first
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     subscription = Payjp::Subscription.create(
     :customer => card.customer_id, 
     :plan => plan,
@@ -38,7 +38,7 @@ class PurchasesController < ApplicationController
   end
 
   def cancel
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     subscription = Payjp::Subscription.retrieve(current_user.subscription_id)
     subscription.cancel
     current_user.update(premium: false)
