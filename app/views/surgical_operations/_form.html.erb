@@ -46,7 +46,6 @@
 
       <a class="nav-link nav-link-faded rounded-circle nav-icon d-lg-none" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
       <ul class="nav nav-circle ml-auto">
-        <li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#searchModal"></a></li>
         <li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
       
         <li class="nav-item dropdown nav-notif">
@@ -66,10 +65,6 @@
             <img src="/images/img/profile.svg" alt="users" class="rounded-circle mr-2">
           </a>
           <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
-            <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
-              <div class="media-body ml-2 text-nowrap">
-              </div>
-            </div>
             <%= link_to t('view.mypage'), users_show_path, class: "dropdown-item has-icon" %>
             <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item has-icon text-danger" %>
           </div>
