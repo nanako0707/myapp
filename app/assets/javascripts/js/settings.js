@@ -83,16 +83,16 @@ const settingModal = `
   </div>
 </div>
 `
-document.body.insertAdjacentHTML('beforeend', settingModal)
+// document.body.insertAdjacentHTML('beforeend', settingModal)
 
-// Transparent modal backdrop
-$('#settingModal').on('show.bs.modal', () => {
-  document.head.insertAdjacentHTML('beforeend', `
-    <style id="tmp-style">.modal-backdrop.show{opacity:0}</style>
-  `)
-}).on('hidden.bs.modal', () => {
-  document.querySelector('#tmp-style').remove()
-})
+// // Transparent modal backdrop
+// $('#settingModal').on('show.bs.modal', () => {
+//   document.head.insertAdjacentHTML('beforeend', `
+//     <style id="tmp-style">.modal-backdrop.show{opacity:0}</style>
+//   `)
+// }).on('hidden.bs.modal', () => {
+//   document.querySelector('#tmp-style').remove()
+// })
 
 // apply theme
 function applyTheme(src) {
