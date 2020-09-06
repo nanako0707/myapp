@@ -9,7 +9,6 @@ class SurgicalOperation < ApplicationRecord
   has_many :reading_users, through: :readings, source: :user
   validates :title, :content, :medical_department, presence: true
   mount_uploader :image, ImageUploader
-  scope :sort_medical_department, -> { order(:medical_department) }
   scope :updated_at, -> { all.order(updated_at: :desc) }
   scope :created_at, -> { all.order(created_at: :desc) }
   scope :title_like, -> title { where('title LIKE ?', "%#{title}%") }

@@ -36,9 +36,9 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
 
       it "scopeメソッドで診療科目検索ができる" do
         visit surgical_operations_path
-        select 'cardiovascular(心臓血管外科)', from: 'medical_department'
+        select (I18n.t('view.cardiovascular')), from: 'medical_department'
         click_button '検索する'
-        expect(page).to have_selector 'h6',text: 'cardiovascular(心臓血管外科)'
+        expect(page).to have_selector 'h6',text: (I18n.t('view.cardiovascular'))
       end
 
       it "scopeメソッドでステータス検索ができる" do
@@ -50,11 +50,11 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
 
       it "scopeメソッドで手術名と診療科目の両方が検索できる" do
         visit surgical_operations_path
-        select 'cardiovascular(心臓血管外科)', from: 'medical_department'
+        select (I18n.t('view.cardiovascular')), from: 'medical_department'
         fill_in 'title', with: 'title'
         click_button '検索する'
         expect(page).to have_content 'title'
-        expect(page).to have_selector 'h6',text: 'cardiovascular(心臓血管外科)'
+        expect(page).to have_selector 'h6',text: (I18n.t('view.cardiovascular'))
       end
 
       it "scopeメソッドで手術名とステータスの両方が検索できる" do
@@ -69,43 +69,21 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
       it "scopeメソッドで診療科目とステータスの両方が検索できる" do
         visit surgical_operations_path
         select (I18n.t('view.wip')), from: 'status'
-        select 'cardiovascular(心臓血管外科)', from: 'medical_department'
+        select (I18n.t('view.cardiovascular')), from: 'medical_department'
         click_button '検索する'
         expect(page).to have_selector 'h6',text: (I18n.t('view.wip'))
-        expect(page).to have_selector 'h6',text: 'cardiovascular(心臓血管外科)'
+        expect(page).to have_selector 'h6',text: (I18n.t('view.cardiovascular'))
       end
 
       it "scopeメソッドで手術名と診療科目とステータスの絞り込み検索ができる" do
         visit surgical_operations_path
         select (I18n.t('view.wip')), from: 'status'
-        select 'cardiovascular(心臓血管外科)', from: 'medical_department'
+        select (I18n.t('view.cardiovascular')), from: 'medical_department'
         fill_in 'title', with: 'title'
         click_button '検索する'
         expect(page).to have_content 'title'
         expect(page).to have_selector 'h6',text: (I18n.t('view.wip'))
-        expect(page).to have_selector 'h6',text: 'cardiovascular(心臓血管外科)'
-      end
-    end
-  end
-
-  describe 'ソート機能' do
-    before do
-      @user = create(:admin_user)
-      @surgical_operation = create(:surgical_operation, user: @user)
-      @new_surgical_operation = create(:new_surgical_operation, user: @user)
-      visit new_user_session_path
-      fill_in "user[email]", with: "admin@example.com"
-      fill_in "user[password]", with: "111111"
-      click_button 'ログイン'
-    end
-
-    context '診療科目ごとに並び替えするリンクをクリックした場合' do
-      it '手順が診療科目のアルファベット順に並んでいる' do
-        visit surgical_operations_path
-        click_link (I18n.t('view.sort_medical_department'))
-        surgical_operation_list = all('.card-category')
-        expect(surgical_operation_list[0]).to have_content 'cardiovascular(心臓血管外科)'
-        expect(surgical_operation_list[1]).to have_content 'pediatric(小児科)'
+        expect(page).to have_selector 'h6',text: (I18n.t('view.cardiovascular'))
       end
     end
   end
@@ -123,11 +101,11 @@ RSpec.describe '手術手順管理機能', type: :system, js: true do
     context '必要項目を入力して、createボタンを押した場合' do
       it 'プレミアム会員であれば、データが保存される' do
         visit new_surgical_operation_path
-        select 'cardiovascular(心臓血管外科)', from: 'surgical_operation_medical_department'
+        select (I18n.t('view.cardiovascular')), from: 'surgical_operation_medical_department'
         fill_in 'surgical_operation[title]', with: 'title'
         fill_in 'surgical_operation[content]', with: 'content'
         click_button '登録する'
-        expect(page).to have_content 'cardiovascular(心臓血管外科)'
+        expect(page).to have_content (I18n.t('view.cardiovascular'))
         expect(page).to have_content 'title'
       end
     end

@@ -13,7 +13,7 @@ RSpec.describe SurgicalOperationMailer, type: :mailer, js: true do
     end
 
     it 'メールの内容は正しいか' do
-      expect(mail.from).to eq(['from@example.com'])
+      expect(mail.from).to eq([ENV['SENDGRID_DOMAIN']])
       expect(mail.to).to eq(@users.map{ |u| u.email }) 
       expect(mail.subject).to eq("手順作成・編集時の確認メール")
       expect(mail.body).to match(/title/)

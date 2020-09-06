@@ -4,11 +4,7 @@ class SurgicalOperationsController < ApplicationController
   before_action :ensure_premium_user, {only: [:new, :create, :edit, :update]}
   
   def index
-    if params[:sort_medical_department]
-      @surgical_operations = SurgicalOperation.sort_medical_department.page(params[:page]).per(10)
-    else
-      @surgical_operations = SurgicalOperation.updated_at.page(params[:page]).per(10)
-    end
+    @surgical_operations = SurgicalOperation.updated_at.page(params[:page]).per(10)
 
     if params[:search].present?
       if params[:title].present? && params[:medical_department].present? && params[:status].present?

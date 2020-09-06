@@ -25,7 +25,6 @@
           <a class="nav-link has-icon dropdown-toggle active" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %></a>
           <ul>
             <li><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
-            <li><%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true") %></li>
             <li>
               <% if User.where(id: current_user.id, premium: true).exists? %>
                 <%= link_to t('view.new'), new_surgical_operation_path %>
@@ -46,7 +45,6 @@
 
       <a class="nav-link nav-link-faded rounded-circle nav-icon d-lg-none" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
       <ul class="nav nav-circle ml-auto">
-        <li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#searchModal"></a></li>
         <li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
       
         <li class="nav-item dropdown nav-notif">
@@ -66,10 +64,6 @@
             <img src="/images/img/profile.svg" alt="users" class="rounded-circle mr-2">
           </a>
           <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
-            <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
-              <div class="media-body ml-2 text-nowrap">
-              </div>
-            </div>
             <%= link_to t('view.mypage'), users_show_path, class: "dropdown-item has-icon" %>
             <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item has-icon text-danger" %>
           </div>
@@ -92,7 +86,6 @@
               <i data-feather="rss"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %>
             </a>
             <div class="dropdown-menu"> <%= link_to t('view.surgerylist'), surgical_operations_path, class: "dropdown-item active" %>
-              <%= link_to t('view.sort_medical_department'), surgical_operations_path(sort_medical_department: "true"), class: "dropdown-item" %>
               <% if User.where(id: current_user.id, premium: true).exists? %>
                 <%= link_to t('view.new'), new_surgical_operation_path, class: "dropdown-item" %>
               <% end %>
@@ -173,7 +166,7 @@
                 <h6 class="mb-0"><%= t('view.stock_content') %></h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                <%= link_to t('view.stocklist'), "/users/#{@user.id}/stocks", class: "btn btn-primary btn-sm" %>
+                <%= link_to t('view.stocklist'), "/users/#{@user.id}/stocks", class: "btn btn-outline-secondary btn-sm" %>
               </div>
             </div>
           </div>

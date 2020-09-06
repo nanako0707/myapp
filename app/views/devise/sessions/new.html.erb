@@ -8,6 +8,9 @@
         <div class="card mb-3">
           <div class="card-body p-4">
             <h3><%= t('.sign_in') %></h3>
+            <br>
+            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning" %>
+            <br>
             <hr>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-group">
@@ -35,9 +38,6 @@
                 <%= f.submit t('.sign_in'), class: "btn btn-primary btn-block" %>
               </div>
             <% end %>
-            <br>
-            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning" %>
-            <br>
             <%= render "devise/shared/links" %>
           </div>
         </div>
