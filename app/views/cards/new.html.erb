@@ -59,6 +59,45 @@
         <%= submit_tag t('view.add'), id: "token_submit", class: 'btn btn-primary' %>
       </div>
     <% end %>
+    <p>テストモードのため本物のカード番号ではなく、必ず下記のテスト番号を用いるようにしてください。</p>
+    <div class="card-body" style="width: 360px; margin: auto;">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" style="font-weight: bold;">番号</th>
+              <th scope="col" style="font-weight: bold;">ブランド</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">4242424242424242</td>
+              <td>Visa</td>
+            </tr>
+            <tr>
+              <td scope="row">5555555555554444</td>
+              <td>MasterCard</td>
+            </tr>
+            <tr>
+              <td scope="row">3530111333300000</td>
+              <td>JCB</td>
+            </tr>
+            <tr>
+              <td scope="row">378282246310005</td>
+              <td>American Express</td>
+            </tr>
+            <tr>
+              <td scope="row">38520000023237</td>
+              <td>Diners Club</td>
+            </tr>
+            <tr>
+              <td scope="row">6011111111111117</td>
+              <td>Discover</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
