@@ -75,8 +75,6 @@ docker-compose up -d
   - [ ] 診療科目・手術名のキーワード(あいまい)検索、ステータスそれぞれの検索、または絞り込み検索が可能
 - [ ] コメント機能
   - [ ] 手術手順に対し、コメントをすることが可能
-- [ ] 手順一覧ソート機能
-  - [ ] 手順を診療科目ごと(アルファベット順)に表示することができます
 - [ ] バッチ処理
   - [ ] 変更した手順を確認していないユーザーに対し、定期的(毎週月曜日の8時)に通知を行う
 - [ ] 通知機能
@@ -160,8 +158,6 @@ Rails 5.2.4
   - [ ] Keyword (fuzzy) search for medical department/surgery name, search for each status,   or narrowed search
 - [ ] Comment function
   - [ ] It is possible to comment on the surgical procedure
-- [ ] Procedure list sort function
-  - [ ] Procedures can be displayed by medical department (alphabetical order)
 - [ ] Batch processing
   - [ ] Periodically (every Monday at 8:00) notify users who have not confirmed the changed procedure.
 - [ ] Notification function

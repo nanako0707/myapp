@@ -3,7 +3,7 @@ FactoryBot.define do
     title {'title'}
     content {'content'}
     status {(I18n.t('view.wip'))}
-    medical_department {'cardiovascular(心臓血管外科)'}
+    medical_department {(I18n.t('view.cardiovascular'))}
     user_id { 1 }
   end
 
@@ -11,7 +11,7 @@ FactoryBot.define do
     title {'new_title'}
     content {'new_content'}
     status {(I18n.t('view.wip'))}
-    medical_department {'pediatric(小児科)'}
+    medical_department {(I18n.t('view.pediatric'))}
     user_id { 2 }
   end
 end
