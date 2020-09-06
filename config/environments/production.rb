@@ -64,7 +64,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "myapp_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: '54.238.255.197' }
+  config.action_mailer.default_url_options = { host: 'https://opereminder.com' }
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
