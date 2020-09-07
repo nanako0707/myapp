@@ -112,21 +112,28 @@ https://opereminder.com/<br>
 - 通知機能
   - 自分が投稿した手順に対してコメント、ストックされた際に、画面上に通知される
 
+- その他
 
-## カタログ設計
-https://docs.google.com/spreadsheets/d/e/2PACX-1vQBI5Za3X0_-KUGobWm3zLDX5_i1uQdEStIWrtyo4_UDet2LuzlMq6k_-4AZioMtwCug5dYjDX6eyK6/pubhtml
+  - ページネーション機能あり
+  - オリジナルエラーページ(404,500)あり
 
-## テーブル定義
-https://drive.google.com/file/d/1H3KF6zrtA_d-Egm5bkev9cgEvMHuMjJz/view?usp=sharing
-https://docs.google.com/spreadsheets/d/e/2PACX-1vT1_1mGH9dUf9rKI4p68s2yTcXMCfEFjQKGYKYuT6mGMUoYpFvt9ofLTavSp3UIO54UlAHjyi2O-jPX/pubhtml
+### ユーザー登録画面
 
-## 画面遷移図
-https://drive.google.com/file/d/18d_ihz5n2UbFtnKEcaWiS5jpsFSgmmOX/view?usp=sharing
+<img src="./public/images/img/1530CD92-3E8A-4473-9AA3-F96BA1F8CB7D.jpeg" alt="ユーザー登録画面">
 
-## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1gQun0BDy7NJJVVRwy-uO-mRCNIHExe1EzMaiNG7OSlE/edit?usp=sharing
+### ログイン画面
 
-## 使用予定Gem
+<img src="./public/images/img/7C0DF74F-1B69-425D-B23D-182FC830F107.jpeg" alt="ログイン画面">
+
+### 手順一覧画面
+
+<img src="./public/images/img/CF1E0F1B-E2F1-458B-BEA1-A10D0CEC1B0D_1_105_c.jpeg" alt="手順一覧画面">
+
+### 手順投稿画面
+
+<img src="./public/images/img/8E05A57B-9C83-4A62-85B4-DF44E2F7E70C_1_105_c.jpeg" alt="手順投稿画面">
+
+## 使用Gem
 * CarrierWave
 * mini_magick
 * devise
