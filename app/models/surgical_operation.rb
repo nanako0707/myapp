@@ -21,6 +21,10 @@ class SurgicalOperation < ApplicationRecord
       visited_id: user_id,
       action: "stock"
     )
+    # 自分の投稿に対するストックの場合は、通知済みとする
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
     notification.save if notification.valid?
   end
 

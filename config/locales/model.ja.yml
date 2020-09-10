@@ -75,7 +75,6 @@ ja:
     admin: 管理者
     admin_screen: 管理画面
     surgical_operation: 手術
-    notification_list: 通知一覧
     delete: 削除
     delete_confirm: 本当に削除していいですか？
     not_authorized: 権限がありません
