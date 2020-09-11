@@ -63,6 +63,11 @@
             <img src="/images/img/profile.svg" alt="users" class="rounded-circle mr-2">
           </a>
           <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
+            <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
+              <div class="media-body ml-2 text-nowrap">
+                <h6 class="mb-0"><%= current_user.name %></h6>
+              </div>
+            </div>
             <%= link_to t('view.mypage'), users_show_path, class: "dropdown-item has-icon" %>
             <%= link_to t('view.logout'), destroy_user_session_path, method: :delete, class: "dropdown-item has-icon text-danger" %>
           </div>
