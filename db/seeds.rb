@@ -1,12 +1,3 @@
-User.create!(
-  name: "admin",
-  email: ENV['SENDGRID_DOMAIN'],
-  password: "000000",
-  password_confirmation: "000000",
-  premium: true,
-  admin: true
-)
-
 2.times do |n|
   email = Faker::Internet.email
   name = Faker::Name.name
