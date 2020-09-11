@@ -144,11 +144,11 @@
         <% @surgical_operations.each do |surgical_operation| %>
           <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
             <div class="card h-100">
-              <div class="card-body">
+              <%= link_to surgical_operation_path(surgical_operation.id), class: "card-body", style: "text-decoration: none; color: black;" do %>
                 <h6 class="card-category"><%= surgical_operation.medical_department %></h6>
                 <h6 class="card-title"><%= surgical_operation.title %></h6>
                 <h6 class="card-footer font-size-sm text-muted"><%= surgical_operation.status %></h6>
-              </div>
+              <% end %>
               <div class="card-footer font-size-sm text-muted">
                 <span><%= t('view.update_date') %></span>
                 <span class="ml-1 mr-auto"><%= surgical_operation.updated_at.to_s(:datetime_jp) %></span>
