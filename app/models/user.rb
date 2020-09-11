@@ -17,8 +17,7 @@ class User < ApplicationRecord
   before_destroy :do_not_destroy_last_admin
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "guest"
+    find_or_create_by!(name: 'ゲスト(管理者)', email: 'guest@example.com', admin: true) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
