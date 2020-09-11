@@ -48,15 +48,14 @@
         <li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
       
         <li class="nav-item dropdown nav-notif">
-          <%= link_to notifications_path, class: "nav-link nav-link-faded nav-icon has-badge dropdown-toggle no-caret" do %>
+          <a type="button" class="nav-link nav-link-faded nav-icon has-badge dropdown-toggle no-caret" href="#" data-toggle="modal" data-target="#smModal" data-display="static">
             <% if unchecked_notifications.any? %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                <span class="badge badge-pill badge-danger">!</span>
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span class="badge badge-pill badge-danger">！</span>
             <% else %>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
             <% end %>
-          <% end %>
+          </a>
         </li>
 
         <li class="nav-item dropdown ml-2">
@@ -152,6 +151,30 @@
           </div>
         </div>
       <% end %>
+    </div>
+  </div>
+  <!-- Small Modal -->
+  <div class="modal fade" id="smModal" tabindex="-1" role="dialog" aria-labelledby="smModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white shadow-none">
+          <h6 class="modal-title" id="smModalLabel">通知</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% notifications = get_notifications %>
+          <% if @notifications.exists? %>
+            <div class="users-index">
+              <%= render @notifications %>
+            </div>
+          <% else %>
+            <p><%= t('view.no_notification') %></p>
+          <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
