@@ -192,7 +192,6 @@
           <% if @notifications.exists? %>
             <div class="users-index">
               <%= render @notifications %>
-              <%= paginate @notifications %>
             </div>
           <% else %>
             <p><%= t('view.no_notification') %></p>
