@@ -147,23 +147,25 @@
         <% @surgical_operations.each do |surgical_operation| %>
           <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
             <div class="card h-100">
-              <%= link_to surgical_operation_path(surgical_operation.id), class: "card-body", style: "text-decoration: none; color: black;" do %>
+              <%= link_to surgical_operation_path(surgical_operation.id), class: "card-body", style: "text-decoration: none; color: #000000;" do %>
                 <h6 class="card-category"><%= surgical_operation.medical_department %></h6>
                 <h6 class="card-title"><%= surgical_operation.title %></h6>
                 <h6 style="color: #4169E1; font-size: 14px;"><%= surgical_operation.status %></h6>
-                <div class="card-footer font-size-sm text-muted">
-                  <span><%= t('view.update_date') %></span>
-                  <span class="ml-1 mr-auto"><%= surgical_operation.updated_at.to_s(:datetime_jp) %></span>
-                  <span><i class="fa fa-comment ml-2"></i> <%= surgical_operation.comment_users.count %></span>
-                </div>
-                <div class="card-footer justify-content-between">
-                  <% if current_user.try(:admin?) %>
-                    <%= link_to surgical_operation_path(surgical_operation.id), method: :delete, data: {confirm: t('view.confirm_destroy')}, class: "btn btn-link has-icon btn-xs bigger-130 text-danger" do %>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><%= t('view.delete') %>
-                    <% end %>
-                  <% end %>
-                </div>
               <% end %>
+              <div class="card-footer font-size-sm text-muted">
+                <span><%= t('view.update_date') %></span>
+                <span class="ml-1 mr-auto"><%= surgical_operation.updated_at.to_s(:datetime_jp) %></span>
+                <%= link_to surgical_operation_path(surgical_operation.id), style: "text-decoration: none; color: #000000;" do %>
+                  <span><i class="fa fa-comment ml-2"></i> <%= surgical_operation.comment_users.count %></span>
+                <% end %>
+              </div>
+              <div class="card-footer justify-content-between">
+                <% if current_user.try(:admin?) %>
+                  <%= link_to surgical_operation_path(surgical_operation.id), method: :delete, data: {confirm: t('view.confirm_destroy')}, class: "btn btn-link has-icon btn-xs bigger-130 text-danger" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><%= t('view.delete') %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
