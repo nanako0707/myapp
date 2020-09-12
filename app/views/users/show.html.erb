@@ -22,7 +22,9 @@
         <% end %>
         </li>
         <li class="nav-item">
-          <a class="nav-link has-icon dropdown-toggle active" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %></a>
+          <a class="nav-link has-icon dropdown-toggle active" href="#"><i class="material-icons">notes</i>
+            <%= t('view.surgical_operation') %>
+          </a>
           <ul>
             <li><%= link_to t('view.surgerylist'), surgical_operations_path %></li>
             <li>
@@ -87,7 +89,7 @@
 
           <div class="nav-item dropdown">
             <a class="nav-link nav-link-faded dropdown-toggle has-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference=".main">
-              <i data-feather="rss"></i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg><%= t('view.surgical_operation') %>
+              <i data-feather="rss"></i><i class="material-icons">notes</i><%= t('view.surgical_operation') %>
             </a>
             <div class="dropdown-menu"> <%= link_to t('view.surgerylist'), surgical_operations_path, class: "dropdown-item active" %>
               <% if User.where(id: current_user.id, premium: true).exists? %>
