@@ -4,7 +4,6 @@ class SurgicalOperationsController < ApplicationController
   before_action :ensure_premium_user, {only: [:new, :create, :edit, :update]}
   
   def index
-    @surgical_operations = SurgicalOperation.updated_at.page(params[:page]).per(12)
     @q = SurgicalOperation.ransack(params[:q])
     @surgical_operations = @q.result(distinct: true).page(params[:page]).per(12)
   end
