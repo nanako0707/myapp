@@ -11,9 +11,6 @@ class SurgicalOperation < ApplicationRecord
   mount_uploader :image, ImageUploader
   scope :updated_at, -> { all.order(updated_at: :desc) }
   scope :created_at, -> { all.order(created_at: :desc) }
-  scope :title_like, -> title { where('title LIKE ?', "%#{title}%") }
-  scope :medical_department, -> medical_department { where(medical_department: medical_department) }
-  scope :status, -> status { where(status: status) }
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(

@@ -5,24 +5,8 @@ class SurgicalOperationsController < ApplicationController
   
   def index
     @surgical_operations = SurgicalOperation.updated_at.page(params[:page]).per(12)
-
-    if params[:search].present?
-      if params[:title].present? && params[:medical_department].present? && params[:status].present?
-        @surgical_operations = SurgicalOperation.title_like(params[:title]).medical_department(params[:medical_department]).status(params[:status]).page(params[:page]).per(12)
-      elsif params[:title].present? && params[:medical_department].present?
-        @surgical_operations = SurgicalOperation.title_like(params[:title]).medical_department(params[:medical_department]).page(params[:page]).per(12)
-      elsif params[:title].present? && params[:status].present?
-        @surgical_operations = SurgicalOperation.title_like(params[:title]).status(params[:status]).page(params[:page]).per(12)
-      elsif params[:status].present? && params[:medical_department].present?
-        @surgical_operations = SurgicalOperation.status(params[:status]).medical_department(params[:medical_department]).page(params[:page]).per(12)
-      elsif params[:title].present?
-        @surgical_operations = SurgicalOperation.title_like(params[:title]).page(params[:page]).per(12)
-      elsif params[:medical_department].present?
-        @surgical_operations = SurgicalOperation.medical_department(params[:medical_department]).page(params[:page]).per(12)
-      elsif params[:status].present?
-        @surgical_operations = SurgicalOperation.status(params[:status]).page(params[:page]).per(12)
-      end
-    end
+    @q = SurgicalOperation.ransack(params[:q])
+    @surgical_operations = @q.result(distinct: true).page(params[:page]).per(12)
   end
 
   def new
