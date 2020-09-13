@@ -1,5 +1,9 @@
 <h1>手順が投稿・編集されました！</h1>
 <h4>作成者: <%= @surgical_operation.user.name %></h4>
-<%# = link_to '手順を確認する', "http://localhost:3000/surgical_operations/#{@surgical_operation.id}" %>
-<h4><%= link_to '手順を確認する', "https://opereminder.com/surgical_operations/#{@surgical_operation.id}" %></h4>
+
+<% if Rails.env.development? %>
+  <h4><%= link_to '手順を確認する', "http://localhost:3000/surgical_operations/#{@surgical_operation.id}" %></h4>
+<% elsif Rails.env.production? %>
+  <h4><%= link_to '手順を確認する', "https://opereminder.com/surgical_operations/#{@surgical_operation.id}" %></h4>
+<% end %>
 <p>手術名: <%= @surgical_operation.title %></p>

@@ -9,8 +9,7 @@ class SurgicalOperation < ApplicationRecord
   has_many :reading_users, through: :readings, source: :user
   validates :title, :content, :medical_department, presence: true
   mount_uploader :image, ImageUploader
-  scope :updated_at, -> { all.order(updated_at: :desc) }
-  scope :created_at, -> { all.order(created_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
