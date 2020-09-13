@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # active_notifications：自分からの通知
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  # passive_notifications：相手からの通知
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :surgical_operations, dependent: :destroy
   has_many :stocks, dependent: :destroy
@@ -15,8 +17,7 @@ class User < ApplicationRecord
   before_destroy :do_not_destroy_last_admin
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "guest"
+    find_or_create_by!(name: 'ゲスト(管理者)', email: 'guest@example.com', admin: true) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end

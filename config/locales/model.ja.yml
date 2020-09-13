@@ -75,7 +75,6 @@ ja:
     admin: 管理者
     admin_screen: 管理画面
     surgical_operation: 手術
-    notification_list: 通知一覧
     delete: 削除
     delete_confirm: 本当に削除していいですか？
     not_authorized: 権限がありません
@@ -96,12 +95,22 @@ ja:
       surgical_operation:
         title: 手術名
         content: 手順
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
         image: 画像
         status: ステータス
         medical_department: 診療科目
         complete: 手順を確認しました
         true: 手順を確認しました
         false: 手順未確認
+        notifications: 通知
+        stocks: ストック
+        stock_users: ストックしたユーザー
+        comments: コメント
+        comment_users: コメントしたユーザー
+        readings: 既読
+        reading_users: 既読したユーザー
   
       user:
         title: タイトル
@@ -111,6 +120,51 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード 
         remember_me: ログインを記憶
+        admin: 管理者
+        premium: プレミアム会員
+        subscription_id: 定期課金ID
+        active_notifications: 自分からの通知
+        passive_notifications: 相手からの通知
+        surgical_operations: 作成した手術手順
+        stocks: ストック
+        comments: コメント
+        readings: 既読
+        reading_surgical_operations: 既読した手術手順
+        card: カード
+
+      stock:
+        user: ユーザー
+        surgical_operation: 手術手順
+        created_at: 作成日時
+        updated_at: 更新日時
       
       comment:
         content: コメント
+        surgical_operation: 手術手順
+        created_at: 作成日時
+        updated_at: 更新日時
+        user: ユーザー
+        notifications: 通知
+      
+      reading:
+        user: ユーザー
+        surgical_operation: 手術手順
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      notification:
+        visitor: 通知を送ったユーザー
+        visited: 通知を送られたユーザー
+        surgical_operation: ストックされた手術手順
+        comment: 手術手順へのコメント
+        action: 通知の種類(ストック、コメント)
+        checked: 通知の既読情報
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      card:
+        customer_id: 顧客ID
+        card_id: カードID
+        user: ユーザー
+        created_at: 作成日時
+        updated_at: 更新日時

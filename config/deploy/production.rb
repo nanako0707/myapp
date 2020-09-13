@@ -1,2 +1,2 @@
 server 'https://opereminder.com', user: 'myuser', roles: %w{app db web}
-set :ssh_options, keys: '/Users/kannanako/.ssh/myapp-key.pem'
+set :ssh_options, keys: ENV['SECRET_SSH_KEY']

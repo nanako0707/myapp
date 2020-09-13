@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(created_at: :desc).limit(5) }
   belongs_to :surgical_operation, optional: true
   belongs_to :comment, optional: true
 

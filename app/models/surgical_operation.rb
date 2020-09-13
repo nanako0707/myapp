@@ -9,11 +9,7 @@ class SurgicalOperation < ApplicationRecord
   has_many :reading_users, through: :readings, source: :user
   validates :title, :content, :medical_department, presence: true
   mount_uploader :image, ImageUploader
-  scope :updated_at, -> { all.order(updated_at: :desc) }
-  scope :created_at, -> { all.order(created_at: :desc) }
-  scope :title_like, -> title { where('title LIKE ?', "%#{title}%") }
-  scope :medical_department, -> medical_department { where(medical_department: medical_department) }
-  scope :status, -> status { where(status: status) }
+  default_scope -> { order(updated_at: :desc) }
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
@@ -21,6 +17,10 @@ class SurgicalOperation < ApplicationRecord
       visited_id: user_id,
       action: "stock"
     )
+    # 自分の投稿に対するストックの場合は、通知済みとする
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
     notification.save if notification.valid?
   end
 
