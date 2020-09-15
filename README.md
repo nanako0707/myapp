@@ -64,8 +64,7 @@ https://opereminder.com/<br>
 
 - バッチ処理
   - 全ユーザーに対し定期的(毎週月曜日の8時)に未読の手順一覧の通知を行う
-
-<img src="./public/images/img/C814429D-71B8-4F6F-90B6-FB2E545AC032.gif" alt="未読の手順通知動画">
+  <img src="./public/images/img/6240945A-EF5A-4054-8CC7-DA8B68643CDD.gif" alt="未読の手順通知動画">
 
 - 管理者権限
   - 手順の削除は管理者のみ行える
@@ -78,11 +77,8 @@ https://opereminder.com/<br>
   - 自分が投稿した手順に対してコメント・ストックされた際に、画面上に通知される
 
 - メール機能
-  - コメント時に、ユーザー全員にメールで通知される
-  <img src="./public/images/img/F5AABE36-FC9E-43AC-A9E6-F8202BB5549B.gif" alt="手順作成・編集時の通知動画">
-
-  - 手順作成・手順編集時に、ユーザー全員にメールで通知される
-  <img src="./public/images/img/D78A8951-1CE2-470F-9F72-B3A46C2D6AC6.gif" alt="コメント時の通知動画">
+  - 手術手順作成・手術手順編集・コメント時に、ユーザー全員に対してメール通知される
+  <img src="./public/images/img/F5AABE36-FC9E-43AC-A9E6-F8202BB5549B.gif" alt="コメント時の通知動画">
 
 - 検索機能
   - 診療科目・手術名のキーワード(あいまい)検索・ステータスそれぞれの検索・または絞り込み検索が可能
@@ -121,6 +117,7 @@ https://opereminder.com/<br>
 ## その他 使用技術・機能
 - カンバンのタスク管理(GitHub Project)
 - プルリクを活用したGitHubフロー
+- SSL化
 
 ## 使用Gem
 * CarrierWave
