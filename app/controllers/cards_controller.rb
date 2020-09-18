@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  before_action :general_member, only: :delete
   require "payjp"
 
   def new
@@ -36,6 +37,13 @@ class CardsController < ApplicationController
       card.delete
     end
       redirect_to action: "new"
+  end
+
+  def general_member
+    if User.where(id: current_user.id, premium: true).exists? 
+      flash[:notice] = t('view.card_destroy')
+      redirect_to cards_path
+    end
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
