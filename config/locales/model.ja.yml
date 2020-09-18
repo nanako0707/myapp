@@ -49,7 +49,7 @@ ja:
     destroy_comment_message: コメントが削除されました！
     destroy_surgical_operation: 手順が削除されました！
     confirm_destroy: 本当に削除しますか？
-    card_destroy: このカードでプレミアム会員登録している場合、キャンセルができなくなります。本当に削除しますか？
+    card_destroy: このカード情報でプレミアム会員登録しているため、キャンセルができなくなります。
     search: 検索する
     notice: 通知
     no_notification: 通知はありません
