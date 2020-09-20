@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: postgres
-  password: ENV["POSTGRES_PASSWORD"]
+  password: password
   host: db
   pool: 5
 development:
