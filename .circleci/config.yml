@@ -8,12 +8,14 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
+          BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
-          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_HOST: db
       - image: circleci/postgres:12.2
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: myapp_test
+          POSTGRES_PASSWORD: password
     working_directory: ~/repo
     steps:
       - checkout
@@ -38,11 +40,12 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_HOST: db
       - image: circleci/postgres:12.2
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: myapp_test
+          POSTGRES_PASSWORD: password
     working_directory: ~/repo
     steps:
       - checkout
