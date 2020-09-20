@@ -43,6 +43,7 @@ group :development, :test do
   gem 'debase'
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
+  gem 'rubocop'
   gem 'capistrano', '3.6.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
