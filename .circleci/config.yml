@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
+          BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
       - image: circleci/postgres:12.2
@@ -49,7 +50,10 @@ jobs:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run:
+          command:
+            gem install bundler -v 2.1.4
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
       - save_cache:
           paths:
