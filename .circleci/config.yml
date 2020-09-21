@@ -1,21 +1,16 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
 version: 2
 jobs:
   rubocop:
     docker:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
-          BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
-          POSTGRES_HOST: db
+          POSTGRES_HOST: 127.0.0.1
       - image: circleci/postgres:12.2
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_test
           POSTGRES_PASSWORD: password
+          POSTGRES_DB: myapp_test
     working_directory: ~/repo
     steps:
       - checkout
@@ -40,12 +35,12 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          POSTGRES_HOST: db
+          POSTGRES_HOST: 127.0.0.1
       - image: circleci/postgres:12.2
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_test
           POSTGRES_PASSWORD: password
+          POSTGRES_DB: myapp_test
     working_directory: ~/repo
     steps:
       - checkout
