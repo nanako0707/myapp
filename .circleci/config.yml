@@ -1,59 +1,73 @@
 version: 2
+general:
+  branches:
+    only:
+      - master
+      - develop
 jobs:
   build:
+    working_directory: /myapp
     docker:
-      - image: circleci/ruby:2.6.5-node-browsers
+      - image: circleci/ruby:2.6.5-node
         environment:
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
           RAILS_ENV: test
-          POSTGRES_HOST: 127.0.0.1
-          POSTGRES_USERNAME: 'postgres'
-          POSTGRES_PASSWORD: 'password'
-          POSTGRES_PORT: 5432
-          BUNDLER_VERSION: 2.1.4
       - image: circleci/postgres:12.2
         environment:
-          POSTGRES_ALLOW_EMPTY_PASSWORD: true
-          POSTGRES_ROOT_PASSWORD: 'password'
-          POSTGRES_DATABASE: myapp_test
-
-    working_directory: ~/myapp
-
+          POSTGRES_USER: postgres
+          POSTGRES_DB: myapp_test
+          POSTGRES_PASSWORD: password
     steps:
       - checkout
 
+      - run:
+          name: Install System Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y lsb-release
+
+      - run:
+          name: Install postgresql 12.2
+          command: |
+            wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+            sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+            cat /etc/apt/sources.list.d/pgdg.list
+            sudo apt-get update
+            sudo apt-get install postgresql postgresql-contrib
+
       - restore_cache:
+          name: Restore bundle cache
           keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1-dependencies-
+            - api-bundle-{{ checksum "Gemfile.lock" }}
+            - api-bundle-
 
       - run:
-          name: install dependencies
-          command: |
-            gem install bundler:2.1.4
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-
+          name: Bundle Install
+          command: bin/bundle check --path vendor/bundle || bin/bundle install --path vendor/bundle --jobs 4 --retry 3
       - save_cache:
+          name: Store bundle cache
+          key: api-bundle-{{ checksum "Gemfile.lock" }}
           paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - vendor/bundle
 
       - run:
-          name: waiting for stating database
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+          name: Rubocop
+          command: bundle exec rubocop --rails -f html -o doc/rubocop.html --fail-level F
 
-      - run:
-          name: Run rspec in parallel
-          command: |
-            bundle exec rspec --profile 10 \
-                              --format RspecJunitFormatter \
-                              --out test_results/rspec.xml \
-                              --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
-      - store_test_results:
-          path: /tmp/test-results
       - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+          path: doc
+
+      - run:
+          name: Set up DB
+          command: |
+            bundle exec rake db:structure:load --trace
+          environment:
+            DATABASE_URL: "postgres://usename@localhost:5432/api_test"
+
+      - run:
+          name: RSpec
+          command: bundle exec rspec --format progress spec
+
+      - store_artifacts:
+          path: coverage
