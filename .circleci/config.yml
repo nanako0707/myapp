@@ -1,46 +1,30 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
-          BUNDLER_VERSION: 2.1.4
-          RAILS_ENV: test
-          POSTGRES_HOST: 127.0.0.1
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
+          - BUNDLER_VERSION: 2.1.4
+          - RAILS_ENV: 'test'
       - image: circleci/postgres:12.2
+        environment:
+          - POSTGRES_PASSWORD: 'password'
+          - POSTGRES_HOST: 127.0.0.1
 
     working_directory: ~/repo
 
     steps:
       - checkout
 
-      # Setup bundler 2+
-      - run:
-          name: setup bundler
-          command: |
-            gem update --system
-            gem uninstall bundler
-            rm /usr/local/bin/bundle
-            rm /usr/local/bin/bundler
-            gem install bundler
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run:
           name: install dependencies
           command: |
+            gem install bundler -v 2.1.4
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
@@ -48,10 +32,12 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      # Database setup
-      - run: bundle exec rake db:create db:schema:load
-
-      # run tests!
+      - run: mv config/database.yml.ci config/database.yml 
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
       - run:
           name: run tests
           command: |
@@ -66,14 +52,8 @@ jobs:
               --format progress \
               $TEST_FILES
 
-      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-
-      # run rubocop!
-      - run:
-          name: Rubocop
-          command: bundle exec rubocop
