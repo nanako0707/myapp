@@ -34693,7 +34693,7 @@ $('#settingModal').on('show.bs.modal', () => {
 
 // apply theme
 function applyTheme(src) {
-  let logo = src.includes('white') ? 'logo.svg' : 'logo-white.svg'
+  let logo = src.includes('white') ? 'logo.png' : 'logo-white.svg'
   document.querySelector('#main-logo').src = '../../img/' + logo
   document.querySelector('#theme-css').href = src
 }
