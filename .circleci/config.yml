@@ -7,12 +7,13 @@ jobs:
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
           POSTGRES_USERNAME: 'postgres'
-          POSTGRES_PASSWORD: ''
+          POSTGRES_PASSWORD: 'password'
           POSTGRES_PORT: 5432
+          BUNDLER_VERSION: 2.1.4
       - image: circleci/postgres:12.2
         environment:
           POSTGRES_ALLOW_EMPTY_PASSWORD: true
-          POSTGRES_ROOT_PASSWORD: ''
+          POSTGRES_ROOT_PASSWORD: 'password'
           POSTGRES_DATABASE: myapp_test
 
     working_directory: ~/myapp
@@ -28,6 +29,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            gem install bundler:2.1.4
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
