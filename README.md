@@ -55,7 +55,7 @@ https://opereminder.com/<br>
 
 ## アプリケーション構成図
 
-<img src="./public/images/img/24642F21-5CBF-4443-847B-C0ECE9E1BBFD.jpeg" alt="アプリケーション構成図">
+<img src="./public/images/img/55698013-08BC-4FEB-9C4B-0793F6C88B9D.jpeg" alt="アプリケーション構成図">
 
 ## 機能一覧
 
