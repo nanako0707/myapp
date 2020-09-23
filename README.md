@@ -55,7 +55,7 @@ https://opereminder.com/<br>
 
 ## アプリケーション構成図
 
-<img src="./public/images/img/24642F21-5CBF-4443-847B-C0ECE9E1BBFD.jpeg" alt="アプリケーション構成図">
+<img src="./public/images/img/55698013-08BC-4FEB-9C4B-0793F6C88B9D.jpeg" alt="アプリケーション構成図">
 
 ## 機能一覧
 
@@ -108,7 +108,6 @@ https://opereminder.com/<br>
 - コメント機能とストック機能については、ページ遷移なしで実行できる
 
 - その他
-  - SSL化
   - 単体テスト/結合テスト
   - レスポンシブ対応
   - ページネーション機能あり
