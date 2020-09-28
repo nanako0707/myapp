@@ -8,10 +8,9 @@
   <br>
   <div class="text-center">
     <% @stocks.each do |stock| %>
-      <% surgical_operation = SurgicalOperation.find_by(id: stock.surgical_operation.id) %>
       <p>
-        <%= surgical_operation.title %>
-        <%= link_to t('view.detail'), surgical_operation_path(surgical_operation.id), class: 'btn btn-link' %>
+        <%= stock.surgical_operation.title %>
+        <%= link_to t('view.detail'), surgical_operation_path(stock.surgical_operation.id), class: 'btn btn-link' %>
       </p>
     <% end %>
   </div>
