@@ -28,6 +28,12 @@ https://opereminder.com/<br>
 
 <br>
 
+## ER図
+
+<img src="./public/images/img/99FCD517-BF0D-4836-830A-C50AE82E25DB.jpeg" alt="手順一覧画面">
+
+<br>
+
 ## 使用技術
 
 - **バックエンド**
