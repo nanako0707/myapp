@@ -48,6 +48,7 @@ class CommentsController < ApplicationController
   end
 
   private
+  
   def comment_params
     params.require(:comment).permit(:surgical_operation_id, :content)
   end
