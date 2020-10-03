@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :general_member, only: :delete
+  
   require "payjp"
 
   def new
