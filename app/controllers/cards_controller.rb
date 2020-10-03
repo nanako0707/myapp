@@ -48,7 +48,7 @@ class CardsController < ApplicationController
 
   def show #Cardのデータpayjpに送り情報を取り出します
     card = Card.where(user_id: current_user.id).first
-    if card.blank?
+    unless card
       redirect_to action: "new" 
     else
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
