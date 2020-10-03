@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
   before_action :set_surgical_operation, only: [:create, :edit, :update]
+  
   def create
     @comment = @surgical_operation.comments.build(comment_params)
     @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
-        @surgical_operation.create_notification_comment!(current_user, @comment.id)
+        @surgical_operation.create_notification_comment(current_user, @comment.id)
         format.js { render :index }
         users = User.all
         SurgicalOperationMailer.comment_mail(users, @surgical_operation, @comment).deliver
@@ -48,6 +49,7 @@ class CommentsController < ApplicationController
   end
 
   private
+  
   def comment_params
     params.require(:comment).permit(:surgical_operation_id, :content)
   end

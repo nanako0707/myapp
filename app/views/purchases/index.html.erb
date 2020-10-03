@@ -4,7 +4,7 @@
   </ol>
   <br>
   <div class="text-center">
-    <% if User.where(id: current_user.id, premium: false).exists? %> 
+    <% unless current_user.try(:premium?) %> 
       <h3><%= t('view.purchase_confirm') %></h3>
       <p><%= t('view.explanation') %></p>
       <br>
