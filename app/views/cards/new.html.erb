@@ -56,7 +56,7 @@
       </div>
       <div class="form-group">
         <div id="card_token"></div>
-        <%= submit_tag t('view.add'), id: "token_submit", class: 'btn btn-primary' %>
+        <%= submit_tag t('view.add'), onclick: "this.disabled = true;", id: "token_submit", class: 'btn btn-primary' %>
       </div>
     <% end %>
     <p>テストモードのため本物のカード番号ではなく、必ず下記のテスト番号を用いるようにしてください。</p>
