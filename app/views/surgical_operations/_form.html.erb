@@ -151,7 +151,7 @@
                     <%= form.label :content %>
                     <%= form.text_area :content, class: "form-control", rows: "2", placeholder: "マークダウンが使用できます", style: "margin-top: 4px; margin-bottom: 4px; height: 148px;" %>
                   </div>
-                  <button type="submit" class="btn btn-dark"><%= t('view.register') %></button>
+                  <%= form.submit t('view.register'), data: { disable_with: '送信中...' }, class: "btn btn-dark" %>
                 </div>
               </div>
             </div>

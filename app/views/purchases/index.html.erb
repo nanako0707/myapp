@@ -21,13 +21,13 @@
       <% end %>
       <br>
       <%= form_tag(action: :pay, method: :post) do %>
-        <button class="btn btn-primary"><%= t('view.purchase') %></button>
+        <button data-disable-with="送信中..." class="btn btn-primary"><%= t('view.purchase') %></button>
       <% end %>
     <% else %>
       <h3><%= t('view.already_premium') %></h3>
       <h4><%= t('view.cancel?') %></h4>
       <%= form_tag(action: :cancel, method: :post) do %>
-        <button class="btn btn-outline-primary"><%= t('view.cancel') %></button>
+        <button data-disable-with="送信中..." class="btn btn-outline-primary"><%= t('view.cancel') %></button>
       <% end %>
     <% end %>
   </div>
