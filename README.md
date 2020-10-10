@@ -30,7 +30,7 @@ https://opereminder.com/<br>
 
 ## ER図
 
-<img src="./public/images/img/99FCD517-BF0D-4836-830A-C50AE82E25DB.jpeg" alt="手順一覧画面">
+<img src="./public/images/img/99FCD517-BF0D-4836-830A-C50AE82E25DB.jpeg" alt="ER図">
 
 <br>
 
@@ -137,3 +137,15 @@ https://opereminder.com/<br>
 * PAY.JP
 * Fog::Aws
 * ransack
+
+<br>
+
+## ユースケース
+
+<img src="./public/images/img/715CD483-D5BE-41F4-90CE-57A930A48232.jpeg" alt="ユースケース図">
+
+<br>
+<br>
+<br>
+
+<img src="./public/images/img/194FD372-8342-4385-8895-D2DDD32E0E3B.jpeg" alt="ユースケース">
